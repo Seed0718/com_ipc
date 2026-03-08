@@ -1,0 +1,1 @@
+/usr/bin/g++     CMakeFiles/action_server.dir/test/action_server.cpp.o  -o bin/action_server -Wl,-rpath,/home/seed/Demo/com_ipc/build/lib lib/libcom_ipc.so -lpthread -lrt 
