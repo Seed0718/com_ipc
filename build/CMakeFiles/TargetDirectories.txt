@@ -1,4 +1,6 @@
 /home/seed/Demo/com_ipc/build/CMakeFiles/rebuild_cache.dir
+/home/seed/Demo/com_ipc/build/CMakeFiles/sub_zerocopy.dir
+/home/seed/Demo/com_ipc/build/CMakeFiles/pub_zerocopy.dir
 /home/seed/Demo/com_ipc/build/CMakeFiles/edit_cache.dir
 /home/seed/Demo/com_ipc/build/CMakeFiles/action_client.dir
 /home/seed/Demo/com_ipc/build/CMakeFiles/publisher.dir

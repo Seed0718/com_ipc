@@ -1,1 +1,1 @@
-/usr/bin/g++     CMakeFiles/service_server.dir/test/service_server.cpp.o  -o bin/service_server -Wl,-rpath,/home/seed/Demo/com_ipc/build/lib lib/libcom_ipc.so -lpthread -lrt 
+/usr/bin/g++  -g   CMakeFiles/service_server.dir/test/service_server.cpp.o  -o bin/service_server -Wl,-rpath,/home/seed/Demo/com_ipc/build/lib lib/libcom_ipc.so -lpthread -lrt 

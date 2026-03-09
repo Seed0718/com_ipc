@@ -1,1 +1,1 @@
-/usr/bin/g++     CMakeFiles/subscriber.dir/test/subscriber.cpp.o  -o bin/subscriber -Wl,-rpath,/home/seed/Demo/com_ipc/build/lib lib/libcom_ipc.so -lpthread -lrt 
+/usr/bin/g++  -g   CMakeFiles/subscriber.dir/test/subscriber.cpp.o  -o bin/subscriber -Wl,-rpath,/home/seed/Demo/com_ipc/build/lib lib/libcom_ipc.so -lpthread -lrt 

@@ -25,6 +25,18 @@ public:
     bool publish(const std::string& msg) {
         return publishRaw(msg.c_str(), msg.size() + 1, MSG_STRING);
     }
+
+    // ==================== 零拷贝专区 ====================
+    // 1. 向共享内存“借”一块空间，返回强类型指针
+    template<typename T>
+    T* loan() {
+        return static_cast<T*>(loanRaw(sizeof(T)));
+    }
+    void* loanRaw(size_t size);
+
+    // 2. 将借出的空间直接发布出去 (无需拷贝)
+    bool publishLoaned(void* data_ptr, size_t size, MessageType type = MSG_CUSTOM);
+
     std::string getTopic() const { return topic_name_; }
 
     friend class ActionServer;

@@ -40,6 +40,17 @@ public:
         return true;
     }
 
+    // ==================== 零拷贝专区 ====================
+    // 零拷贝消息载体，直接包裹共享内存里的原始指针
+    struct LoanedMessage {
+        void* data;
+        size_t size;
+        uint32_t seq;
+    };
+
+    // 零拷贝接收：不再传入外部 buffer，而是直接给你一个 LoanedMessage
+    bool receiveLoaned(LoanedMessage& msg, int timeout_ms = 1000);
+
     friend class ActionClient;
     friend class ActionServer;
 

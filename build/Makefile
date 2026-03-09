@@ -111,6 +111,32 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named sub_zerocopy
+
+# Build rule for target.
+sub_zerocopy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sub_zerocopy
+.PHONY : sub_zerocopy
+
+# fast build rule for target.
+sub_zerocopy/fast:
+	$(MAKE) -f CMakeFiles/sub_zerocopy.dir/build.make CMakeFiles/sub_zerocopy.dir/build
+.PHONY : sub_zerocopy/fast
+
+#=============================================================================
+# Target rules for targets named pub_zerocopy
+
+# Build rule for target.
+pub_zerocopy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pub_zerocopy
+.PHONY : pub_zerocopy
+
+# fast build rule for target.
+pub_zerocopy/fast:
+	$(MAKE) -f CMakeFiles/pub_zerocopy.dir/build.make CMakeFiles/pub_zerocopy.dir/build
+.PHONY : pub_zerocopy/fast
+
+#=============================================================================
 # Target rules for targets named action_client
 
 # Build rule for target.
@@ -471,6 +497,33 @@ test/action_server.cpp.s:
 	$(MAKE) -f CMakeFiles/action_server.dir/build.make CMakeFiles/action_server.dir/test/action_server.cpp.s
 .PHONY : test/action_server.cpp.s
 
+test/pub_zerocopy.o: test/pub_zerocopy.cpp.o
+
+.PHONY : test/pub_zerocopy.o
+
+# target to build an object file
+test/pub_zerocopy.cpp.o:
+	$(MAKE) -f CMakeFiles/pub_zerocopy.dir/build.make CMakeFiles/pub_zerocopy.dir/test/pub_zerocopy.cpp.o
+.PHONY : test/pub_zerocopy.cpp.o
+
+test/pub_zerocopy.i: test/pub_zerocopy.cpp.i
+
+.PHONY : test/pub_zerocopy.i
+
+# target to preprocess a source file
+test/pub_zerocopy.cpp.i:
+	$(MAKE) -f CMakeFiles/pub_zerocopy.dir/build.make CMakeFiles/pub_zerocopy.dir/test/pub_zerocopy.cpp.i
+.PHONY : test/pub_zerocopy.cpp.i
+
+test/pub_zerocopy.s: test/pub_zerocopy.cpp.s
+
+.PHONY : test/pub_zerocopy.s
+
+# target to generate assembly for a file
+test/pub_zerocopy.cpp.s:
+	$(MAKE) -f CMakeFiles/pub_zerocopy.dir/build.make CMakeFiles/pub_zerocopy.dir/test/pub_zerocopy.cpp.s
+.PHONY : test/pub_zerocopy.cpp.s
+
 test/publisher.o: test/publisher.cpp.o
 
 .PHONY : test/publisher.o
@@ -552,6 +605,33 @@ test/service_server.cpp.s:
 	$(MAKE) -f CMakeFiles/service_server.dir/build.make CMakeFiles/service_server.dir/test/service_server.cpp.s
 .PHONY : test/service_server.cpp.s
 
+test/sub_zerocopy.o: test/sub_zerocopy.cpp.o
+
+.PHONY : test/sub_zerocopy.o
+
+# target to build an object file
+test/sub_zerocopy.cpp.o:
+	$(MAKE) -f CMakeFiles/sub_zerocopy.dir/build.make CMakeFiles/sub_zerocopy.dir/test/sub_zerocopy.cpp.o
+.PHONY : test/sub_zerocopy.cpp.o
+
+test/sub_zerocopy.i: test/sub_zerocopy.cpp.i
+
+.PHONY : test/sub_zerocopy.i
+
+# target to preprocess a source file
+test/sub_zerocopy.cpp.i:
+	$(MAKE) -f CMakeFiles/sub_zerocopy.dir/build.make CMakeFiles/sub_zerocopy.dir/test/sub_zerocopy.cpp.i
+.PHONY : test/sub_zerocopy.cpp.i
+
+test/sub_zerocopy.s: test/sub_zerocopy.cpp.s
+
+.PHONY : test/sub_zerocopy.s
+
+# target to generate assembly for a file
+test/sub_zerocopy.cpp.s:
+	$(MAKE) -f CMakeFiles/sub_zerocopy.dir/build.make CMakeFiles/sub_zerocopy.dir/test/sub_zerocopy.cpp.s
+.PHONY : test/sub_zerocopy.cpp.s
+
 test/subscriber.o: test/subscriber.cpp.o
 
 .PHONY : test/subscriber.o
@@ -586,6 +666,8 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
+	@echo "... sub_zerocopy"
+	@echo "... pub_zerocopy"
 	@echo "... edit_cache"
 	@echo "... action_client"
 	@echo "... publisher"
@@ -624,6 +706,9 @@ help:
 	@echo "... test/action_server.o"
 	@echo "... test/action_server.i"
 	@echo "... test/action_server.s"
+	@echo "... test/pub_zerocopy.o"
+	@echo "... test/pub_zerocopy.i"
+	@echo "... test/pub_zerocopy.s"
 	@echo "... test/publisher.o"
 	@echo "... test/publisher.i"
 	@echo "... test/publisher.s"
@@ -633,6 +718,9 @@ help:
 	@echo "... test/service_server.o"
 	@echo "... test/service_server.i"
 	@echo "... test/service_server.s"
+	@echo "... test/sub_zerocopy.o"
+	@echo "... test/sub_zerocopy.i"
+	@echo "... test/sub_zerocopy.s"
 	@echo "... test/subscriber.o"
 	@echo "... test/subscriber.i"
 	@echo "... test/subscriber.s"

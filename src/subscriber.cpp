@@ -86,3 +86,48 @@ int Subscriber::receiveRaw(void* buffer, size_t buffer_size, int timeout_ms) {
     
     return -1;
 }
+
+bool Subscriber::receiveLoaned(LoanedMessage& msg, int timeout_ms) {
+    if (!shm_ptr_ || g_shutdown_requested) return false;
+
+    SystemManager::instance()->lockRobust(&shm_ptr_->mutex);
+
+    while (last_seq_ >= shm_ptr_->seq && !g_shutdown_requested) {
+        if (timeout_ms == 0) {
+            pthread_mutex_unlock(&shm_ptr_->mutex);
+            return false;
+        } else if (timeout_ms > 0) {
+            struct timespec ts;
+            clock_gettime(CLOCK_REALTIME, &ts);
+            ts.tv_sec += timeout_ms / 1000;
+            ts.tv_nsec += (timeout_ms % 1000) * 1000000;
+            if (ts.tv_nsec >= 1000000000) { ts.tv_sec += 1; ts.tv_nsec -= 1000000000; }
+            int ret = pthread_cond_timedwait(&shm_ptr_->cond_new_msg, &shm_ptr_->mutex, &ts);
+            if (ret == ETIMEDOUT) {
+                pthread_mutex_unlock(&shm_ptr_->mutex);
+                return false;
+            }
+        } else {
+            pthread_cond_wait(&shm_ptr_->cond_new_msg, &shm_ptr_->mutex);
+        }
+    }
+
+    if (g_shutdown_requested) {
+        pthread_mutex_unlock(&shm_ptr_->mutex);
+        return false;
+    }
+
+    int slot = (shm_ptr_->write_index - 1) % BUFFER_SIZE;
+    MessageHeader temp_header = shm_ptr_->buffer[slot].header;
+    
+    // 拿到取件码立刻解锁，绝不阻塞发布者
+    pthread_mutex_unlock(&shm_ptr_->mutex);
+
+    // 【核心零拷贝】：不去 memcpy，直接把内存池的绝对指针甩给用户！
+    msg.data = MemoryPool::instance()->getPointer(temp_header.pool_offset);
+    msg.size = temp_header.data_size;
+    msg.seq = temp_header.seq;
+    
+    last_seq_ = temp_header.seq;
+    return true;
+}

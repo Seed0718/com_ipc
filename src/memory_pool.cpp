@@ -87,3 +87,12 @@ uint32_t MemoryPool::allocate(size_t size) {
 void* MemoryPool::getPointer(uint32_t offset) {
     return pool_data_ptr_ + offset;
 }
+
+uint32_t MemoryPool::getOffset(void* ptr) {
+    char* p = static_cast<char*>(ptr);
+    // 安全校验：确认这个指针真的是我们内存池里的指针
+    if (p < pool_data_ptr_ || p >= pool_data_ptr_ + POOL_SIZE) {
+        throw std::runtime_error("Zero-Copy Publish Error: Pointer is not from MemoryPool!");
+    }
+    return static_cast<uint32_t>(p - pool_data_ptr_);
+}
