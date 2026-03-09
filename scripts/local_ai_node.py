@@ -2,6 +2,7 @@ import sys
 import os
 import numpy as np
 import time
+import threading # 多线程
 
 # 动态把 build 目录加到 Python 的 import 路径里，以便找到 com_ipc_py.xxx.so
 build_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../build'))
@@ -27,16 +28,24 @@ def image_callback(mem_view):
 
 if __name__ == "__main__":
     com_ipc_py.init()
-    
     node = com_ipc_py.Node("PythonAINode")
     
     print("🚀 Python AI 节点启动！正在直接从 /dev/shm 订阅 'zero_copy_image'...")
     sub = node.create_subscriber("zero_copy_image", image_callback)
     
+    # 【终极魔法】：开辟一个后台守护线程，专门伺候 C++ 的事件循环！
+    spin_thread = threading.Thread(target=com_ipc_py.spin, daemon=True)
+    spin_thread.start()
+    
     try:
-        # 挂起 Python 主线程，把控制权交给 C++ 的后台事件循环
-        com_ipc_py.spin() 
+        print("SystemManager spinning in background... Press Ctrl+C to exit.")
+        # Python 主线程在这里轻松摸鱼，专门等你的键盘退出信号
+        while True:
+            time.sleep(0.1) 
+            
     except KeyboardInterrupt:
-        print("\n正在退出...")
+        print("\n[Python AI Node] 收到 Ctrl+C 退出指令，正在安全关闭内存池...")
     finally:
+        # C++ 底层安全释放所有共享内存和锁
         com_ipc_py.destroy()
+        print("退出完成！")
