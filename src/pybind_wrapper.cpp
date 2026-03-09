@@ -1,0 +1,59 @@
+#include <pybind11/pybind11.h>
+#include <pybind11/functional.h>
+#include "com_ipc.h"
+
+namespace py = pybind11;
+
+// 定义 Python 模块，名字叫 com_ipc_py
+PYBIND11_MODULE(com_ipc_py, m) {
+    m.doc() = "Zero-copy IPC framework Python bindings";
+
+    // 1. 暴露 SystemManager (大管家)
+    m.def("init", []() { SystemManager::instance(); }, "Initialize the IPC system");
+    m.def("spin", []() {
+        // 在 spin 阻塞时释放 Python 的 GIL 锁，否则 Python 主线程会卡死无法响应 Ctrl+C
+        py::gil_scoped_release release; 
+        SystemManager::spin();
+    }, "Spin the event loop");
+    m.def("destroy", []() { SystemManager::destroy(); }, "Destroy the IPC system");
+
+    // 2. 暴露 Publisher (发布者)
+    py::class_<Publisher>(m, "Publisher")
+        // Python 端传入 bytes 或 numpy array (统一抽象为 py::buffer)
+        .def("publish", [](Publisher& self, py::buffer b) {
+            py::buffer_info info = b.request();
+            // 向共享内存池借用空间
+            void* ptr = self.loanRaw(info.size);
+            if (ptr) {
+                // 将 Python 传来的数据拷贝进共享内存池
+                std::memcpy(ptr, info.ptr, info.size);
+                self.publishLoaned(ptr, info.size);
+            } else {
+                throw std::runtime_error("Failed to loan memory from SHM pool!");
+            }
+        }, "Publish a bytes-like object or numpy array");
+
+    // 3. 暴露 Node (节点大管家)
+    py::class_<Node>(m, "Node")
+        .def(py::init<const std::string&>())
+        // 创建发布者，返回引用，生命周期由 Node 管理
+        .def("create_publisher", &Node::createPublisher, py::return_value_policy::reference)
+        // 创建订阅者：这里的回调函数是真正的“黑魔法”
+        .def("create_subscriber", [](Node& self, const std::string& topic, py::function py_cb) {
+            self.createSubscriber(topic, [py_cb](const Subscriber::LoanedMessage& msg) {
+                // 【核心警告】：C++ 底层收数据的线程是后台线程，要调用 Python 函数必须先获取 GIL 锁！
+                py::gil_scoped_acquire acquire;
+                
+                // 【终极零拷贝】：不要把 C++ 指针拷贝成 Python bytes！
+                // 而是直接创建一个 Python 的 memoryview 指向 C++ 的共享内存！
+                auto mem_view = py::memoryview::from_memory(
+                    msg.data, 
+                    msg.size, 
+                    true // readonly: 保护共享内存不被 Python 篡改
+                );
+                
+                // 呼叫 Python 回调函数
+                py_cb(mem_view);
+            });
+        }, py::return_value_policy::reference);
+}

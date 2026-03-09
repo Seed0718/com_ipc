@@ -57,33 +57,9 @@ include CMakeFiles/com_ipc.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/com_ipc.dir/flags.make
 
-CMakeFiles/com_ipc.dir/src/system_manager.cpp.o: CMakeFiles/com_ipc.dir/flags.make
-CMakeFiles/com_ipc.dir/src/system_manager.cpp.o: ../src/system_manager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/com_ipc.dir/src/system_manager.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/com_ipc.dir/src/system_manager.cpp.o -c /home/seed/Demo/com_ipc/src/system_manager.cpp
-
-CMakeFiles/com_ipc.dir/src/system_manager.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/com_ipc.dir/src/system_manager.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/seed/Demo/com_ipc/src/system_manager.cpp > CMakeFiles/com_ipc.dir/src/system_manager.cpp.i
-
-CMakeFiles/com_ipc.dir/src/system_manager.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/com_ipc.dir/src/system_manager.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/seed/Demo/com_ipc/src/system_manager.cpp -o CMakeFiles/com_ipc.dir/src/system_manager.cpp.s
-
-CMakeFiles/com_ipc.dir/src/system_manager.cpp.o.requires:
-
-.PHONY : CMakeFiles/com_ipc.dir/src/system_manager.cpp.o.requires
-
-CMakeFiles/com_ipc.dir/src/system_manager.cpp.o.provides: CMakeFiles/com_ipc.dir/src/system_manager.cpp.o.requires
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/system_manager.cpp.o.provides.build
-.PHONY : CMakeFiles/com_ipc.dir/src/system_manager.cpp.o.provides
-
-CMakeFiles/com_ipc.dir/src/system_manager.cpp.o.provides.build: CMakeFiles/com_ipc.dir/src/system_manager.cpp.o
-
-
 CMakeFiles/com_ipc.dir/src/memory_pool.cpp.o: CMakeFiles/com_ipc.dir/flags.make
 CMakeFiles/com_ipc.dir/src/memory_pool.cpp.o: ../src/memory_pool.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/com_ipc.dir/src/memory_pool.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/com_ipc.dir/src/memory_pool.cpp.o"
 	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/com_ipc.dir/src/memory_pool.cpp.o -c /home/seed/Demo/com_ipc/src/memory_pool.cpp
 
 CMakeFiles/com_ipc.dir/src/memory_pool.cpp.i: cmake_force
@@ -103,6 +79,30 @@ CMakeFiles/com_ipc.dir/src/memory_pool.cpp.o.provides: CMakeFiles/com_ipc.dir/sr
 .PHONY : CMakeFiles/com_ipc.dir/src/memory_pool.cpp.o.provides
 
 CMakeFiles/com_ipc.dir/src/memory_pool.cpp.o.provides.build: CMakeFiles/com_ipc.dir/src/memory_pool.cpp.o
+
+
+CMakeFiles/com_ipc.dir/src/system_manager.cpp.o: CMakeFiles/com_ipc.dir/flags.make
+CMakeFiles/com_ipc.dir/src/system_manager.cpp.o: ../src/system_manager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/com_ipc.dir/src/system_manager.cpp.o"
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/com_ipc.dir/src/system_manager.cpp.o -c /home/seed/Demo/com_ipc/src/system_manager.cpp
+
+CMakeFiles/com_ipc.dir/src/system_manager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/com_ipc.dir/src/system_manager.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/seed/Demo/com_ipc/src/system_manager.cpp > CMakeFiles/com_ipc.dir/src/system_manager.cpp.i
+
+CMakeFiles/com_ipc.dir/src/system_manager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/com_ipc.dir/src/system_manager.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/seed/Demo/com_ipc/src/system_manager.cpp -o CMakeFiles/com_ipc.dir/src/system_manager.cpp.s
+
+CMakeFiles/com_ipc.dir/src/system_manager.cpp.o.requires:
+
+.PHONY : CMakeFiles/com_ipc.dir/src/system_manager.cpp.o.requires
+
+CMakeFiles/com_ipc.dir/src/system_manager.cpp.o.provides: CMakeFiles/com_ipc.dir/src/system_manager.cpp.o.requires
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/system_manager.cpp.o.provides.build
+.PHONY : CMakeFiles/com_ipc.dir/src/system_manager.cpp.o.provides
+
+CMakeFiles/com_ipc.dir/src/system_manager.cpp.o.provides.build: CMakeFiles/com_ipc.dir/src/system_manager.cpp.o
 
 
 CMakeFiles/com_ipc.dir/src/publisher.cpp.o: CMakeFiles/com_ipc.dir/flags.make
@@ -153,9 +153,33 @@ CMakeFiles/com_ipc.dir/src/subscriber.cpp.o.provides: CMakeFiles/com_ipc.dir/src
 CMakeFiles/com_ipc.dir/src/subscriber.cpp.o.provides.build: CMakeFiles/com_ipc.dir/src/subscriber.cpp.o
 
 
+CMakeFiles/com_ipc.dir/src/node.cpp.o: CMakeFiles/com_ipc.dir/flags.make
+CMakeFiles/com_ipc.dir/src/node.cpp.o: ../src/node.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/com_ipc.dir/src/node.cpp.o"
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/com_ipc.dir/src/node.cpp.o -c /home/seed/Demo/com_ipc/src/node.cpp
+
+CMakeFiles/com_ipc.dir/src/node.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/com_ipc.dir/src/node.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/seed/Demo/com_ipc/src/node.cpp > CMakeFiles/com_ipc.dir/src/node.cpp.i
+
+CMakeFiles/com_ipc.dir/src/node.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/com_ipc.dir/src/node.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/seed/Demo/com_ipc/src/node.cpp -o CMakeFiles/com_ipc.dir/src/node.cpp.s
+
+CMakeFiles/com_ipc.dir/src/node.cpp.o.requires:
+
+.PHONY : CMakeFiles/com_ipc.dir/src/node.cpp.o.requires
+
+CMakeFiles/com_ipc.dir/src/node.cpp.o.provides: CMakeFiles/com_ipc.dir/src/node.cpp.o.requires
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/node.cpp.o.provides.build
+.PHONY : CMakeFiles/com_ipc.dir/src/node.cpp.o.provides
+
+CMakeFiles/com_ipc.dir/src/node.cpp.o.provides.build: CMakeFiles/com_ipc.dir/src/node.cpp.o
+
+
 CMakeFiles/com_ipc.dir/src/service_server.cpp.o: CMakeFiles/com_ipc.dir/flags.make
 CMakeFiles/com_ipc.dir/src/service_server.cpp.o: ../src/service_server.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/com_ipc.dir/src/service_server.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/com_ipc.dir/src/service_server.cpp.o"
 	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/com_ipc.dir/src/service_server.cpp.o -c /home/seed/Demo/com_ipc/src/service_server.cpp
 
 CMakeFiles/com_ipc.dir/src/service_server.cpp.i: cmake_force
@@ -179,7 +203,7 @@ CMakeFiles/com_ipc.dir/src/service_server.cpp.o.provides.build: CMakeFiles/com_i
 
 CMakeFiles/com_ipc.dir/src/service_client.cpp.o: CMakeFiles/com_ipc.dir/flags.make
 CMakeFiles/com_ipc.dir/src/service_client.cpp.o: ../src/service_client.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/com_ipc.dir/src/service_client.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/com_ipc.dir/src/service_client.cpp.o"
 	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/com_ipc.dir/src/service_client.cpp.o -c /home/seed/Demo/com_ipc/src/service_client.cpp
 
 CMakeFiles/com_ipc.dir/src/service_client.cpp.i: cmake_force
@@ -203,7 +227,7 @@ CMakeFiles/com_ipc.dir/src/service_client.cpp.o.provides.build: CMakeFiles/com_i
 
 CMakeFiles/com_ipc.dir/src/action_server.cpp.o: CMakeFiles/com_ipc.dir/flags.make
 CMakeFiles/com_ipc.dir/src/action_server.cpp.o: ../src/action_server.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/com_ipc.dir/src/action_server.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/com_ipc.dir/src/action_server.cpp.o"
 	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/com_ipc.dir/src/action_server.cpp.o -c /home/seed/Demo/com_ipc/src/action_server.cpp
 
 CMakeFiles/com_ipc.dir/src/action_server.cpp.i: cmake_force
@@ -227,7 +251,7 @@ CMakeFiles/com_ipc.dir/src/action_server.cpp.o.provides.build: CMakeFiles/com_ip
 
 CMakeFiles/com_ipc.dir/src/action_client.cpp.o: CMakeFiles/com_ipc.dir/flags.make
 CMakeFiles/com_ipc.dir/src/action_client.cpp.o: ../src/action_client.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/com_ipc.dir/src/action_client.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/com_ipc.dir/src/action_client.cpp.o"
 	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/com_ipc.dir/src/action_client.cpp.o -c /home/seed/Demo/com_ipc/src/action_client.cpp
 
 CMakeFiles/com_ipc.dir/src/action_client.cpp.i: cmake_force
@@ -251,10 +275,11 @@ CMakeFiles/com_ipc.dir/src/action_client.cpp.o.provides.build: CMakeFiles/com_ip
 
 # Object files for target com_ipc
 com_ipc_OBJECTS = \
-"CMakeFiles/com_ipc.dir/src/system_manager.cpp.o" \
 "CMakeFiles/com_ipc.dir/src/memory_pool.cpp.o" \
+"CMakeFiles/com_ipc.dir/src/system_manager.cpp.o" \
 "CMakeFiles/com_ipc.dir/src/publisher.cpp.o" \
 "CMakeFiles/com_ipc.dir/src/subscriber.cpp.o" \
+"CMakeFiles/com_ipc.dir/src/node.cpp.o" \
 "CMakeFiles/com_ipc.dir/src/service_server.cpp.o" \
 "CMakeFiles/com_ipc.dir/src/service_client.cpp.o" \
 "CMakeFiles/com_ipc.dir/src/action_server.cpp.o" \
@@ -263,28 +288,30 @@ com_ipc_OBJECTS = \
 # External object files for target com_ipc
 com_ipc_EXTERNAL_OBJECTS =
 
-lib/libcom_ipc.so: CMakeFiles/com_ipc.dir/src/system_manager.cpp.o
-lib/libcom_ipc.so: CMakeFiles/com_ipc.dir/src/memory_pool.cpp.o
-lib/libcom_ipc.so: CMakeFiles/com_ipc.dir/src/publisher.cpp.o
-lib/libcom_ipc.so: CMakeFiles/com_ipc.dir/src/subscriber.cpp.o
-lib/libcom_ipc.so: CMakeFiles/com_ipc.dir/src/service_server.cpp.o
-lib/libcom_ipc.so: CMakeFiles/com_ipc.dir/src/service_client.cpp.o
-lib/libcom_ipc.so: CMakeFiles/com_ipc.dir/src/action_server.cpp.o
-lib/libcom_ipc.so: CMakeFiles/com_ipc.dir/src/action_client.cpp.o
-lib/libcom_ipc.so: CMakeFiles/com_ipc.dir/build.make
-lib/libcom_ipc.so: CMakeFiles/com_ipc.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX shared library lib/libcom_ipc.so"
+libcom_ipc.so: CMakeFiles/com_ipc.dir/src/memory_pool.cpp.o
+libcom_ipc.so: CMakeFiles/com_ipc.dir/src/system_manager.cpp.o
+libcom_ipc.so: CMakeFiles/com_ipc.dir/src/publisher.cpp.o
+libcom_ipc.so: CMakeFiles/com_ipc.dir/src/subscriber.cpp.o
+libcom_ipc.so: CMakeFiles/com_ipc.dir/src/node.cpp.o
+libcom_ipc.so: CMakeFiles/com_ipc.dir/src/service_server.cpp.o
+libcom_ipc.so: CMakeFiles/com_ipc.dir/src/service_client.cpp.o
+libcom_ipc.so: CMakeFiles/com_ipc.dir/src/action_server.cpp.o
+libcom_ipc.so: CMakeFiles/com_ipc.dir/src/action_client.cpp.o
+libcom_ipc.so: CMakeFiles/com_ipc.dir/build.make
+libcom_ipc.so: CMakeFiles/com_ipc.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX shared library libcom_ipc.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/com_ipc.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/com_ipc.dir/build: lib/libcom_ipc.so
+CMakeFiles/com_ipc.dir/build: libcom_ipc.so
 
 .PHONY : CMakeFiles/com_ipc.dir/build
 
-CMakeFiles/com_ipc.dir/requires: CMakeFiles/com_ipc.dir/src/system_manager.cpp.o.requires
 CMakeFiles/com_ipc.dir/requires: CMakeFiles/com_ipc.dir/src/memory_pool.cpp.o.requires
+CMakeFiles/com_ipc.dir/requires: CMakeFiles/com_ipc.dir/src/system_manager.cpp.o.requires
 CMakeFiles/com_ipc.dir/requires: CMakeFiles/com_ipc.dir/src/publisher.cpp.o.requires
 CMakeFiles/com_ipc.dir/requires: CMakeFiles/com_ipc.dir/src/subscriber.cpp.o.requires
+CMakeFiles/com_ipc.dir/requires: CMakeFiles/com_ipc.dir/src/node.cpp.o.requires
 CMakeFiles/com_ipc.dir/requires: CMakeFiles/com_ipc.dir/src/service_server.cpp.o.requires
 CMakeFiles/com_ipc.dir/requires: CMakeFiles/com_ipc.dir/src/service_client.cpp.o.requires
 CMakeFiles/com_ipc.dir/requires: CMakeFiles/com_ipc.dir/src/action_server.cpp.o.requires

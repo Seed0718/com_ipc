@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/seed/Demo/com_ipc/src/action_client.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/action_client.cpp.o"
   "/home/seed/Demo/com_ipc/src/action_server.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/action_server.cpp.o"
   "/home/seed/Demo/com_ipc/src/memory_pool.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/memory_pool.cpp.o"
+  "/home/seed/Demo/com_ipc/src/node.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/node.cpp.o"
   "/home/seed/Demo/com_ipc/src/publisher.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/publisher.cpp.o"
   "/home/seed/Demo/com_ipc/src/service_client.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/service_client.cpp.o"
   "/home/seed/Demo/com_ipc/src/service_server.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/service_server.cpp.o"

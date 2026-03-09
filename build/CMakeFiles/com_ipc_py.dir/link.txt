@@ -1,0 +1,1 @@
+/usr/bin/g++ -fPIC -g  -shared  -o com_ipc_py.cpython-36m-x86_64-linux-gnu.so CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.o -Wl,-rpath,/home/seed/Demo/com_ipc/build libcom_ipc.so -lpthread -lrt 

@@ -51,6 +51,12 @@ public:
     // 零拷贝接收：不再传入外部 buffer，而是直接给你一个 LoanedMessage
     bool receiveLoaned(LoanedMessage& msg, int timeout_ms = 1000);
 
+    // ==================== 异步回调专区 ====================
+    using MessageCallback = std::function<void(const LoanedMessage&)>;
+    
+    // 注册回调函数，一旦注册，Subscriber将进入后台异步接收模式
+    void registerCallback(MessageCallback cb);
+
     friend class ActionClient;
     friend class ActionServer;
 
@@ -58,5 +64,10 @@ private:
     std::string topic_name_;
     TopicShm* shm_ptr_;
     uint32_t last_seq_; // 记录该订阅者读到的最新序号，用于判断是否有新消息
+    MessageCallback callback_;
+    std::thread async_thread_;
+    std::atomic<bool> async_running_{false};
+
+    void asyncLoop(); // 后台死循环，专门等数据
 };
 #endif//SUBSCRIBER_H

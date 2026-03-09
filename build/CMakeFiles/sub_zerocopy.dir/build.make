@@ -90,7 +90,7 @@ sub_zerocopy_EXTERNAL_OBJECTS =
 
 bin/sub_zerocopy: CMakeFiles/sub_zerocopy.dir/test/sub_zerocopy.cpp.o
 bin/sub_zerocopy: CMakeFiles/sub_zerocopy.dir/build.make
-bin/sub_zerocopy: lib/libcom_ipc.so
+bin/sub_zerocopy: libcom_ipc.so
 bin/sub_zerocopy: CMakeFiles/sub_zerocopy.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable bin/sub_zerocopy"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sub_zerocopy.dir/link.txt --verbose=$(VERBOSE)

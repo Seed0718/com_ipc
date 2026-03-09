@@ -69,10 +69,26 @@ vector
 -
 utility
 -
+atomic
+-
 
 ../inc/memory_pool.h
 com_ipc_types.h
 ../inc/com_ipc_types.h
+
+../inc/node.h
+publisher.h
+../inc/publisher.h
+subscriber.h
+../inc/subscriber.h
+string
+-
+vector
+-
+memory
+-
+functional
+-
 
 ../inc/publisher.h
 com_ipc_types.h
@@ -126,6 +142,14 @@ sys/mman.h
 fcntl.h
 -
 unistd.h
+-
+
+/home/seed/Demo/com_ipc/src/node.cpp
+system_manager.h
+/home/seed/Demo/com_ipc/src/system_manager.h
+node.h
+/home/seed/Demo/com_ipc/src/node.h
+iostream
 -
 
 /home/seed/Demo/com_ipc/src/publisher.cpp

@@ -10,6 +10,7 @@ class SystemManager {
 public:
     static SystemManager* instance();
     static void destroy(); // 彻底清理 /dev/shm 下的文件
+    static void spin(); // 【新增】：阻塞当前线程，直到收到退出信号
     
     TopicShm* createOrGetTopic(const std::string& name, bool is_publisher);
     ServiceShm* createOrGetService(const std::string& name, bool is_server);
@@ -18,6 +19,13 @@ public:
 
     // 提供给上层组件使用的鲁棒加锁方法
     bool lockRobust(pthread_mutex_t* mutex);
+
+    // ==================== 节点户籍管理 ====================
+    int registerNode(const std::string& node_name);
+    void unregisterNode(int node_id);
+    void listNodes();
+    pid_t getNodePid(const std::string& node_name); // 查询某人的 PID
+
 
 private:
     SystemManager();

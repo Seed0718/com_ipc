@@ -1,0 +1,1 @@
+/usr/bin/g++  -g   CMakeFiles/com_node.dir/tools/com_node.cpp.o  -o bin/com_node -Wl,-rpath,/home/seed/Demo/com_ipc/build libcom_ipc.so -lpthread -lrt 

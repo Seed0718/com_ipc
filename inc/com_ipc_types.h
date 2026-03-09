@@ -24,12 +24,14 @@
 #include <map>
 #include <vector>
 #include <utility>
+#include <atomic>
 
 // 全局退出标志声明
 extern volatile sig_atomic_t g_shutdown_requested;
 
 // ==================== 系统硬编码配置 ====================
 #define MAX_TOPICS 20          // 系统最大支持的话题数
+#define MAX_NODES 50
 #define MAX_SUBSCRIBERS 10     // 单个话题最大支持的订阅者数（当前预留，后续可用于高级统计）
 #define BUFFER_SIZE 20         // 每个话题的环形缓冲区槽位数
 #define MAX_MSG_SIZE 256       // 每条消息的最大载荷字节数
@@ -132,6 +134,13 @@ struct CancelGoalResponse {
 
 // ==================== POSIX 共享内存结构定义 ====================
 
+// 【新增】：节点户籍信息
+struct NodeInfo {
+    char name[64];
+    pid_t pid;       // 记录节点所在的进程 ID (用于远程 kill)
+    bool active;     // 是否存活
+};
+
 // 话题(Topic)的共享内存布局
 struct TopicShm {
     pthread_mutex_t mutex;        // 进程间鲁棒互斥锁，保护整个结构体
@@ -178,6 +187,9 @@ struct SystemManagerShm {
     TopicInfo topics[MAX_TOPICS]; // 话题注册表
     int service_count;            // 当前已注册服务数量
     ServiceInfo services[MAX_SERVICES]; // 服务注册表
+    // 【新增】：节点登记册
+    int node_count;
+    NodeInfo nodes[MAX_NODES];
 };
 
 // 内存池的共享内存头结构

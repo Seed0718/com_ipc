@@ -1,0 +1,1 @@
+/usr/bin/g++  -g   CMakeFiles/com_bag.dir/tools/com_bag.cpp.o  -o bin/com_bag -Wl,-rpath,/home/seed/Demo/com_ipc/build libcom_ipc.so -lpthread -lrt 

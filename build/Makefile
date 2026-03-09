@@ -111,56 +111,43 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named sub_zerocopy
+# Target rules for targets named com_router
 
 # Build rule for target.
-sub_zerocopy: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 sub_zerocopy
-.PHONY : sub_zerocopy
+com_router: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 com_router
+.PHONY : com_router
 
 # fast build rule for target.
-sub_zerocopy/fast:
-	$(MAKE) -f CMakeFiles/sub_zerocopy.dir/build.make CMakeFiles/sub_zerocopy.dir/build
-.PHONY : sub_zerocopy/fast
+com_router/fast:
+	$(MAKE) -f CMakeFiles/com_router.dir/build.make CMakeFiles/com_router.dir/build
+.PHONY : com_router/fast
 
 #=============================================================================
-# Target rules for targets named pub_zerocopy
+# Target rules for targets named com_bag
 
 # Build rule for target.
-pub_zerocopy: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pub_zerocopy
-.PHONY : pub_zerocopy
+com_bag: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 com_bag
+.PHONY : com_bag
 
 # fast build rule for target.
-pub_zerocopy/fast:
-	$(MAKE) -f CMakeFiles/pub_zerocopy.dir/build.make CMakeFiles/pub_zerocopy.dir/build
-.PHONY : pub_zerocopy/fast
+com_bag/fast:
+	$(MAKE) -f CMakeFiles/com_bag.dir/build.make CMakeFiles/com_bag.dir/build
+.PHONY : com_bag/fast
 
 #=============================================================================
-# Target rules for targets named action_client
+# Target rules for targets named com_ipc_py
 
 # Build rule for target.
-action_client: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 action_client
-.PHONY : action_client
+com_ipc_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 com_ipc_py
+.PHONY : com_ipc_py
 
 # fast build rule for target.
-action_client/fast:
-	$(MAKE) -f CMakeFiles/action_client.dir/build.make CMakeFiles/action_client.dir/build
-.PHONY : action_client/fast
-
-#=============================================================================
-# Target rules for targets named publisher
-
-# Build rule for target.
-publisher: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 publisher
-.PHONY : publisher
-
-# fast build rule for target.
-publisher/fast:
-	$(MAKE) -f CMakeFiles/publisher.dir/build.make CMakeFiles/publisher.dir/build
-.PHONY : publisher/fast
+com_ipc_py/fast:
+	$(MAKE) -f CMakeFiles/com_ipc_py.dir/build.make CMakeFiles/com_ipc_py.dir/build
+.PHONY : com_ipc_py/fast
 
 #=============================================================================
 # Target rules for targets named com_ipc
@@ -176,56 +163,69 @@ com_ipc/fast:
 .PHONY : com_ipc/fast
 
 #=============================================================================
-# Target rules for targets named subscriber
+# Target rules for targets named pub_zerocopy
 
 # Build rule for target.
-subscriber: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 subscriber
-.PHONY : subscriber
+pub_zerocopy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pub_zerocopy
+.PHONY : pub_zerocopy
 
 # fast build rule for target.
-subscriber/fast:
-	$(MAKE) -f CMakeFiles/subscriber.dir/build.make CMakeFiles/subscriber.dir/build
-.PHONY : subscriber/fast
+pub_zerocopy/fast:
+	$(MAKE) -f CMakeFiles/pub_zerocopy.dir/build.make CMakeFiles/pub_zerocopy.dir/build
+.PHONY : pub_zerocopy/fast
 
 #=============================================================================
-# Target rules for targets named service_server
+# Target rules for targets named sub_zerocopy
 
 # Build rule for target.
-service_server: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 service_server
-.PHONY : service_server
+sub_zerocopy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sub_zerocopy
+.PHONY : sub_zerocopy
 
 # fast build rule for target.
-service_server/fast:
-	$(MAKE) -f CMakeFiles/service_server.dir/build.make CMakeFiles/service_server.dir/build
-.PHONY : service_server/fast
+sub_zerocopy/fast:
+	$(MAKE) -f CMakeFiles/sub_zerocopy.dir/build.make CMakeFiles/sub_zerocopy.dir/build
+.PHONY : sub_zerocopy/fast
 
 #=============================================================================
-# Target rules for targets named action_server
+# Target rules for targets named multi_node_test
 
 # Build rule for target.
-action_server: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 action_server
-.PHONY : action_server
+multi_node_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 multi_node_test
+.PHONY : multi_node_test
 
 # fast build rule for target.
-action_server/fast:
-	$(MAKE) -f CMakeFiles/action_server.dir/build.make CMakeFiles/action_server.dir/build
-.PHONY : action_server/fast
+multi_node_test/fast:
+	$(MAKE) -f CMakeFiles/multi_node_test.dir/build.make CMakeFiles/multi_node_test.dir/build
+.PHONY : multi_node_test/fast
 
 #=============================================================================
-# Target rules for targets named service_client
+# Target rules for targets named com_node
 
 # Build rule for target.
-service_client: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 service_client
-.PHONY : service_client
+com_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 com_node
+.PHONY : com_node
 
 # fast build rule for target.
-service_client/fast:
-	$(MAKE) -f CMakeFiles/service_client.dir/build.make CMakeFiles/service_client.dir/build
-.PHONY : service_client/fast
+com_node/fast:
+	$(MAKE) -f CMakeFiles/com_node.dir/build.make CMakeFiles/com_node.dir/build
+.PHONY : com_node/fast
+
+#=============================================================================
+# Target rules for targets named com_topic
+
+# Build rule for target.
+com_topic: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 com_topic
+.PHONY : com_topic
+
+# fast build rule for target.
+com_topic/fast:
+	$(MAKE) -f CMakeFiles/com_topic.dir/build.make CMakeFiles/com_topic.dir/build
+.PHONY : com_topic/fast
 
 src/action_client.o: src/action_client.cpp.o
 
@@ -308,6 +308,33 @@ src/memory_pool.cpp.s:
 	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/memory_pool.cpp.s
 .PHONY : src/memory_pool.cpp.s
 
+src/node.o: src/node.cpp.o
+
+.PHONY : src/node.o
+
+# target to build an object file
+src/node.cpp.o:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/node.cpp.o
+.PHONY : src/node.cpp.o
+
+src/node.i: src/node.cpp.i
+
+.PHONY : src/node.i
+
+# target to preprocess a source file
+src/node.cpp.i:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/node.cpp.i
+.PHONY : src/node.cpp.i
+
+src/node.s: src/node.cpp.s
+
+.PHONY : src/node.s
+
+# target to generate assembly for a file
+src/node.cpp.s:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/node.cpp.s
+.PHONY : src/node.cpp.s
+
 src/publisher.o: src/publisher.cpp.o
 
 .PHONY : src/publisher.o
@@ -334,6 +361,33 @@ src/publisher.s: src/publisher.cpp.s
 src/publisher.cpp.s:
 	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/publisher.cpp.s
 .PHONY : src/publisher.cpp.s
+
+src/pybind_wrapper.o: src/pybind_wrapper.cpp.o
+
+.PHONY : src/pybind_wrapper.o
+
+# target to build an object file
+src/pybind_wrapper.cpp.o:
+	$(MAKE) -f CMakeFiles/com_ipc_py.dir/build.make CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.o
+.PHONY : src/pybind_wrapper.cpp.o
+
+src/pybind_wrapper.i: src/pybind_wrapper.cpp.i
+
+.PHONY : src/pybind_wrapper.i
+
+# target to preprocess a source file
+src/pybind_wrapper.cpp.i:
+	$(MAKE) -f CMakeFiles/com_ipc_py.dir/build.make CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.i
+.PHONY : src/pybind_wrapper.cpp.i
+
+src/pybind_wrapper.s: src/pybind_wrapper.cpp.s
+
+.PHONY : src/pybind_wrapper.s
+
+# target to generate assembly for a file
+src/pybind_wrapper.cpp.s:
+	$(MAKE) -f CMakeFiles/com_ipc_py.dir/build.make CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.s
+.PHONY : src/pybind_wrapper.cpp.s
 
 src/service_client.o: src/service_client.cpp.o
 
@@ -443,59 +497,32 @@ src/system_manager.cpp.s:
 	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/system_manager.cpp.s
 .PHONY : src/system_manager.cpp.s
 
-test/action_client.o: test/action_client.cpp.o
+test/multi_node_test.o: test/multi_node_test.cpp.o
 
-.PHONY : test/action_client.o
-
-# target to build an object file
-test/action_client.cpp.o:
-	$(MAKE) -f CMakeFiles/action_client.dir/build.make CMakeFiles/action_client.dir/test/action_client.cpp.o
-.PHONY : test/action_client.cpp.o
-
-test/action_client.i: test/action_client.cpp.i
-
-.PHONY : test/action_client.i
-
-# target to preprocess a source file
-test/action_client.cpp.i:
-	$(MAKE) -f CMakeFiles/action_client.dir/build.make CMakeFiles/action_client.dir/test/action_client.cpp.i
-.PHONY : test/action_client.cpp.i
-
-test/action_client.s: test/action_client.cpp.s
-
-.PHONY : test/action_client.s
-
-# target to generate assembly for a file
-test/action_client.cpp.s:
-	$(MAKE) -f CMakeFiles/action_client.dir/build.make CMakeFiles/action_client.dir/test/action_client.cpp.s
-.PHONY : test/action_client.cpp.s
-
-test/action_server.o: test/action_server.cpp.o
-
-.PHONY : test/action_server.o
+.PHONY : test/multi_node_test.o
 
 # target to build an object file
-test/action_server.cpp.o:
-	$(MAKE) -f CMakeFiles/action_server.dir/build.make CMakeFiles/action_server.dir/test/action_server.cpp.o
-.PHONY : test/action_server.cpp.o
+test/multi_node_test.cpp.o:
+	$(MAKE) -f CMakeFiles/multi_node_test.dir/build.make CMakeFiles/multi_node_test.dir/test/multi_node_test.cpp.o
+.PHONY : test/multi_node_test.cpp.o
 
-test/action_server.i: test/action_server.cpp.i
+test/multi_node_test.i: test/multi_node_test.cpp.i
 
-.PHONY : test/action_server.i
+.PHONY : test/multi_node_test.i
 
 # target to preprocess a source file
-test/action_server.cpp.i:
-	$(MAKE) -f CMakeFiles/action_server.dir/build.make CMakeFiles/action_server.dir/test/action_server.cpp.i
-.PHONY : test/action_server.cpp.i
+test/multi_node_test.cpp.i:
+	$(MAKE) -f CMakeFiles/multi_node_test.dir/build.make CMakeFiles/multi_node_test.dir/test/multi_node_test.cpp.i
+.PHONY : test/multi_node_test.cpp.i
 
-test/action_server.s: test/action_server.cpp.s
+test/multi_node_test.s: test/multi_node_test.cpp.s
 
-.PHONY : test/action_server.s
+.PHONY : test/multi_node_test.s
 
 # target to generate assembly for a file
-test/action_server.cpp.s:
-	$(MAKE) -f CMakeFiles/action_server.dir/build.make CMakeFiles/action_server.dir/test/action_server.cpp.s
-.PHONY : test/action_server.cpp.s
+test/multi_node_test.cpp.s:
+	$(MAKE) -f CMakeFiles/multi_node_test.dir/build.make CMakeFiles/multi_node_test.dir/test/multi_node_test.cpp.s
+.PHONY : test/multi_node_test.cpp.s
 
 test/pub_zerocopy.o: test/pub_zerocopy.cpp.o
 
@@ -524,87 +551,6 @@ test/pub_zerocopy.cpp.s:
 	$(MAKE) -f CMakeFiles/pub_zerocopy.dir/build.make CMakeFiles/pub_zerocopy.dir/test/pub_zerocopy.cpp.s
 .PHONY : test/pub_zerocopy.cpp.s
 
-test/publisher.o: test/publisher.cpp.o
-
-.PHONY : test/publisher.o
-
-# target to build an object file
-test/publisher.cpp.o:
-	$(MAKE) -f CMakeFiles/publisher.dir/build.make CMakeFiles/publisher.dir/test/publisher.cpp.o
-.PHONY : test/publisher.cpp.o
-
-test/publisher.i: test/publisher.cpp.i
-
-.PHONY : test/publisher.i
-
-# target to preprocess a source file
-test/publisher.cpp.i:
-	$(MAKE) -f CMakeFiles/publisher.dir/build.make CMakeFiles/publisher.dir/test/publisher.cpp.i
-.PHONY : test/publisher.cpp.i
-
-test/publisher.s: test/publisher.cpp.s
-
-.PHONY : test/publisher.s
-
-# target to generate assembly for a file
-test/publisher.cpp.s:
-	$(MAKE) -f CMakeFiles/publisher.dir/build.make CMakeFiles/publisher.dir/test/publisher.cpp.s
-.PHONY : test/publisher.cpp.s
-
-test/service_client.o: test/service_client.cpp.o
-
-.PHONY : test/service_client.o
-
-# target to build an object file
-test/service_client.cpp.o:
-	$(MAKE) -f CMakeFiles/service_client.dir/build.make CMakeFiles/service_client.dir/test/service_client.cpp.o
-.PHONY : test/service_client.cpp.o
-
-test/service_client.i: test/service_client.cpp.i
-
-.PHONY : test/service_client.i
-
-# target to preprocess a source file
-test/service_client.cpp.i:
-	$(MAKE) -f CMakeFiles/service_client.dir/build.make CMakeFiles/service_client.dir/test/service_client.cpp.i
-.PHONY : test/service_client.cpp.i
-
-test/service_client.s: test/service_client.cpp.s
-
-.PHONY : test/service_client.s
-
-# target to generate assembly for a file
-test/service_client.cpp.s:
-	$(MAKE) -f CMakeFiles/service_client.dir/build.make CMakeFiles/service_client.dir/test/service_client.cpp.s
-.PHONY : test/service_client.cpp.s
-
-test/service_server.o: test/service_server.cpp.o
-
-.PHONY : test/service_server.o
-
-# target to build an object file
-test/service_server.cpp.o:
-	$(MAKE) -f CMakeFiles/service_server.dir/build.make CMakeFiles/service_server.dir/test/service_server.cpp.o
-.PHONY : test/service_server.cpp.o
-
-test/service_server.i: test/service_server.cpp.i
-
-.PHONY : test/service_server.i
-
-# target to preprocess a source file
-test/service_server.cpp.i:
-	$(MAKE) -f CMakeFiles/service_server.dir/build.make CMakeFiles/service_server.dir/test/service_server.cpp.i
-.PHONY : test/service_server.cpp.i
-
-test/service_server.s: test/service_server.cpp.s
-
-.PHONY : test/service_server.s
-
-# target to generate assembly for a file
-test/service_server.cpp.s:
-	$(MAKE) -f CMakeFiles/service_server.dir/build.make CMakeFiles/service_server.dir/test/service_server.cpp.s
-.PHONY : test/service_server.cpp.s
-
 test/sub_zerocopy.o: test/sub_zerocopy.cpp.o
 
 .PHONY : test/sub_zerocopy.o
@@ -632,32 +578,113 @@ test/sub_zerocopy.cpp.s:
 	$(MAKE) -f CMakeFiles/sub_zerocopy.dir/build.make CMakeFiles/sub_zerocopy.dir/test/sub_zerocopy.cpp.s
 .PHONY : test/sub_zerocopy.cpp.s
 
-test/subscriber.o: test/subscriber.cpp.o
+tools/com_bag.o: tools/com_bag.cpp.o
 
-.PHONY : test/subscriber.o
+.PHONY : tools/com_bag.o
 
 # target to build an object file
-test/subscriber.cpp.o:
-	$(MAKE) -f CMakeFiles/subscriber.dir/build.make CMakeFiles/subscriber.dir/test/subscriber.cpp.o
-.PHONY : test/subscriber.cpp.o
+tools/com_bag.cpp.o:
+	$(MAKE) -f CMakeFiles/com_bag.dir/build.make CMakeFiles/com_bag.dir/tools/com_bag.cpp.o
+.PHONY : tools/com_bag.cpp.o
 
-test/subscriber.i: test/subscriber.cpp.i
+tools/com_bag.i: tools/com_bag.cpp.i
 
-.PHONY : test/subscriber.i
+.PHONY : tools/com_bag.i
 
 # target to preprocess a source file
-test/subscriber.cpp.i:
-	$(MAKE) -f CMakeFiles/subscriber.dir/build.make CMakeFiles/subscriber.dir/test/subscriber.cpp.i
-.PHONY : test/subscriber.cpp.i
+tools/com_bag.cpp.i:
+	$(MAKE) -f CMakeFiles/com_bag.dir/build.make CMakeFiles/com_bag.dir/tools/com_bag.cpp.i
+.PHONY : tools/com_bag.cpp.i
 
-test/subscriber.s: test/subscriber.cpp.s
+tools/com_bag.s: tools/com_bag.cpp.s
 
-.PHONY : test/subscriber.s
+.PHONY : tools/com_bag.s
 
 # target to generate assembly for a file
-test/subscriber.cpp.s:
-	$(MAKE) -f CMakeFiles/subscriber.dir/build.make CMakeFiles/subscriber.dir/test/subscriber.cpp.s
-.PHONY : test/subscriber.cpp.s
+tools/com_bag.cpp.s:
+	$(MAKE) -f CMakeFiles/com_bag.dir/build.make CMakeFiles/com_bag.dir/tools/com_bag.cpp.s
+.PHONY : tools/com_bag.cpp.s
+
+tools/com_node.o: tools/com_node.cpp.o
+
+.PHONY : tools/com_node.o
+
+# target to build an object file
+tools/com_node.cpp.o:
+	$(MAKE) -f CMakeFiles/com_node.dir/build.make CMakeFiles/com_node.dir/tools/com_node.cpp.o
+.PHONY : tools/com_node.cpp.o
+
+tools/com_node.i: tools/com_node.cpp.i
+
+.PHONY : tools/com_node.i
+
+# target to preprocess a source file
+tools/com_node.cpp.i:
+	$(MAKE) -f CMakeFiles/com_node.dir/build.make CMakeFiles/com_node.dir/tools/com_node.cpp.i
+.PHONY : tools/com_node.cpp.i
+
+tools/com_node.s: tools/com_node.cpp.s
+
+.PHONY : tools/com_node.s
+
+# target to generate assembly for a file
+tools/com_node.cpp.s:
+	$(MAKE) -f CMakeFiles/com_node.dir/build.make CMakeFiles/com_node.dir/tools/com_node.cpp.s
+.PHONY : tools/com_node.cpp.s
+
+tools/com_router.o: tools/com_router.cpp.o
+
+.PHONY : tools/com_router.o
+
+# target to build an object file
+tools/com_router.cpp.o:
+	$(MAKE) -f CMakeFiles/com_router.dir/build.make CMakeFiles/com_router.dir/tools/com_router.cpp.o
+.PHONY : tools/com_router.cpp.o
+
+tools/com_router.i: tools/com_router.cpp.i
+
+.PHONY : tools/com_router.i
+
+# target to preprocess a source file
+tools/com_router.cpp.i:
+	$(MAKE) -f CMakeFiles/com_router.dir/build.make CMakeFiles/com_router.dir/tools/com_router.cpp.i
+.PHONY : tools/com_router.cpp.i
+
+tools/com_router.s: tools/com_router.cpp.s
+
+.PHONY : tools/com_router.s
+
+# target to generate assembly for a file
+tools/com_router.cpp.s:
+	$(MAKE) -f CMakeFiles/com_router.dir/build.make CMakeFiles/com_router.dir/tools/com_router.cpp.s
+.PHONY : tools/com_router.cpp.s
+
+tools/com_topic.o: tools/com_topic.cpp.o
+
+.PHONY : tools/com_topic.o
+
+# target to build an object file
+tools/com_topic.cpp.o:
+	$(MAKE) -f CMakeFiles/com_topic.dir/build.make CMakeFiles/com_topic.dir/tools/com_topic.cpp.o
+.PHONY : tools/com_topic.cpp.o
+
+tools/com_topic.i: tools/com_topic.cpp.i
+
+.PHONY : tools/com_topic.i
+
+# target to preprocess a source file
+tools/com_topic.cpp.i:
+	$(MAKE) -f CMakeFiles/com_topic.dir/build.make CMakeFiles/com_topic.dir/tools/com_topic.cpp.i
+.PHONY : tools/com_topic.cpp.i
+
+tools/com_topic.s: tools/com_topic.cpp.s
+
+.PHONY : tools/com_topic.s
+
+# target to generate assembly for a file
+tools/com_topic.cpp.s:
+	$(MAKE) -f CMakeFiles/com_topic.dir/build.make CMakeFiles/com_topic.dir/tools/com_topic.cpp.s
+.PHONY : tools/com_topic.cpp.s
 
 # Help Target
 help:
@@ -666,16 +693,16 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... sub_zerocopy"
-	@echo "... pub_zerocopy"
 	@echo "... edit_cache"
-	@echo "... action_client"
-	@echo "... publisher"
+	@echo "... com_router"
+	@echo "... com_bag"
+	@echo "... com_ipc_py"
 	@echo "... com_ipc"
-	@echo "... subscriber"
-	@echo "... service_server"
-	@echo "... action_server"
-	@echo "... service_client"
+	@echo "... pub_zerocopy"
+	@echo "... sub_zerocopy"
+	@echo "... multi_node_test"
+	@echo "... com_node"
+	@echo "... com_topic"
 	@echo "... src/action_client.o"
 	@echo "... src/action_client.i"
 	@echo "... src/action_client.s"
@@ -685,9 +712,15 @@ help:
 	@echo "... src/memory_pool.o"
 	@echo "... src/memory_pool.i"
 	@echo "... src/memory_pool.s"
+	@echo "... src/node.o"
+	@echo "... src/node.i"
+	@echo "... src/node.s"
 	@echo "... src/publisher.o"
 	@echo "... src/publisher.i"
 	@echo "... src/publisher.s"
+	@echo "... src/pybind_wrapper.o"
+	@echo "... src/pybind_wrapper.i"
+	@echo "... src/pybind_wrapper.s"
 	@echo "... src/service_client.o"
 	@echo "... src/service_client.i"
 	@echo "... src/service_client.s"
@@ -700,30 +733,27 @@ help:
 	@echo "... src/system_manager.o"
 	@echo "... src/system_manager.i"
 	@echo "... src/system_manager.s"
-	@echo "... test/action_client.o"
-	@echo "... test/action_client.i"
-	@echo "... test/action_client.s"
-	@echo "... test/action_server.o"
-	@echo "... test/action_server.i"
-	@echo "... test/action_server.s"
+	@echo "... test/multi_node_test.o"
+	@echo "... test/multi_node_test.i"
+	@echo "... test/multi_node_test.s"
 	@echo "... test/pub_zerocopy.o"
 	@echo "... test/pub_zerocopy.i"
 	@echo "... test/pub_zerocopy.s"
-	@echo "... test/publisher.o"
-	@echo "... test/publisher.i"
-	@echo "... test/publisher.s"
-	@echo "... test/service_client.o"
-	@echo "... test/service_client.i"
-	@echo "... test/service_client.s"
-	@echo "... test/service_server.o"
-	@echo "... test/service_server.i"
-	@echo "... test/service_server.s"
 	@echo "... test/sub_zerocopy.o"
 	@echo "... test/sub_zerocopy.i"
 	@echo "... test/sub_zerocopy.s"
-	@echo "... test/subscriber.o"
-	@echo "... test/subscriber.i"
-	@echo "... test/subscriber.s"
+	@echo "... tools/com_bag.o"
+	@echo "... tools/com_bag.i"
+	@echo "... tools/com_bag.s"
+	@echo "... tools/com_node.o"
+	@echo "... tools/com_node.i"
+	@echo "... tools/com_node.s"
+	@echo "... tools/com_router.o"
+	@echo "... tools/com_router.i"
+	@echo "... tools/com_router.s"
+	@echo "... tools/com_topic.o"
+	@echo "... tools/com_topic.i"
+	@echo "... tools/com_topic.s"
 .PHONY : help
 
 

@@ -91,15 +91,6 @@ SystemManager::~SystemManager() {
     if (shm_fd_ >= 0) close(shm_fd_);
 }
 
-// void SystemManager::destroy() {
-//     if (instance_) {
-//         // shm_unlink 负责真正从 /dev/shm/ 目录下删除物理文件
-//         shm_unlink(SHM_MGR_NAME);
-//         delete instance_;
-//         instance_ = nullptr;
-//     }
-// }
-
 void SystemManager::destroy() {
     if (instance_) {
         // 【移除 shm_unlink(SHM_MGR_NAME); 这一行】
@@ -332,4 +323,72 @@ ServiceShm* SystemManager::createOrGetService(const std::string& name, bool is_s
 
     pthread_mutex_unlock(&shm_ptr_->mutex);
     return ptr;
+}
+
+void SystemManager::spin() {
+    std::cout << "SystemManager spinning... Press Ctrl+C to exit." << std::endl;
+    while (!g_shutdown_requested) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(100)); // 挂起主线程，不占CPU
+    }
+    std::cout << "SystemManager spin exiting..." << std::endl;
+}
+
+// 1. 节点登记，返回分配的户口本号 (node_id)
+int SystemManager::registerNode(const std::string& node_name) {
+    if (!shm_ptr_) return -1;
+    lockRobust(&shm_ptr_->mutex);
+    
+    int node_id = -1;
+    for (int i = 0; i < MAX_NODES; ++i) {
+        if (!shm_ptr_->nodes[i].active) { // 找个空位
+            strncpy(shm_ptr_->nodes[i].name, node_name.c_str(), 63);
+            shm_ptr_->nodes[i].pid = getpid(); // 记下进程的物理地址
+            shm_ptr_->nodes[i].active = true;
+            node_id = i;
+            shm_ptr_->node_count++;
+            break;
+        }
+    }
+    
+    pthread_mutex_unlock(&shm_ptr_->mutex);
+    return node_id;
+}
+
+// 2. 节点死亡，注销户口
+void SystemManager::unregisterNode(int node_id) {
+    if (!shm_ptr_ || node_id < 0 || node_id >= MAX_NODES) return;
+    lockRobust(&shm_ptr_->mutex);
+    if (shm_ptr_->nodes[node_id].active) {
+        shm_ptr_->nodes[node_id].active = false;
+        shm_ptr_->node_count--;
+    }
+    pthread_mutex_unlock(&shm_ptr_->mutex);
+}
+
+// 3. 打印花名册
+void SystemManager::listNodes() {
+    if (!shm_ptr_) return;
+    lockRobust(&shm_ptr_->mutex);
+    for (int i = 0; i < MAX_NODES; ++i) {
+        if (shm_ptr_->nodes[i].active) {
+            std::cout << "- " << shm_ptr_->nodes[i].name 
+                      << " \t[PID: " << shm_ptr_->nodes[i].pid << "]\n";
+        }
+    }
+    pthread_mutex_unlock(&shm_ptr_->mutex);
+}
+
+// 4. 查水表专用（通过名字找 PID）
+pid_t SystemManager::getNodePid(const std::string& node_name) {
+    if (!shm_ptr_) return -1;
+    pid_t target_pid = -1;
+    lockRobust(&shm_ptr_->mutex);
+    for (int i = 0; i < MAX_NODES; ++i) {
+        if (shm_ptr_->nodes[i].active && std::string(shm_ptr_->nodes[i].name) == node_name) {
+            target_pid = shm_ptr_->nodes[i].pid;
+            break;
+        }
+    }
+    pthread_mutex_unlock(&shm_ptr_->mutex);
+    return target_pid;
 }

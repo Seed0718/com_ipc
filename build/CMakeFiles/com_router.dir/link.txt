@@ -1,0 +1,1 @@
+/usr/bin/g++  -g   CMakeFiles/com_router.dir/tools/com_router.cpp.o  -o bin/com_router -Wl,-rpath,/home/seed/Demo/com_ipc/build libcom_ipc.so -lpthread -lrt 

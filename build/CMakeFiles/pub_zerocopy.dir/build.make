@@ -90,7 +90,7 @@ pub_zerocopy_EXTERNAL_OBJECTS =
 
 bin/pub_zerocopy: CMakeFiles/pub_zerocopy.dir/test/pub_zerocopy.cpp.o
 bin/pub_zerocopy: CMakeFiles/pub_zerocopy.dir/build.make
-bin/pub_zerocopy: lib/libcom_ipc.so
+bin/pub_zerocopy: libcom_ipc.so
 bin/pub_zerocopy: CMakeFiles/pub_zerocopy.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable bin/pub_zerocopy"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pub_zerocopy.dir/link.txt --verbose=$(VERBOSE)

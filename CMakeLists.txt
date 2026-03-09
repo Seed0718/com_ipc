@@ -1,65 +1,91 @@
-# 1. 声明要求的最低 CMake 版本
 cmake_minimum_required(VERSION 3.10)
+project(com_ipc VERSION 1.0.0)
 
-# 2. 声明项目名称和支持的语言
-project(com_ipc_project LANGUAGES CXX)
-
-# 3. 设置全局 C++ 标准为 C++11
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
-
-# ==========================================
-# 规范输出目录
-# ==========================================
-# 强制将编译出的可执行文件放到 build/bin 目录下
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-# 强制将编译出的动态链接库 (.so) 放到 build/lib 目录下
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
-# 寻找 Linux 系统级的多线程库
+# ==========================================
+# 1. 全局编译设置
+# ==========================================
+# 设置 C++ 标准为 C++11，并强制要求
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# 查找依赖库：多线程和 Linux 实时库 (共享内存 API 需要 rt)
 find_package(Threads REQUIRED)
 
-# 告诉编译器去 inc 文件夹里找头文件
-include_directories(${CMAKE_SOURCE_DIR}/inc)
+# 设置全局头文件搜索路径
+include_directories(inc)
 
 # ==========================================
-# 核心底层库构建 (libcom_ipc.so)
+# 2. 核心底层通信库 (Core Library)
 # ==========================================
-# 强制开启位置无关代码 (PIC)
-set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-
-# 显式列出底层框架的所有核心源文件（加上了新增的 memory_pool.cpp）
+# 收集 src 目录下的所有核心源码 
+# (结合你之前的编译日志，我把你写过的 service 和 action 也加进来了，防止报错)
 set(IPC_SOURCES
-    src/system_manager.cpp
     src/memory_pool.cpp
+    src/system_manager.cpp
     src/publisher.cpp
     src/subscriber.cpp
+    src/node.cpp
     src/service_server.cpp
     src/service_client.cpp
     src/action_server.cpp
     src/action_client.cpp
 )
 
-# 生成共享库
+# 将核心源码编译为共享动态库 libcom_ipc.so，方便后续各种工具和 Python 链接
 add_library(com_ipc SHARED ${IPC_SOURCES})
-
-# 链接系统的 pthread 和 rt (用于 shm_open 等共享内存操作)
 target_link_libraries(com_ipc PUBLIC Threads::Threads rt)
 
 # ==========================================
-# 测试程序构建
+# 3. Python 绑定 (pybind11) -> 兼容 Ubuntu 18.04 / CMake 3.10
 # ==========================================
-macro(add_test_executable TARGET_NAME SOURCE_FILE)
-    add_executable(${TARGET_NAME} test/${SOURCE_FILE})
-    target_link_libraries(${TARGET_NAME} PRIVATE com_ipc)
+# 1. 使用老版本的语法寻找 Python3 解释器
+find_package(PythonInterp 3 REQUIRED)
+
+# 2. 让 Python 解释器自己吐出 pip 安装的 pybind11 的 CMake 路径
+# 注意：老版本中 Python 解释器的变量名是 PYTHON_EXECUTABLE (全大写)
+execute_process(
+    COMMAND ${PYTHON_EXECUTABLE} -c "import pybind11; print(pybind11.get_cmake_dir())"
+    OUTPUT_VARIABLE pybind11_DIR
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+# 3. 带着正确的路径，瞬间找到最新版的 pybind11！
+find_package(pybind11 REQUIRED)
+
+# 4. 编译 Python 动态库
+pybind11_add_module(com_ipc_py src/pybind_wrapper.cpp)
+target_link_libraries(com_ipc_py PRIVATE com_ipc)
+# ==========================================
+# 4. 基础测试用例 (Tests)
+# ==========================================
+# 定义一个宏，用来快速编译 test/ 目录下的测试程序
+macro(add_test_executable name source_file)
+    add_executable(${name} test/${source_file})
+    target_link_libraries(${name} PRIVATE com_ipc)
 endmacro()
 
-# 批量生成测试节点
-add_test_executable(publisher publisher.cpp)
-add_test_executable(subscriber subscriber.cpp)
-add_test_executable(service_server service_server.cpp)
-add_test_executable(service_client service_client.cpp)
-add_test_executable(action_server action_server.cpp)
-add_test_executable(action_client action_client.cpp)
+# 编译你的测试程序 (确保 test/ 目录下有这些文件)
 add_test_executable(pub_zerocopy pub_zerocopy.cpp)
 add_test_executable(sub_zerocopy sub_zerocopy.cpp)
+add_test_executable(multi_node_test multi_node_test.cpp)
+
+# ==========================================
+# 5. 命令行系统工具链 (Tools)
+# ==========================================
+# 探针工具 (Topic Monitor)
+add_executable(com_topic tools/com_topic.cpp)
+target_link_libraries(com_topic PRIVATE com_ipc)
+
+# 节点管理器 (Node Manager)
+add_executable(com_node tools/com_node.cpp)
+target_link_libraries(com_node PRIVATE com_ipc)
+
+# 数据录制回放工具 (Bag Record & Play)
+add_executable(com_bag tools/com_bag.cpp)
+target_link_libraries(com_bag PRIVATE com_ipc)
+
+# 跨机网络通信网关 (Distributed Router)
+add_executable(com_router tools/com_router.cpp)
+target_link_libraries(com_router PRIVATE com_ipc)

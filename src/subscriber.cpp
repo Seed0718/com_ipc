@@ -18,11 +18,37 @@ Subscriber::Subscriber(const std::string& topic_name) : topic_name_(topic_name),
 }
 
 Subscriber::~Subscriber() {
+    if (async_running_) {
+        async_running_ = false;
+        if (async_thread_.joinable()) async_thread_.join();
+    }
     if (shm_ptr_) {
         SystemManager::instance()->lockRobust(&shm_ptr_->mutex);
         if (shm_ptr_->active_subscribers > 0) shm_ptr_->active_subscribers--;
         pthread_mutex_unlock(&shm_ptr_->mutex);
         munmap(shm_ptr_, sizeof(TopicShm));
+    }
+}
+
+// 【新增】：实现回调注册和后台循环
+void Subscriber::registerCallback(MessageCallback cb) {
+    callback_ = cb;
+    if (!async_running_) {
+        async_running_ = true;
+        // 启动专属的后台收件小哥
+        async_thread_ = std::thread(&Subscriber::asyncLoop, this);
+    }
+}
+
+void Subscriber::asyncLoop() {
+    while (async_running_ && !g_shutdown_requested) {
+        LoanedMessage msg;
+        // 500ms 醒来一次，检查有没有按 Ctrl+C
+        if (receiveLoaned(msg, 500)) { 
+            if (callback_) {
+                callback_(msg); // 收到数据，直接呼叫用户的回调函数！
+            }
+        }
     }
 }
 

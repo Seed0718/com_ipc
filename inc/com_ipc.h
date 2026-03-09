@@ -13,5 +13,6 @@
 #include "action_server.h"
 #include "action_client.h"
 #include "memory_pool.h"
+#include "node.h"
 
 #endif // COM_IPC_H

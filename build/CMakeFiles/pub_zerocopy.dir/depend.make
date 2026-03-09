@@ -6,6 +6,7 @@ CMakeFiles/pub_zerocopy.dir/test/pub_zerocopy.cpp.o: ../inc/action_server.h
 CMakeFiles/pub_zerocopy.dir/test/pub_zerocopy.cpp.o: ../inc/com_ipc.h
 CMakeFiles/pub_zerocopy.dir/test/pub_zerocopy.cpp.o: ../inc/com_ipc_types.h
 CMakeFiles/pub_zerocopy.dir/test/pub_zerocopy.cpp.o: ../inc/memory_pool.h
+CMakeFiles/pub_zerocopy.dir/test/pub_zerocopy.cpp.o: ../inc/node.h
 CMakeFiles/pub_zerocopy.dir/test/pub_zerocopy.cpp.o: ../inc/publisher.h
 CMakeFiles/pub_zerocopy.dir/test/pub_zerocopy.cpp.o: ../inc/service_client.h
 CMakeFiles/pub_zerocopy.dir/test/pub_zerocopy.cpp.o: ../inc/service_server.h

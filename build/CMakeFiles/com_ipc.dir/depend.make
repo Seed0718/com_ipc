@@ -24,6 +24,14 @@ CMakeFiles/com_ipc.dir/src/memory_pool.cpp.o: ../inc/memory_pool.h
 CMakeFiles/com_ipc.dir/src/memory_pool.cpp.o: ../inc/system_manager.h
 CMakeFiles/com_ipc.dir/src/memory_pool.cpp.o: ../src/memory_pool.cpp
 
+CMakeFiles/com_ipc.dir/src/node.cpp.o: ../inc/com_ipc_types.h
+CMakeFiles/com_ipc.dir/src/node.cpp.o: ../inc/memory_pool.h
+CMakeFiles/com_ipc.dir/src/node.cpp.o: ../inc/node.h
+CMakeFiles/com_ipc.dir/src/node.cpp.o: ../inc/publisher.h
+CMakeFiles/com_ipc.dir/src/node.cpp.o: ../inc/subscriber.h
+CMakeFiles/com_ipc.dir/src/node.cpp.o: ../inc/system_manager.h
+CMakeFiles/com_ipc.dir/src/node.cpp.o: ../src/node.cpp
+
 CMakeFiles/com_ipc.dir/src/publisher.cpp.o: ../inc/com_ipc_types.h
 CMakeFiles/com_ipc.dir/src/publisher.cpp.o: ../inc/memory_pool.h
 CMakeFiles/com_ipc.dir/src/publisher.cpp.o: ../inc/publisher.h
