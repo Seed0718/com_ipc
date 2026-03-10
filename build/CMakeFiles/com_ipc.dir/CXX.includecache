@@ -122,6 +122,12 @@ memory_pool.h
 com_ipc_types.h
 ../inc/com_ipc_types.h
 
+../inc/udp_node.h
+string
+-
+netinet/in.h
+-
+
 /home/seed/Demo/com_ipc/src/action_client.cpp
 action_client.h
 /home/seed/Demo/com_ipc/src/action_client.h
@@ -173,4 +179,18 @@ subscriber.h
 /home/seed/Demo/com_ipc/src/system_manager.cpp
 system_manager.h
 /home/seed/Demo/com_ipc/src/system_manager.h
+
+/home/seed/Demo/com_ipc/src/udp_node.cpp
+udp_node.h
+/home/seed/Demo/com_ipc/src/udp_node.h
+iostream
+-
+sys/socket.h
+-
+arpa/inet.h
+-
+unistd.h
+-
+cstring
+-
 

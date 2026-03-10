@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/seed/Demo/com_ipc/src/service_server.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/service_server.cpp.o"
   "/home/seed/Demo/com_ipc/src/subscriber.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/subscriber.cpp.o"
   "/home/seed/Demo/com_ipc/src/system_manager.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/system_manager.cpp.o"
+  "/home/seed/Demo/com_ipc/src/udp_node.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/udp_node.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

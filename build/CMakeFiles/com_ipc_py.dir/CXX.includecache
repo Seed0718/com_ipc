@@ -144,6 +144,12 @@ memory_pool.h
 com_ipc_types.h
 ../inc/com_ipc_types.h
 
+../inc/udp_node.h
+string
+-
+netinet/in.h
+-
+
 /home/seed/Demo/com_ipc/src/pybind_wrapper.cpp
 pybind11/pybind11.h
 -
@@ -151,6 +157,8 @@ pybind11/functional.h
 -
 com_ipc.h
 /home/seed/Demo/com_ipc/src/com_ipc.h
+udp_node.h
+/home/seed/Demo/com_ipc/src/udp_node.h
 
 /usr/include/python3.6m/Python.h
 patchlevel.h

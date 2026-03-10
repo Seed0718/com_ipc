@@ -1,6 +1,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/functional.h>
 #include "com_ipc.h"
+#include "udp_node.h"
 
 namespace py = pybind11;
 
@@ -56,4 +57,20 @@ PYBIND11_MODULE(com_ipc_py, m) {
                 py_cb(mem_view);
             });
         }, py::return_value_policy::reference);
+
+    // 绑定 UDP 发送端
+    py::class_<com_ipc::UDPPublisher>(m, "UDPPublisher")
+        .def(py::init<const std::string&, int>())
+        .def("publish", [](com_ipc::UDPPublisher& self, py::bytes data) {
+            std::string raw_data = data; 
+            return self.publish(raw_data.data(), raw_data.size());
+        });
+
+    // 绑定 UDP 接收端
+    py::class_<com_ipc::UDPSubscriber>(m, "UDPSubscriber")
+        .def(py::init<const std::string&, int>())
+        .def("receive", [](com_ipc::UDPSubscriber& self) {
+            std::string data = self.receive();
+            return py::bytes(data); // 转换回 Python bytes
+        });
 }

@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named com_multicast_sender
+
+# Build rule for target.
+com_multicast_sender: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 com_multicast_sender
+.PHONY : com_multicast_sender
+
+# fast build rule for target.
+com_multicast_sender/fast:
+	$(MAKE) -f CMakeFiles/com_multicast_sender.dir/build.make CMakeFiles/com_multicast_sender.dir/build
+.PHONY : com_multicast_sender/fast
+
+#=============================================================================
 # Target rules for targets named com_router
 
 # Build rule for target.
@@ -497,6 +510,33 @@ src/system_manager.cpp.s:
 	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/system_manager.cpp.s
 .PHONY : src/system_manager.cpp.s
 
+src/udp_node.o: src/udp_node.cpp.o
+
+.PHONY : src/udp_node.o
+
+# target to build an object file
+src/udp_node.cpp.o:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/udp_node.cpp.o
+.PHONY : src/udp_node.cpp.o
+
+src/udp_node.i: src/udp_node.cpp.i
+
+.PHONY : src/udp_node.i
+
+# target to preprocess a source file
+src/udp_node.cpp.i:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/udp_node.cpp.i
+.PHONY : src/udp_node.cpp.i
+
+src/udp_node.s: src/udp_node.cpp.s
+
+.PHONY : src/udp_node.s
+
+# target to generate assembly for a file
+src/udp_node.cpp.s:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/udp_node.cpp.s
+.PHONY : src/udp_node.cpp.s
+
 test/multi_node_test.o: test/multi_node_test.cpp.o
 
 .PHONY : test/multi_node_test.o
@@ -605,6 +645,33 @@ tools/com_bag.cpp.s:
 	$(MAKE) -f CMakeFiles/com_bag.dir/build.make CMakeFiles/com_bag.dir/tools/com_bag.cpp.s
 .PHONY : tools/com_bag.cpp.s
 
+tools/com_multicast_sender.o: tools/com_multicast_sender.cpp.o
+
+.PHONY : tools/com_multicast_sender.o
+
+# target to build an object file
+tools/com_multicast_sender.cpp.o:
+	$(MAKE) -f CMakeFiles/com_multicast_sender.dir/build.make CMakeFiles/com_multicast_sender.dir/tools/com_multicast_sender.cpp.o
+.PHONY : tools/com_multicast_sender.cpp.o
+
+tools/com_multicast_sender.i: tools/com_multicast_sender.cpp.i
+
+.PHONY : tools/com_multicast_sender.i
+
+# target to preprocess a source file
+tools/com_multicast_sender.cpp.i:
+	$(MAKE) -f CMakeFiles/com_multicast_sender.dir/build.make CMakeFiles/com_multicast_sender.dir/tools/com_multicast_sender.cpp.i
+.PHONY : tools/com_multicast_sender.cpp.i
+
+tools/com_multicast_sender.s: tools/com_multicast_sender.cpp.s
+
+.PHONY : tools/com_multicast_sender.s
+
+# target to generate assembly for a file
+tools/com_multicast_sender.cpp.s:
+	$(MAKE) -f CMakeFiles/com_multicast_sender.dir/build.make CMakeFiles/com_multicast_sender.dir/tools/com_multicast_sender.cpp.s
+.PHONY : tools/com_multicast_sender.cpp.s
+
 tools/com_node.o: tools/com_node.cpp.o
 
 .PHONY : tools/com_node.o
@@ -694,6 +761,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... com_multicast_sender"
 	@echo "... com_router"
 	@echo "... com_bag"
 	@echo "... com_ipc_py"
@@ -733,6 +801,9 @@ help:
 	@echo "... src/system_manager.o"
 	@echo "... src/system_manager.i"
 	@echo "... src/system_manager.s"
+	@echo "... src/udp_node.o"
+	@echo "... src/udp_node.i"
+	@echo "... src/udp_node.s"
 	@echo "... test/multi_node_test.o"
 	@echo "... test/multi_node_test.i"
 	@echo "... test/multi_node_test.s"
@@ -745,6 +816,9 @@ help:
 	@echo "... tools/com_bag.o"
 	@echo "... tools/com_bag.i"
 	@echo "... tools/com_bag.s"
+	@echo "... tools/com_multicast_sender.o"
+	@echo "... tools/com_multicast_sender.i"
+	@echo "... tools/com_multicast_sender.s"
 	@echo "... tools/com_node.o"
 	@echo "... tools/com_node.i"
 	@echo "... tools/com_node.s"

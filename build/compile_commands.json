@@ -1,6 +1,11 @@
 [
 {
   "directory": "/home/seed/Demo/com_ipc/build",
+  "command": "/usr/bin/g++   -I/home/seed/Demo/com_ipc/inc  -g   -std=gnu++11 -o CMakeFiles/com_multicast_sender.dir/tools/com_multicast_sender.cpp.o -c /home/seed/Demo/com_ipc/tools/com_multicast_sender.cpp",
+  "file": "/home/seed/Demo/com_ipc/tools/com_multicast_sender.cpp"
+},
+{
+  "directory": "/home/seed/Demo/com_ipc/build",
   "command": "/usr/bin/g++   -I/home/seed/Demo/com_ipc/inc  -g   -std=gnu++11 -o CMakeFiles/com_router.dir/tools/com_router.cpp.o -c /home/seed/Demo/com_ipc/tools/com_router.cpp",
   "file": "/home/seed/Demo/com_ipc/tools/com_router.cpp"
 },
@@ -58,6 +63,11 @@
   "directory": "/home/seed/Demo/com_ipc/build",
   "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/action_client.cpp.o -c /home/seed/Demo/com_ipc/src/action_client.cpp",
   "file": "/home/seed/Demo/com_ipc/src/action_client.cpp"
+},
+{
+  "directory": "/home/seed/Demo/com_ipc/build",
+  "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/udp_node.cpp.o -c /home/seed/Demo/com_ipc/src/udp_node.cpp",
+  "file": "/home/seed/Demo/com_ipc/src/udp_node.cpp"
 },
 {
   "directory": "/home/seed/Demo/com_ipc/build",

@@ -13,6 +13,7 @@ CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.o
  ../inc/service_server.h
  ../inc/subscriber.h
  ../inc/system_manager.h
+ ../inc/udp_node.h
  /home/seed/Demo/com_ipc/src/pybind_wrapper.cpp
  /usr/include/python3.6m/Python.h
  /usr/include/python3.6m/abstract.h

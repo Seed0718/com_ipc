@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/com_ipc.dir/src/service_client.cpp.o"
   "CMakeFiles/com_ipc.dir/src/action_server.cpp.o"
   "CMakeFiles/com_ipc.dir/src/action_client.cpp.o"
+  "CMakeFiles/com_ipc.dir/src/udp_node.cpp.o"
   "libcom_ipc.pdb"
   "libcom_ipc.so"
 )

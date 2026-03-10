@@ -31,6 +31,7 @@ set(IPC_SOURCES
     src/service_client.cpp
     src/action_server.cpp
     src/action_client.cpp
+    src/udp_node.cpp
 )
 
 # 将核心源码编译为共享动态库 libcom_ipc.so，方便后续各种工具和 Python 链接
@@ -57,6 +58,8 @@ find_package(pybind11 REQUIRED)
 # 4. 编译 Python 动态库
 pybind11_add_module(com_ipc_py src/pybind_wrapper.cpp)
 target_link_libraries(com_ipc_py PRIVATE com_ipc)
+
+
 # ==========================================
 # 4. 基础测试用例 (Tests)
 # ==========================================
@@ -70,6 +73,7 @@ endmacro()
 add_test_executable(pub_zerocopy pub_zerocopy.cpp)
 add_test_executable(sub_zerocopy sub_zerocopy.cpp)
 add_test_executable(multi_node_test multi_node_test.cpp)
+
 
 # ==========================================
 # 5. 命令行系统工具链 (Tools)
@@ -89,3 +93,6 @@ target_link_libraries(com_bag PRIVATE com_ipc)
 # 跨机网络通信网关 (Distributed Router)
 add_executable(com_router tools/com_router.cpp)
 target_link_libraries(com_router PRIVATE com_ipc)
+
+# 编译 UDP 多播测试节点
+add_executable(com_multicast_sender tools/com_multicast_sender.cpp)

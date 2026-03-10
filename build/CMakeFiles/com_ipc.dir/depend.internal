@@ -58,3 +58,6 @@ CMakeFiles/com_ipc.dir/src/system_manager.cpp.o
  ../inc/com_ipc_types.h
  ../inc/system_manager.h
  /home/seed/Demo/com_ipc/src/system_manager.cpp
+CMakeFiles/com_ipc.dir/src/udp_node.cpp.o
+ ../inc/udp_node.h
+ /home/seed/Demo/com_ipc/src/udp_node.cpp
