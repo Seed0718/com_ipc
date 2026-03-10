@@ -112,6 +112,10 @@ memory
 functional
 -
 
+../inc/protocol.h
+cstdint
+-
+
 ../inc/publisher.h
 com_ipc_types.h
 ../inc/com_ipc_types.h
@@ -149,6 +153,8 @@ string
 -
 netinet/in.h
 -
+protocol.h
+../inc/protocol.h
 
 /home/seed/Demo/com_ipc/src/pybind_wrapper.cpp
 pybind11/pybind11.h

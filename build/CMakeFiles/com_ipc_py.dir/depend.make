@@ -7,6 +7,7 @@ CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.o: ../inc/com_ipc.h
 CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.o: ../inc/com_ipc_types.h
 CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.o: ../inc/memory_pool.h
 CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.o: ../inc/node.h
+CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.o: ../inc/protocol.h
 CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.o: ../inc/publisher.h
 CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.o: ../inc/service_client.h
 CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.o: ../inc/service_server.h

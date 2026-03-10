@@ -90,6 +90,10 @@ memory
 functional
 -
 
+../inc/protocol.h
+cstdint
+-
+
 ../inc/publisher.h
 com_ipc_types.h
 ../inc/com_ipc_types.h
@@ -127,6 +131,8 @@ string
 -
 netinet/in.h
 -
+protocol.h
+../inc/protocol.h
 
 /home/seed/Demo/com_ipc/src/action_client.cpp
 action_client.h
@@ -192,5 +198,9 @@ arpa/inet.h
 unistd.h
 -
 cstring
+-
+vector
+-
+chrono
 -
 
