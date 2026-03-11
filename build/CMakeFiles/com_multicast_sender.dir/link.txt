@@ -1,1 +1,1 @@
-/usr/bin/g++  -g   CMakeFiles/com_multicast_sender.dir/tools/com_multicast_sender.cpp.o  -o bin/com_multicast_sender 
+/usr/bin/g++  -g   CMakeFiles/com_multicast_sender.dir/tools/com_multicast_sender.cpp.o  -o bin/com_multicast_sender -Wl,-rpath,/home/seed/Demo/com_ipc/build libcom_ipc.so -lpthread -lrt 

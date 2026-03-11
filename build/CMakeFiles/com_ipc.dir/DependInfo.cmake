@@ -4,16 +4,16 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/seed/Demo/com_ipc/src/action_client.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/action_client.cpp.o"
-  "/home/seed/Demo/com_ipc/src/action_server.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/action_server.cpp.o"
-  "/home/seed/Demo/com_ipc/src/memory_pool.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/memory_pool.cpp.o"
-  "/home/seed/Demo/com_ipc/src/node.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/node.cpp.o"
-  "/home/seed/Demo/com_ipc/src/publisher.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/publisher.cpp.o"
-  "/home/seed/Demo/com_ipc/src/service_client.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/service_client.cpp.o"
-  "/home/seed/Demo/com_ipc/src/service_server.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/service_server.cpp.o"
-  "/home/seed/Demo/com_ipc/src/subscriber.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/subscriber.cpp.o"
-  "/home/seed/Demo/com_ipc/src/system_manager.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/system_manager.cpp.o"
-  "/home/seed/Demo/com_ipc/src/udp_node.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/udp_node.cpp.o"
+  "/home/seed/Demo/com_ipc/src/api/action_client.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/api/action_client.cpp.o"
+  "/home/seed/Demo/com_ipc/src/api/action_server.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/api/action_server.cpp.o"
+  "/home/seed/Demo/com_ipc/src/api/node.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/api/node.cpp.o"
+  "/home/seed/Demo/com_ipc/src/api/publisher.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/api/publisher.cpp.o"
+  "/home/seed/Demo/com_ipc/src/api/service_client.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/api/service_client.cpp.o"
+  "/home/seed/Demo/com_ipc/src/api/service_server.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/api/service_server.cpp.o"
+  "/home/seed/Demo/com_ipc/src/api/subscriber.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/api/subscriber.cpp.o"
+  "/home/seed/Demo/com_ipc/src/api/udp_node.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/api/udp_node.cpp.o"
+  "/home/seed/Demo/com_ipc/src/core/memory_pool.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/core/memory_pool.cpp.o"
+  "/home/seed/Demo/com_ipc/src/core/system_manager.cpp" "/home/seed/Demo/com_ipc/build/CMakeFiles/com_ipc.dir/src/core/system_manager.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

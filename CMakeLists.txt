@@ -13,29 +13,35 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # 查找依赖库：多线程和 Linux 实时库 (共享内存 API 需要 rt)
 find_package(Threads REQUIRED)
 
-# 设置全局头文件搜索路径
-include_directories(inc)
-
 # ==========================================
 # 2. 核心底层通信库 (Core Library)
 # ==========================================
-# 收集 src 目录下的所有核心源码 
-# (结合你之前的编译日志，我把你写过的 service 和 action 也加进来了，防止报错)
+# 按照全新的分层架构 (Layered Architecture) 收集源文件
 set(IPC_SOURCES
-    src/memory_pool.cpp
-    src/system_manager.cpp
-    src/publisher.cpp
-    src/subscriber.cpp
-    src/node.cpp
-    src/service_server.cpp
-    src/service_client.cpp
-    src/action_server.cpp
-    src/action_client.cpp
-    src/udp_node.cpp
+    # Core 层：底层机制与传输引擎
+    src/core/memory_pool.cpp
+    src/core/system_manager.cpp
+    
+    # API 层：用户接口与高层封装
+    src/api/node.cpp
+    src/api/udp_node.cpp
+    src/api/publisher.cpp
+    src/api/subscriber.cpp
+    src/api/service_server.cpp
+    src/api/service_client.cpp
+    src/api/action_server.cpp
+    src/api/action_client.cpp
 )
 
 # 将核心源码编译为共享动态库 libcom_ipc.so，方便后续各种工具和 Python 链接
 add_library(com_ipc SHARED ${IPC_SOURCES})
+
+# 配置头文件搜索路径：支持 #include "com_ipc/api/node.h" 格式
+target_include_directories(com_ipc PUBLIC 
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/inc>
+    $<INSTALL_INTERFACE:include>
+)
+
 target_link_libraries(com_ipc PUBLIC Threads::Threads rt)
 
 # ==========================================
@@ -55,7 +61,7 @@ execute_process(
 # 3. 带着正确的路径，瞬间找到最新版的 pybind11！
 find_package(pybind11 REQUIRED)
 
-# 4. 编译 Python 动态库
+# 4. 编译 Python 动态库 (保留在 src 根目录)
 pybind11_add_module(com_ipc_py src/pybind_wrapper.cpp)
 target_link_libraries(com_ipc_py PRIVATE com_ipc)
 
@@ -96,3 +102,12 @@ target_link_libraries(com_router PRIVATE com_ipc)
 
 # 编译 UDP 多播测试节点
 add_executable(com_multicast_sender tools/com_multicast_sender.cpp)
+target_link_libraries(com_multicast_sender PRIVATE com_ipc)
+
+# 编译 Service 测试程序
+add_executable(service_test test/service_test.cpp)
+target_link_libraries(service_test PRIVATE com_ipc)
+
+# 编译 Action 测试程序
+add_executable(action_test test/action_test.cpp)
+target_link_libraries(action_test PRIVATE com_ipc)

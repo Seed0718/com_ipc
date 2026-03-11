@@ -6,5 +6,5 @@ CXX_FLAGS = -g -fPIC -fvisibility=hidden   -std=gnu++11
 
 CXX_DEFINES = -Dcom_ipc_py_EXPORTS
 
-CXX_INCLUDES = -I/home/seed/Demo/com_ipc/inc -isystem /usr/local/lib/python3.6/dist-packages/pybind11/include -isystem /usr/include/python3.6m 
+CXX_INCLUDES = -isystem /usr/local/lib/python3.6/dist-packages/pybind11/include -isystem /usr/include/python3.6m -I/home/seed/Demo/com_ipc/inc 
 

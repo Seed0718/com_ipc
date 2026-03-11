@@ -1,6 +1,16 @@
 [
 {
   "directory": "/home/seed/Demo/com_ipc/build",
+  "command": "/usr/bin/g++   -I/home/seed/Demo/com_ipc/inc  -g   -std=gnu++11 -o CMakeFiles/action_test.dir/test/action_test.cpp.o -c /home/seed/Demo/com_ipc/test/action_test.cpp",
+  "file": "/home/seed/Demo/com_ipc/test/action_test.cpp"
+},
+{
+  "directory": "/home/seed/Demo/com_ipc/build",
+  "command": "/usr/bin/g++   -I/home/seed/Demo/com_ipc/inc  -g   -std=gnu++11 -o CMakeFiles/service_test.dir/test/service_test.cpp.o -c /home/seed/Demo/com_ipc/test/service_test.cpp",
+  "file": "/home/seed/Demo/com_ipc/test/service_test.cpp"
+},
+{
+  "directory": "/home/seed/Demo/com_ipc/build",
   "command": "/usr/bin/g++   -I/home/seed/Demo/com_ipc/inc  -g   -std=gnu++11 -o CMakeFiles/com_multicast_sender.dir/tools/com_multicast_sender.cpp.o -c /home/seed/Demo/com_ipc/tools/com_multicast_sender.cpp",
   "file": "/home/seed/Demo/com_ipc/tools/com_multicast_sender.cpp"
 },
@@ -16,58 +26,58 @@
 },
 {
   "directory": "/home/seed/Demo/com_ipc/build",
-  "command": "/usr/bin/g++  -Dcom_ipc_py_EXPORTS -I/home/seed/Demo/com_ipc/inc -isystem /usr/local/lib/python3.6/dist-packages/pybind11/include -isystem /usr/include/python3.6m  -g -fPIC -fvisibility=hidden   -std=gnu++11 -o CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.o -c /home/seed/Demo/com_ipc/src/pybind_wrapper.cpp",
+  "command": "/usr/bin/g++  -Dcom_ipc_py_EXPORTS -isystem /usr/local/lib/python3.6/dist-packages/pybind11/include -isystem /usr/include/python3.6m -I/home/seed/Demo/com_ipc/inc  -g -fPIC -fvisibility=hidden   -std=gnu++11 -o CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.o -c /home/seed/Demo/com_ipc/src/pybind_wrapper.cpp",
   "file": "/home/seed/Demo/com_ipc/src/pybind_wrapper.cpp"
 },
 {
   "directory": "/home/seed/Demo/com_ipc/build",
-  "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/memory_pool.cpp.o -c /home/seed/Demo/com_ipc/src/memory_pool.cpp",
-  "file": "/home/seed/Demo/com_ipc/src/memory_pool.cpp"
+  "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/core/memory_pool.cpp.o -c /home/seed/Demo/com_ipc/src/core/memory_pool.cpp",
+  "file": "/home/seed/Demo/com_ipc/src/core/memory_pool.cpp"
 },
 {
   "directory": "/home/seed/Demo/com_ipc/build",
-  "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/system_manager.cpp.o -c /home/seed/Demo/com_ipc/src/system_manager.cpp",
-  "file": "/home/seed/Demo/com_ipc/src/system_manager.cpp"
+  "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/core/system_manager.cpp.o -c /home/seed/Demo/com_ipc/src/core/system_manager.cpp",
+  "file": "/home/seed/Demo/com_ipc/src/core/system_manager.cpp"
 },
 {
   "directory": "/home/seed/Demo/com_ipc/build",
-  "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/publisher.cpp.o -c /home/seed/Demo/com_ipc/src/publisher.cpp",
-  "file": "/home/seed/Demo/com_ipc/src/publisher.cpp"
+  "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/api/node.cpp.o -c /home/seed/Demo/com_ipc/src/api/node.cpp",
+  "file": "/home/seed/Demo/com_ipc/src/api/node.cpp"
 },
 {
   "directory": "/home/seed/Demo/com_ipc/build",
-  "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/subscriber.cpp.o -c /home/seed/Demo/com_ipc/src/subscriber.cpp",
-  "file": "/home/seed/Demo/com_ipc/src/subscriber.cpp"
+  "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/api/udp_node.cpp.o -c /home/seed/Demo/com_ipc/src/api/udp_node.cpp",
+  "file": "/home/seed/Demo/com_ipc/src/api/udp_node.cpp"
 },
 {
   "directory": "/home/seed/Demo/com_ipc/build",
-  "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/node.cpp.o -c /home/seed/Demo/com_ipc/src/node.cpp",
-  "file": "/home/seed/Demo/com_ipc/src/node.cpp"
+  "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/api/publisher.cpp.o -c /home/seed/Demo/com_ipc/src/api/publisher.cpp",
+  "file": "/home/seed/Demo/com_ipc/src/api/publisher.cpp"
 },
 {
   "directory": "/home/seed/Demo/com_ipc/build",
-  "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/service_server.cpp.o -c /home/seed/Demo/com_ipc/src/service_server.cpp",
-  "file": "/home/seed/Demo/com_ipc/src/service_server.cpp"
+  "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/api/subscriber.cpp.o -c /home/seed/Demo/com_ipc/src/api/subscriber.cpp",
+  "file": "/home/seed/Demo/com_ipc/src/api/subscriber.cpp"
 },
 {
   "directory": "/home/seed/Demo/com_ipc/build",
-  "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/service_client.cpp.o -c /home/seed/Demo/com_ipc/src/service_client.cpp",
-  "file": "/home/seed/Demo/com_ipc/src/service_client.cpp"
+  "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/api/service_server.cpp.o -c /home/seed/Demo/com_ipc/src/api/service_server.cpp",
+  "file": "/home/seed/Demo/com_ipc/src/api/service_server.cpp"
 },
 {
   "directory": "/home/seed/Demo/com_ipc/build",
-  "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/action_server.cpp.o -c /home/seed/Demo/com_ipc/src/action_server.cpp",
-  "file": "/home/seed/Demo/com_ipc/src/action_server.cpp"
+  "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/api/service_client.cpp.o -c /home/seed/Demo/com_ipc/src/api/service_client.cpp",
+  "file": "/home/seed/Demo/com_ipc/src/api/service_client.cpp"
 },
 {
   "directory": "/home/seed/Demo/com_ipc/build",
-  "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/action_client.cpp.o -c /home/seed/Demo/com_ipc/src/action_client.cpp",
-  "file": "/home/seed/Demo/com_ipc/src/action_client.cpp"
+  "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/api/action_server.cpp.o -c /home/seed/Demo/com_ipc/src/api/action_server.cpp",
+  "file": "/home/seed/Demo/com_ipc/src/api/action_server.cpp"
 },
 {
   "directory": "/home/seed/Demo/com_ipc/build",
-  "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/udp_node.cpp.o -c /home/seed/Demo/com_ipc/src/udp_node.cpp",
-  "file": "/home/seed/Demo/com_ipc/src/udp_node.cpp"
+  "command": "/usr/bin/g++  -Dcom_ipc_EXPORTS -I/home/seed/Demo/com_ipc/inc  -g -fPIC   -std=gnu++11 -o CMakeFiles/com_ipc.dir/src/api/action_client.cpp.o -c /home/seed/Demo/com_ipc/src/api/action_client.cpp",
+  "file": "/home/seed/Demo/com_ipc/src/api/action_client.cpp"
 },
 {
   "directory": "/home/seed/Demo/com_ipc/build",

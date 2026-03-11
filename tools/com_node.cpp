@@ -3,6 +3,8 @@
 #include <string>
 #include <signal.h>
 
+using namespace com_ipc;
+
 void print_usage() {
     std::cout << "==========================================\n"
               << "  com_node - IPC Node Manager\n"

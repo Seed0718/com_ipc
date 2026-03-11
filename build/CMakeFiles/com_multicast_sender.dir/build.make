@@ -90,6 +90,7 @@ com_multicast_sender_EXTERNAL_OBJECTS =
 
 bin/com_multicast_sender: CMakeFiles/com_multicast_sender.dir/tools/com_multicast_sender.cpp.o
 bin/com_multicast_sender: CMakeFiles/com_multicast_sender.dir/build.make
+bin/com_multicast_sender: libcom_ipc.so
 bin/com_multicast_sender: CMakeFiles/com_multicast_sender.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable bin/com_multicast_sender"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/com_multicast_sender.dir/link.txt --verbose=$(VERBOSE)

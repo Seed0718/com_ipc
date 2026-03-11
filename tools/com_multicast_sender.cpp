@@ -1,50 +1,62 @@
 #include <iostream>
+#include <string>
+#include <vector>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <cstring>
-#include <chrono>
+#include "com_ipc/api/subscriber.h"
+#include "json.hpp"
 
-// 【核心魔法】：强制编译器按 1 字节紧凑排列，绝不偷偷塞“空气”！
-#pragma pack(push, 1)
-struct ChassisState {
-    uint64_t timestamp_us; // 8
-    float speed_m_s;       // 4
-    float steering_angle;  // 4
-    int gear;              // 4
-};
-#pragma pack(pop)
+using namespace com_ipc;
+using json = nlohmann::json;
 
-int main() {
+// 🎯 核心修改：精准狙击你的香橙派 IP！
+#define TARGET_IP "192.168.1.102"
+#define TARGET_PORT 7400
+#define MAX_UDP_PACKET_SIZE 65535
+
+int main(int argc, char** argv) {
+    if (argc < 2) {
+        std::cerr << "用法: " << argv[0] << " <要转发的本地话题名称>" << std::endl;
+        return -1;
+    }
+    std::string topic_name = argv[1];
+
+    std::cout << "=== [Sender] 跨主机 UDP 单播发送网关启动 ===" << std::endl;
+    std::cout << "正在桥接本地话题: [" << topic_name << "] -> 香橙派 " << TARGET_IP << ":" << TARGET_PORT << std::endl;
+
     int sock = socket(AF_INET, SOCK_DGRAM, 0);
-    if (sock < 0) return -1;
-
-    struct sockaddr_in dest_addr;
-    memset(&dest_addr, 0, sizeof(dest_addr));
+    struct sockaddr_in dest_addr{};
     dest_addr.sin_family = AF_INET;
-    dest_addr.sin_addr.s_addr = inet_addr("127.0.0.1"); 
-    dest_addr.sin_port = htons(9999);
+    dest_addr.sin_port = htons(TARGET_PORT);
+    dest_addr.sin_addr.s_addr = inet_addr(TARGET_IP);
 
-    std::cout << "🚀 UDP 单播发射塔已启动 (目标: 127.0.0.1:9999)" << std::endl;
-    // 打印一下结构体大小，你会看到它是完美的 20 字节
-    std::cout << "📦 当前载荷结构体大小: " << sizeof(ChassisState) << " 字节" << std::endl;
-    
-    ChassisState state = {0, 0.0f, 0.5f, 1};
+    SubscriberBase sub(topic_name, QoSProfile::Default());
+    std::vector<char> local_buffer(sizeof(MessageHeader) + MAX_MSG_SIZE);
 
-    while (true) {
-        auto now = std::chrono::high_resolution_clock::now();
-        state.timestamp_us = std::chrono::duration_cast<std::chrono::microseconds>(now.time_since_epoch()).count();
-        state.speed_m_s += 0.1f; 
-        if (state.speed_m_s > 30.0f) state.speed_m_s = 0.0f; 
+    while (!g_shutdown_requested) {
+        int ret = sub.receiveRaw(local_buffer.data(), local_buffer.size(), 100);
+        if (ret > 0) {
+            MessageHeader* hdr = reinterpret_cast<MessageHeader*>(local_buffer.data());
+            const void* payload = local_buffer.data() + sizeof(MessageHeader);
+            size_t payload_size = hdr->data_size;
 
-        sendto(sock, &state, sizeof(state), 0, (struct sockaddr*)&dest_addr, sizeof(dest_addr));
+            json json_header = {{"topic", topic_name}, {"size", payload_size}, {"type", hdr->type}};
+            std::string header_str = json_header.dump() + "\r\n\r\n";
 
-        static int print_counter = 0;
-        if (print_counter++ % 10 == 0) {
-            std::cout << "[发送中] 当前车速: " << state.speed_m_s << " m/s" << std::endl;
+            if (header_str.size() + payload_size > MAX_UDP_PACKET_SIZE) continue;
+
+            std::vector<char> udp_packet;
+            udp_packet.reserve(header_str.size() + payload_size);
+            udp_packet.insert(udp_packet.end(), header_str.begin(), header_str.end());
+            const char* payload_chars = static_cast<const char*>(payload);
+            udp_packet.insert(udp_packet.end(), payload_chars, payload_chars + payload_size);
+
+            sendto(sock, udp_packet.data(), udp_packet.size(), 0, (struct sockaddr*)&dest_addr, sizeof(dest_addr));
+            std::cout << "-> [Net] 成功单播转发话题 " << topic_name << " (" << payload_size << " bytes) 到香橙派" << std::endl;
         }
-        usleep(10000); 
     }
     close(sock);
     return 0;

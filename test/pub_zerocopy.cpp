@@ -4,6 +4,8 @@
 #include <csignal>
 #include <chrono>
 
+using namespace com_ipc;
+
 static volatile bool running = true;
 
 void signal_handler(int) {
@@ -16,7 +18,7 @@ struct BigImage {
     int id;
     int width;
     int height;
-    char pixels[5 * 1024 * 1024]; // 5MB 的像素数据
+    uint8_t pixels[5 * 1024 * 1024]; // 5MB 的像素数据
 };
 
 int main(int argc, char* argv[]) {
@@ -25,14 +27,14 @@ int main(int argc, char* argv[]) {
     try {
         SystemManager::instance();
 
-        Publisher pub("zero_copy_image");
+        Publisher<BigImage> pub("zero_copy_image");
         int seq = 0;
 
         std::cout << "Zero-Copy Publisher started. Sending 5MB images..." << std::endl;
 
         while (running) {
             // 【核心 1】：不创建局部变量，直接向内存池“借”一块 5MB 的空间
-            BigImage* img_ptr = pub.loan<BigImage>(); 
+            BigImage* img_ptr = pub.loan();
             if (!img_ptr) {
                 std::cerr << "Failed to loan memory!" << std::endl;
                 break;

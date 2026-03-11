@@ -2,6 +2,8 @@
 #include <iostream>
 #include <csignal>
 
+using namespace com_ipc;
+
 static volatile bool running = true;
 
 void signal_handler(int) {
@@ -23,11 +25,11 @@ int main(int argc, char* argv[]) {
     try {
         SystemManager::instance();
 
-        Subscriber sub("zero_copy_image");
+        Subscriber<BigImage> sub("zero_copy_image");
         std::cout << "Zero-Copy Subscriber started. Waiting for 5MB images..." << std::endl;
 
         while (running) {
-            Subscriber::LoanedMessage msg;
+            LoanedMessage msg;
             
             // 【核心 1】：直接接收底层的原始指针，没有 memcpy！
             if (sub.receiveLoaned(msg, 1000)) {  

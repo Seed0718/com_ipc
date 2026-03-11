@@ -1,7 +1,9 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/functional.h>
 #include "com_ipc.h"
-#include "udp_node.h"
+#include "com_ipc/api/udp_node.h"
+
+using namespace com_ipc;
 
 namespace py = pybind11;
 
@@ -19,9 +21,11 @@ PYBIND11_MODULE(com_ipc_py, m) {
     m.def("destroy", []() { SystemManager::destroy(); }, "Destroy the IPC system");
 
     // 2. 暴露 Publisher (发布者)
-    py::class_<Publisher>(m, "Publisher")
+    py::class_<PublisherBase>(m, "Publisher")
+        .def(py::init<const std::string&, const QoSProfile&>(), 
+            py::arg("topic_name"), py::arg("qos") = QoSProfile::Default())
         // Python 端传入 bytes 或 numpy array (统一抽象为 py::buffer)
-        .def("publish", [](Publisher& self, py::buffer b) {
+        .def("publish", [](PublisherBase& self, py::buffer b) {
             py::buffer_info info = b.request();
             // 向共享内存池借用空间
             void* ptr = self.loanRaw(info.size);
@@ -38,18 +42,18 @@ PYBIND11_MODULE(com_ipc_py, m) {
     py::class_<Node>(m, "Node")
         .def(py::init<const std::string&>())
         // 创建发布者，返回引用，生命周期由 Node 管理
-        .def("create_publisher", &Node::createPublisher, py::return_value_policy::reference)
+        .def("create_publisher", &Node::createPublisher<std::string>, py::return_value_policy::reference)
         // 创建订阅者：这里的回调函数是真正的“黑魔法”
         .def("create_subscriber", [](Node& self, const std::string& topic, py::function py_cb) {
-            self.createSubscriber(topic, [py_cb](const Subscriber::LoanedMessage& msg) {
+            self.createSubscriber<std::string>(topic, [py_cb](const std::string* msg) {
                 // 【核心警告】：C++ 底层收数据的线程是后台线程，要调用 Python 函数必须先获取 GIL 锁！
                 py::gil_scoped_acquire acquire;
                 
                 // 【终极零拷贝】：不要把 C++ 指针拷贝成 Python bytes！
                 // 而是直接创建一个 Python 的 memoryview 指向 C++ 的共享内存！
                 auto mem_view = py::memoryview::from_memory(
-                    msg.data, 
-                    msg.size, 
+                    const_cast<char*>(msg->data()),
+                    msg->size(),
                     true // readonly: 保护共享内存不被 Python 篡改
                 );
                 

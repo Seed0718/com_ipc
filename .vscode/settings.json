@@ -58,6 +58,14 @@
         "optional": "cpp",
         "random": "cpp",
         "set": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "unordered_set": "cpp",
+        "typeindex": "cpp",
+        "valarray": "cpp",
+        "any": "cpp",
+        "codecvt": "cpp",
+        "filesystem": "cpp"
     }
 }

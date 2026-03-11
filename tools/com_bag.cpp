@@ -8,6 +8,8 @@
 #include <vector>
 #include <cstring>
 
+using namespace com_ipc;
+
 static volatile bool running = true;
 
 void signal_handler(int) {
@@ -49,7 +51,7 @@ void do_record(const std::string& topic_name, const std::string& filename) {
     file.write(topic_name.c_str(), topic_len);
 
     SystemManager::instance();
-    Subscriber sub(topic_name);
+    SubscriberBase sub(topic_name);
     std::cout << "Recording topic [" << topic_name << "] to [" << filename << "]...\n";
     std::cout << "Press Ctrl+C to stop.\n";
 
@@ -57,7 +59,7 @@ void do_record(const std::string& topic_name, const std::string& filename) {
     size_t total_bytes = 0;
 
     while (running) {
-        Subscriber::LoanedMessage msg;
+        LoanedMessage msg;
         // 阻塞等待数据
         if (sub.receiveLoaned(msg, 1000)) {
             int64_t timestamp = get_current_time_us();
@@ -108,7 +110,7 @@ void do_play(const std::string& filename) {
     file.read(&topic_name[0], topic_len);
 
     SystemManager::instance();
-    Publisher pub(topic_name); // 根据读出的话题名自动创建发布者
+    PublisherBase pub(topic_name); // 根据读出的话题名自动创建发布者
     
     std::cout << "Playing back topic [" << topic_name << "] from [" << filename << "]...\n";
 

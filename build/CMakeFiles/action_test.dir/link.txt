@@ -1,0 +1,1 @@
+/usr/bin/g++  -g   CMakeFiles/action_test.dir/test/action_test.cpp.o  -o bin/action_test -Wl,-rpath,/home/seed/Demo/com_ipc/build libcom_ipc.so -lpthread -lrt 

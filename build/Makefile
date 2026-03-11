@@ -111,6 +111,32 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named action_test
+
+# Build rule for target.
+action_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 action_test
+.PHONY : action_test
+
+# fast build rule for target.
+action_test/fast:
+	$(MAKE) -f CMakeFiles/action_test.dir/build.make CMakeFiles/action_test.dir/build
+.PHONY : action_test/fast
+
+#=============================================================================
+# Target rules for targets named service_test
+
+# Build rule for target.
+service_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 service_test
+.PHONY : service_test
+
+# fast build rule for target.
+service_test/fast:
+	$(MAKE) -f CMakeFiles/service_test.dir/build.make CMakeFiles/service_test.dir/build
+.PHONY : service_test/fast
+
+#=============================================================================
 # Target rules for targets named com_multicast_sender
 
 # Build rule for target.
@@ -240,140 +266,275 @@ com_topic/fast:
 	$(MAKE) -f CMakeFiles/com_topic.dir/build.make CMakeFiles/com_topic.dir/build
 .PHONY : com_topic/fast
 
-src/action_client.o: src/action_client.cpp.o
+src/api/action_client.o: src/api/action_client.cpp.o
 
-.PHONY : src/action_client.o
-
-# target to build an object file
-src/action_client.cpp.o:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/action_client.cpp.o
-.PHONY : src/action_client.cpp.o
-
-src/action_client.i: src/action_client.cpp.i
-
-.PHONY : src/action_client.i
-
-# target to preprocess a source file
-src/action_client.cpp.i:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/action_client.cpp.i
-.PHONY : src/action_client.cpp.i
-
-src/action_client.s: src/action_client.cpp.s
-
-.PHONY : src/action_client.s
-
-# target to generate assembly for a file
-src/action_client.cpp.s:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/action_client.cpp.s
-.PHONY : src/action_client.cpp.s
-
-src/action_server.o: src/action_server.cpp.o
-
-.PHONY : src/action_server.o
+.PHONY : src/api/action_client.o
 
 # target to build an object file
-src/action_server.cpp.o:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/action_server.cpp.o
-.PHONY : src/action_server.cpp.o
+src/api/action_client.cpp.o:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/action_client.cpp.o
+.PHONY : src/api/action_client.cpp.o
 
-src/action_server.i: src/action_server.cpp.i
+src/api/action_client.i: src/api/action_client.cpp.i
 
-.PHONY : src/action_server.i
+.PHONY : src/api/action_client.i
 
 # target to preprocess a source file
-src/action_server.cpp.i:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/action_server.cpp.i
-.PHONY : src/action_server.cpp.i
+src/api/action_client.cpp.i:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/action_client.cpp.i
+.PHONY : src/api/action_client.cpp.i
 
-src/action_server.s: src/action_server.cpp.s
+src/api/action_client.s: src/api/action_client.cpp.s
 
-.PHONY : src/action_server.s
+.PHONY : src/api/action_client.s
 
 # target to generate assembly for a file
-src/action_server.cpp.s:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/action_server.cpp.s
-.PHONY : src/action_server.cpp.s
+src/api/action_client.cpp.s:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/action_client.cpp.s
+.PHONY : src/api/action_client.cpp.s
 
-src/memory_pool.o: src/memory_pool.cpp.o
+src/api/action_server.o: src/api/action_server.cpp.o
 
-.PHONY : src/memory_pool.o
+.PHONY : src/api/action_server.o
 
 # target to build an object file
-src/memory_pool.cpp.o:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/memory_pool.cpp.o
-.PHONY : src/memory_pool.cpp.o
+src/api/action_server.cpp.o:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/action_server.cpp.o
+.PHONY : src/api/action_server.cpp.o
 
-src/memory_pool.i: src/memory_pool.cpp.i
+src/api/action_server.i: src/api/action_server.cpp.i
 
-.PHONY : src/memory_pool.i
+.PHONY : src/api/action_server.i
 
 # target to preprocess a source file
-src/memory_pool.cpp.i:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/memory_pool.cpp.i
-.PHONY : src/memory_pool.cpp.i
+src/api/action_server.cpp.i:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/action_server.cpp.i
+.PHONY : src/api/action_server.cpp.i
 
-src/memory_pool.s: src/memory_pool.cpp.s
+src/api/action_server.s: src/api/action_server.cpp.s
 
-.PHONY : src/memory_pool.s
+.PHONY : src/api/action_server.s
 
 # target to generate assembly for a file
-src/memory_pool.cpp.s:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/memory_pool.cpp.s
-.PHONY : src/memory_pool.cpp.s
+src/api/action_server.cpp.s:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/action_server.cpp.s
+.PHONY : src/api/action_server.cpp.s
 
-src/node.o: src/node.cpp.o
+src/api/node.o: src/api/node.cpp.o
 
-.PHONY : src/node.o
+.PHONY : src/api/node.o
 
 # target to build an object file
-src/node.cpp.o:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/node.cpp.o
-.PHONY : src/node.cpp.o
+src/api/node.cpp.o:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/node.cpp.o
+.PHONY : src/api/node.cpp.o
 
-src/node.i: src/node.cpp.i
+src/api/node.i: src/api/node.cpp.i
 
-.PHONY : src/node.i
+.PHONY : src/api/node.i
 
 # target to preprocess a source file
-src/node.cpp.i:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/node.cpp.i
-.PHONY : src/node.cpp.i
+src/api/node.cpp.i:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/node.cpp.i
+.PHONY : src/api/node.cpp.i
 
-src/node.s: src/node.cpp.s
+src/api/node.s: src/api/node.cpp.s
 
-.PHONY : src/node.s
+.PHONY : src/api/node.s
 
 # target to generate assembly for a file
-src/node.cpp.s:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/node.cpp.s
-.PHONY : src/node.cpp.s
+src/api/node.cpp.s:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/node.cpp.s
+.PHONY : src/api/node.cpp.s
 
-src/publisher.o: src/publisher.cpp.o
+src/api/publisher.o: src/api/publisher.cpp.o
 
-.PHONY : src/publisher.o
+.PHONY : src/api/publisher.o
 
 # target to build an object file
-src/publisher.cpp.o:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/publisher.cpp.o
-.PHONY : src/publisher.cpp.o
+src/api/publisher.cpp.o:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/publisher.cpp.o
+.PHONY : src/api/publisher.cpp.o
 
-src/publisher.i: src/publisher.cpp.i
+src/api/publisher.i: src/api/publisher.cpp.i
 
-.PHONY : src/publisher.i
+.PHONY : src/api/publisher.i
 
 # target to preprocess a source file
-src/publisher.cpp.i:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/publisher.cpp.i
-.PHONY : src/publisher.cpp.i
+src/api/publisher.cpp.i:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/publisher.cpp.i
+.PHONY : src/api/publisher.cpp.i
 
-src/publisher.s: src/publisher.cpp.s
+src/api/publisher.s: src/api/publisher.cpp.s
 
-.PHONY : src/publisher.s
+.PHONY : src/api/publisher.s
 
 # target to generate assembly for a file
-src/publisher.cpp.s:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/publisher.cpp.s
-.PHONY : src/publisher.cpp.s
+src/api/publisher.cpp.s:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/publisher.cpp.s
+.PHONY : src/api/publisher.cpp.s
+
+src/api/service_client.o: src/api/service_client.cpp.o
+
+.PHONY : src/api/service_client.o
+
+# target to build an object file
+src/api/service_client.cpp.o:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/service_client.cpp.o
+.PHONY : src/api/service_client.cpp.o
+
+src/api/service_client.i: src/api/service_client.cpp.i
+
+.PHONY : src/api/service_client.i
+
+# target to preprocess a source file
+src/api/service_client.cpp.i:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/service_client.cpp.i
+.PHONY : src/api/service_client.cpp.i
+
+src/api/service_client.s: src/api/service_client.cpp.s
+
+.PHONY : src/api/service_client.s
+
+# target to generate assembly for a file
+src/api/service_client.cpp.s:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/service_client.cpp.s
+.PHONY : src/api/service_client.cpp.s
+
+src/api/service_server.o: src/api/service_server.cpp.o
+
+.PHONY : src/api/service_server.o
+
+# target to build an object file
+src/api/service_server.cpp.o:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/service_server.cpp.o
+.PHONY : src/api/service_server.cpp.o
+
+src/api/service_server.i: src/api/service_server.cpp.i
+
+.PHONY : src/api/service_server.i
+
+# target to preprocess a source file
+src/api/service_server.cpp.i:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/service_server.cpp.i
+.PHONY : src/api/service_server.cpp.i
+
+src/api/service_server.s: src/api/service_server.cpp.s
+
+.PHONY : src/api/service_server.s
+
+# target to generate assembly for a file
+src/api/service_server.cpp.s:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/service_server.cpp.s
+.PHONY : src/api/service_server.cpp.s
+
+src/api/subscriber.o: src/api/subscriber.cpp.o
+
+.PHONY : src/api/subscriber.o
+
+# target to build an object file
+src/api/subscriber.cpp.o:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/subscriber.cpp.o
+.PHONY : src/api/subscriber.cpp.o
+
+src/api/subscriber.i: src/api/subscriber.cpp.i
+
+.PHONY : src/api/subscriber.i
+
+# target to preprocess a source file
+src/api/subscriber.cpp.i:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/subscriber.cpp.i
+.PHONY : src/api/subscriber.cpp.i
+
+src/api/subscriber.s: src/api/subscriber.cpp.s
+
+.PHONY : src/api/subscriber.s
+
+# target to generate assembly for a file
+src/api/subscriber.cpp.s:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/subscriber.cpp.s
+.PHONY : src/api/subscriber.cpp.s
+
+src/api/udp_node.o: src/api/udp_node.cpp.o
+
+.PHONY : src/api/udp_node.o
+
+# target to build an object file
+src/api/udp_node.cpp.o:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/udp_node.cpp.o
+.PHONY : src/api/udp_node.cpp.o
+
+src/api/udp_node.i: src/api/udp_node.cpp.i
+
+.PHONY : src/api/udp_node.i
+
+# target to preprocess a source file
+src/api/udp_node.cpp.i:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/udp_node.cpp.i
+.PHONY : src/api/udp_node.cpp.i
+
+src/api/udp_node.s: src/api/udp_node.cpp.s
+
+.PHONY : src/api/udp_node.s
+
+# target to generate assembly for a file
+src/api/udp_node.cpp.s:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/api/udp_node.cpp.s
+.PHONY : src/api/udp_node.cpp.s
+
+src/core/memory_pool.o: src/core/memory_pool.cpp.o
+
+.PHONY : src/core/memory_pool.o
+
+# target to build an object file
+src/core/memory_pool.cpp.o:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/core/memory_pool.cpp.o
+.PHONY : src/core/memory_pool.cpp.o
+
+src/core/memory_pool.i: src/core/memory_pool.cpp.i
+
+.PHONY : src/core/memory_pool.i
+
+# target to preprocess a source file
+src/core/memory_pool.cpp.i:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/core/memory_pool.cpp.i
+.PHONY : src/core/memory_pool.cpp.i
+
+src/core/memory_pool.s: src/core/memory_pool.cpp.s
+
+.PHONY : src/core/memory_pool.s
+
+# target to generate assembly for a file
+src/core/memory_pool.cpp.s:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/core/memory_pool.cpp.s
+.PHONY : src/core/memory_pool.cpp.s
+
+src/core/system_manager.o: src/core/system_manager.cpp.o
+
+.PHONY : src/core/system_manager.o
+
+# target to build an object file
+src/core/system_manager.cpp.o:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/core/system_manager.cpp.o
+.PHONY : src/core/system_manager.cpp.o
+
+src/core/system_manager.i: src/core/system_manager.cpp.i
+
+.PHONY : src/core/system_manager.i
+
+# target to preprocess a source file
+src/core/system_manager.cpp.i:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/core/system_manager.cpp.i
+.PHONY : src/core/system_manager.cpp.i
+
+src/core/system_manager.s: src/core/system_manager.cpp.s
+
+.PHONY : src/core/system_manager.s
+
+# target to generate assembly for a file
+src/core/system_manager.cpp.s:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/core/system_manager.cpp.s
+.PHONY : src/core/system_manager.cpp.s
 
 src/pybind_wrapper.o: src/pybind_wrapper.cpp.o
 
@@ -402,140 +563,32 @@ src/pybind_wrapper.cpp.s:
 	$(MAKE) -f CMakeFiles/com_ipc_py.dir/build.make CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.s
 .PHONY : src/pybind_wrapper.cpp.s
 
-src/service_client.o: src/service_client.cpp.o
+test/action_test.o: test/action_test.cpp.o
 
-.PHONY : src/service_client.o
-
-# target to build an object file
-src/service_client.cpp.o:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/service_client.cpp.o
-.PHONY : src/service_client.cpp.o
-
-src/service_client.i: src/service_client.cpp.i
-
-.PHONY : src/service_client.i
-
-# target to preprocess a source file
-src/service_client.cpp.i:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/service_client.cpp.i
-.PHONY : src/service_client.cpp.i
-
-src/service_client.s: src/service_client.cpp.s
-
-.PHONY : src/service_client.s
-
-# target to generate assembly for a file
-src/service_client.cpp.s:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/service_client.cpp.s
-.PHONY : src/service_client.cpp.s
-
-src/service_server.o: src/service_server.cpp.o
-
-.PHONY : src/service_server.o
+.PHONY : test/action_test.o
 
 # target to build an object file
-src/service_server.cpp.o:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/service_server.cpp.o
-.PHONY : src/service_server.cpp.o
+test/action_test.cpp.o:
+	$(MAKE) -f CMakeFiles/action_test.dir/build.make CMakeFiles/action_test.dir/test/action_test.cpp.o
+.PHONY : test/action_test.cpp.o
 
-src/service_server.i: src/service_server.cpp.i
+test/action_test.i: test/action_test.cpp.i
 
-.PHONY : src/service_server.i
-
-# target to preprocess a source file
-src/service_server.cpp.i:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/service_server.cpp.i
-.PHONY : src/service_server.cpp.i
-
-src/service_server.s: src/service_server.cpp.s
-
-.PHONY : src/service_server.s
-
-# target to generate assembly for a file
-src/service_server.cpp.s:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/service_server.cpp.s
-.PHONY : src/service_server.cpp.s
-
-src/subscriber.o: src/subscriber.cpp.o
-
-.PHONY : src/subscriber.o
-
-# target to build an object file
-src/subscriber.cpp.o:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/subscriber.cpp.o
-.PHONY : src/subscriber.cpp.o
-
-src/subscriber.i: src/subscriber.cpp.i
-
-.PHONY : src/subscriber.i
+.PHONY : test/action_test.i
 
 # target to preprocess a source file
-src/subscriber.cpp.i:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/subscriber.cpp.i
-.PHONY : src/subscriber.cpp.i
+test/action_test.cpp.i:
+	$(MAKE) -f CMakeFiles/action_test.dir/build.make CMakeFiles/action_test.dir/test/action_test.cpp.i
+.PHONY : test/action_test.cpp.i
 
-src/subscriber.s: src/subscriber.cpp.s
+test/action_test.s: test/action_test.cpp.s
 
-.PHONY : src/subscriber.s
-
-# target to generate assembly for a file
-src/subscriber.cpp.s:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/subscriber.cpp.s
-.PHONY : src/subscriber.cpp.s
-
-src/system_manager.o: src/system_manager.cpp.o
-
-.PHONY : src/system_manager.o
-
-# target to build an object file
-src/system_manager.cpp.o:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/system_manager.cpp.o
-.PHONY : src/system_manager.cpp.o
-
-src/system_manager.i: src/system_manager.cpp.i
-
-.PHONY : src/system_manager.i
-
-# target to preprocess a source file
-src/system_manager.cpp.i:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/system_manager.cpp.i
-.PHONY : src/system_manager.cpp.i
-
-src/system_manager.s: src/system_manager.cpp.s
-
-.PHONY : src/system_manager.s
+.PHONY : test/action_test.s
 
 # target to generate assembly for a file
-src/system_manager.cpp.s:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/system_manager.cpp.s
-.PHONY : src/system_manager.cpp.s
-
-src/udp_node.o: src/udp_node.cpp.o
-
-.PHONY : src/udp_node.o
-
-# target to build an object file
-src/udp_node.cpp.o:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/udp_node.cpp.o
-.PHONY : src/udp_node.cpp.o
-
-src/udp_node.i: src/udp_node.cpp.i
-
-.PHONY : src/udp_node.i
-
-# target to preprocess a source file
-src/udp_node.cpp.i:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/udp_node.cpp.i
-.PHONY : src/udp_node.cpp.i
-
-src/udp_node.s: src/udp_node.cpp.s
-
-.PHONY : src/udp_node.s
-
-# target to generate assembly for a file
-src/udp_node.cpp.s:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/src/udp_node.cpp.s
-.PHONY : src/udp_node.cpp.s
+test/action_test.cpp.s:
+	$(MAKE) -f CMakeFiles/action_test.dir/build.make CMakeFiles/action_test.dir/test/action_test.cpp.s
+.PHONY : test/action_test.cpp.s
 
 test/multi_node_test.o: test/multi_node_test.cpp.o
 
@@ -590,6 +643,33 @@ test/pub_zerocopy.s: test/pub_zerocopy.cpp.s
 test/pub_zerocopy.cpp.s:
 	$(MAKE) -f CMakeFiles/pub_zerocopy.dir/build.make CMakeFiles/pub_zerocopy.dir/test/pub_zerocopy.cpp.s
 .PHONY : test/pub_zerocopy.cpp.s
+
+test/service_test.o: test/service_test.cpp.o
+
+.PHONY : test/service_test.o
+
+# target to build an object file
+test/service_test.cpp.o:
+	$(MAKE) -f CMakeFiles/service_test.dir/build.make CMakeFiles/service_test.dir/test/service_test.cpp.o
+.PHONY : test/service_test.cpp.o
+
+test/service_test.i: test/service_test.cpp.i
+
+.PHONY : test/service_test.i
+
+# target to preprocess a source file
+test/service_test.cpp.i:
+	$(MAKE) -f CMakeFiles/service_test.dir/build.make CMakeFiles/service_test.dir/test/service_test.cpp.i
+.PHONY : test/service_test.cpp.i
+
+test/service_test.s: test/service_test.cpp.s
+
+.PHONY : test/service_test.s
+
+# target to generate assembly for a file
+test/service_test.cpp.s:
+	$(MAKE) -f CMakeFiles/service_test.dir/build.make CMakeFiles/service_test.dir/test/service_test.cpp.s
+.PHONY : test/service_test.cpp.s
 
 test/sub_zerocopy.o: test/sub_zerocopy.cpp.o
 
@@ -761,6 +841,8 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... action_test"
+	@echo "... service_test"
 	@echo "... com_multicast_sender"
 	@echo "... com_router"
 	@echo "... com_bag"
@@ -771,45 +853,51 @@ help:
 	@echo "... multi_node_test"
 	@echo "... com_node"
 	@echo "... com_topic"
-	@echo "... src/action_client.o"
-	@echo "... src/action_client.i"
-	@echo "... src/action_client.s"
-	@echo "... src/action_server.o"
-	@echo "... src/action_server.i"
-	@echo "... src/action_server.s"
-	@echo "... src/memory_pool.o"
-	@echo "... src/memory_pool.i"
-	@echo "... src/memory_pool.s"
-	@echo "... src/node.o"
-	@echo "... src/node.i"
-	@echo "... src/node.s"
-	@echo "... src/publisher.o"
-	@echo "... src/publisher.i"
-	@echo "... src/publisher.s"
+	@echo "... src/api/action_client.o"
+	@echo "... src/api/action_client.i"
+	@echo "... src/api/action_client.s"
+	@echo "... src/api/action_server.o"
+	@echo "... src/api/action_server.i"
+	@echo "... src/api/action_server.s"
+	@echo "... src/api/node.o"
+	@echo "... src/api/node.i"
+	@echo "... src/api/node.s"
+	@echo "... src/api/publisher.o"
+	@echo "... src/api/publisher.i"
+	@echo "... src/api/publisher.s"
+	@echo "... src/api/service_client.o"
+	@echo "... src/api/service_client.i"
+	@echo "... src/api/service_client.s"
+	@echo "... src/api/service_server.o"
+	@echo "... src/api/service_server.i"
+	@echo "... src/api/service_server.s"
+	@echo "... src/api/subscriber.o"
+	@echo "... src/api/subscriber.i"
+	@echo "... src/api/subscriber.s"
+	@echo "... src/api/udp_node.o"
+	@echo "... src/api/udp_node.i"
+	@echo "... src/api/udp_node.s"
+	@echo "... src/core/memory_pool.o"
+	@echo "... src/core/memory_pool.i"
+	@echo "... src/core/memory_pool.s"
+	@echo "... src/core/system_manager.o"
+	@echo "... src/core/system_manager.i"
+	@echo "... src/core/system_manager.s"
 	@echo "... src/pybind_wrapper.o"
 	@echo "... src/pybind_wrapper.i"
 	@echo "... src/pybind_wrapper.s"
-	@echo "... src/service_client.o"
-	@echo "... src/service_client.i"
-	@echo "... src/service_client.s"
-	@echo "... src/service_server.o"
-	@echo "... src/service_server.i"
-	@echo "... src/service_server.s"
-	@echo "... src/subscriber.o"
-	@echo "... src/subscriber.i"
-	@echo "... src/subscriber.s"
-	@echo "... src/system_manager.o"
-	@echo "... src/system_manager.i"
-	@echo "... src/system_manager.s"
-	@echo "... src/udp_node.o"
-	@echo "... src/udp_node.i"
-	@echo "... src/udp_node.s"
+	@echo "... test/action_test.o"
+	@echo "... test/action_test.i"
+	@echo "... test/action_test.s"
 	@echo "... test/multi_node_test.o"
 	@echo "... test/multi_node_test.i"
 	@echo "... test/multi_node_test.s"
 	@echo "... test/pub_zerocopy.o"
 	@echo "... test/pub_zerocopy.i"
 	@echo "... test/pub_zerocopy.s"
+	@echo "... test/service_test.o"
+	@echo "... test/service_test.i"
+	@echo "... test/service_test.s"
 	@echo "... test/sub_zerocopy.o"
 	@echo "... test/sub_zerocopy.i"
 	@echo "... test/sub_zerocopy.s"

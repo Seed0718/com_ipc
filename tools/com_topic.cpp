@@ -5,6 +5,8 @@
 #include <iomanip>
 #include <csignal>
 
+using namespace com_ipc;
+
 static volatile bool running = true;
 
 void signal_handler(int) {
@@ -35,7 +37,7 @@ void do_list() {
 
 // 2. 频率测算 (Hz)
 void do_hz(const std::string& topic_name) {
-    Subscriber sub(topic_name);
+    SubscriberBase sub(topic_name);
     std::cout << "Subscribed to [" << topic_name << "]. Calculating publishing rate...\n";
     
     auto last_calc_time = std::chrono::steady_clock::now();
@@ -43,7 +45,7 @@ void do_hz(const std::string& topic_name) {
     bool is_first_msg = true; // 新增一个标志位
 
     while (running) {
-        Subscriber::LoanedMessage msg;
+        LoanedMessage msg;
         if (sub.receiveLoaned(msg, 1000)) {
             // 如果是第一帧，我们只按秒表，不计入统计帧数
             if (is_first_msg) {
@@ -72,14 +74,14 @@ void do_hz(const std::string& topic_name) {
 
 // 3. 带宽测算 (Bandwidth)
 void do_bw(const std::string& topic_name) {
-    Subscriber sub(topic_name);
+    SubscriberBase sub(topic_name);
     std::cout << "Subscribed to [" << topic_name << "]. Calculating bandwidth...\n";
     
     auto last_calc_time = std::chrono::steady_clock::now();
     size_t total_bytes = 0;
 
     while (running) {
-        Subscriber::LoanedMessage msg;
+        LoanedMessage msg;
         if (sub.receiveLoaned(msg, 1000)) {
             total_bytes += msg.size;
         }
@@ -107,11 +109,11 @@ void do_bw(const std::string& topic_name) {
 
 // 4. 抓包探测 (Echo / Hex Dump)
 void do_echo(const std::string& topic_name) {
-    Subscriber sub(topic_name);
+    SubscriberBase sub(topic_name);
     std::cout << "Subscribed to [" << topic_name << "]. Sniffing raw memory...\n";
 
     while (running) {
-        Subscriber::LoanedMessage msg;
+        LoanedMessage msg;
         if (sub.receiveLoaned(msg, 1000)) {
             std::cout << "\n--- Message Seq: " << msg.seq << " | Size: " << msg.size << " bytes ---\n";
             
