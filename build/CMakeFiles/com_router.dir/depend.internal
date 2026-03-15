@@ -11,6 +11,7 @@ CMakeFiles/com_router.dir/tools/com_router.cpp.o
  ../inc/com_ipc/api/service_server.h
  ../inc/com_ipc/api/subscriber.h
  ../inc/com_ipc/core/com_ipc_types.h
+ ../inc/com_ipc/core/executor.h
  ../inc/com_ipc/core/memory_pool.h
  ../inc/com_ipc/core/system_manager.h
  ../inc/com_ipc/qos/qos_profile.h

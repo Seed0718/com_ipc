@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/seed/Demo/com_ipc/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,134 +111,43 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named action_test
+# Target rules for targets named action_client_test
 
 # Build rule for target.
-action_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 action_test
-.PHONY : action_test
+action_client_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 action_client_test
+.PHONY : action_client_test
 
 # fast build rule for target.
-action_test/fast:
-	$(MAKE) -f CMakeFiles/action_test.dir/build.make CMakeFiles/action_test.dir/build
-.PHONY : action_test/fast
+action_client_test/fast:
+	$(MAKE) -f CMakeFiles/action_client_test.dir/build.make CMakeFiles/action_client_test.dir/build
+.PHONY : action_client_test/fast
 
 #=============================================================================
-# Target rules for targets named service_test
+# Target rules for targets named action_server_test
 
 # Build rule for target.
-service_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 service_test
-.PHONY : service_test
+action_server_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 action_server_test
+.PHONY : action_server_test
 
 # fast build rule for target.
-service_test/fast:
-	$(MAKE) -f CMakeFiles/service_test.dir/build.make CMakeFiles/service_test.dir/build
-.PHONY : service_test/fast
+action_server_test/fast:
+	$(MAKE) -f CMakeFiles/action_server_test.dir/build.make CMakeFiles/action_server_test.dir/build
+.PHONY : action_server_test/fast
 
 #=============================================================================
-# Target rules for targets named com_multicast_sender
+# Target rules for targets named com_topic
 
 # Build rule for target.
-com_multicast_sender: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 com_multicast_sender
-.PHONY : com_multicast_sender
+com_topic: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 com_topic
+.PHONY : com_topic
 
 # fast build rule for target.
-com_multicast_sender/fast:
-	$(MAKE) -f CMakeFiles/com_multicast_sender.dir/build.make CMakeFiles/com_multicast_sender.dir/build
-.PHONY : com_multicast_sender/fast
-
-#=============================================================================
-# Target rules for targets named com_router
-
-# Build rule for target.
-com_router: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 com_router
-.PHONY : com_router
-
-# fast build rule for target.
-com_router/fast:
-	$(MAKE) -f CMakeFiles/com_router.dir/build.make CMakeFiles/com_router.dir/build
-.PHONY : com_router/fast
-
-#=============================================================================
-# Target rules for targets named com_bag
-
-# Build rule for target.
-com_bag: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 com_bag
-.PHONY : com_bag
-
-# fast build rule for target.
-com_bag/fast:
-	$(MAKE) -f CMakeFiles/com_bag.dir/build.make CMakeFiles/com_bag.dir/build
-.PHONY : com_bag/fast
-
-#=============================================================================
-# Target rules for targets named com_ipc_py
-
-# Build rule for target.
-com_ipc_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 com_ipc_py
-.PHONY : com_ipc_py
-
-# fast build rule for target.
-com_ipc_py/fast:
-	$(MAKE) -f CMakeFiles/com_ipc_py.dir/build.make CMakeFiles/com_ipc_py.dir/build
-.PHONY : com_ipc_py/fast
-
-#=============================================================================
-# Target rules for targets named com_ipc
-
-# Build rule for target.
-com_ipc: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 com_ipc
-.PHONY : com_ipc
-
-# fast build rule for target.
-com_ipc/fast:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/build
-.PHONY : com_ipc/fast
-
-#=============================================================================
-# Target rules for targets named pub_zerocopy
-
-# Build rule for target.
-pub_zerocopy: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pub_zerocopy
-.PHONY : pub_zerocopy
-
-# fast build rule for target.
-pub_zerocopy/fast:
-	$(MAKE) -f CMakeFiles/pub_zerocopy.dir/build.make CMakeFiles/pub_zerocopy.dir/build
-.PHONY : pub_zerocopy/fast
-
-#=============================================================================
-# Target rules for targets named sub_zerocopy
-
-# Build rule for target.
-sub_zerocopy: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 sub_zerocopy
-.PHONY : sub_zerocopy
-
-# fast build rule for target.
-sub_zerocopy/fast:
-	$(MAKE) -f CMakeFiles/sub_zerocopy.dir/build.make CMakeFiles/sub_zerocopy.dir/build
-.PHONY : sub_zerocopy/fast
-
-#=============================================================================
-# Target rules for targets named multi_node_test
-
-# Build rule for target.
-multi_node_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 multi_node_test
-.PHONY : multi_node_test
-
-# fast build rule for target.
-multi_node_test/fast:
-	$(MAKE) -f CMakeFiles/multi_node_test.dir/build.make CMakeFiles/multi_node_test.dir/build
-.PHONY : multi_node_test/fast
+com_topic/fast:
+	$(MAKE) -f CMakeFiles/com_topic.dir/build.make CMakeFiles/com_topic.dir/build
+.PHONY : com_topic/fast
 
 #=============================================================================
 # Target rules for targets named com_node
@@ -254,17 +163,186 @@ com_node/fast:
 .PHONY : com_node/fast
 
 #=============================================================================
-# Target rules for targets named com_topic
+# Target rules for targets named multi_node_test
 
 # Build rule for target.
-com_topic: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 com_topic
-.PHONY : com_topic
+multi_node_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 multi_node_test
+.PHONY : multi_node_test
 
 # fast build rule for target.
-com_topic/fast:
-	$(MAKE) -f CMakeFiles/com_topic.dir/build.make CMakeFiles/com_topic.dir/build
-.PHONY : com_topic/fast
+multi_node_test/fast:
+	$(MAKE) -f CMakeFiles/multi_node_test.dir/build.make CMakeFiles/multi_node_test.dir/build
+.PHONY : multi_node_test/fast
+
+#=============================================================================
+# Target rules for targets named sub_zerocopy
+
+# Build rule for target.
+sub_zerocopy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sub_zerocopy
+.PHONY : sub_zerocopy
+
+# fast build rule for target.
+sub_zerocopy/fast:
+	$(MAKE) -f CMakeFiles/sub_zerocopy.dir/build.make CMakeFiles/sub_zerocopy.dir/build
+.PHONY : sub_zerocopy/fast
+
+#=============================================================================
+# Target rules for targets named pub_zerocopy
+
+# Build rule for target.
+pub_zerocopy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pub_zerocopy
+.PHONY : pub_zerocopy
+
+# fast build rule for target.
+pub_zerocopy/fast:
+	$(MAKE) -f CMakeFiles/pub_zerocopy.dir/build.make CMakeFiles/pub_zerocopy.dir/build
+.PHONY : pub_zerocopy/fast
+
+#=============================================================================
+# Target rules for targets named com_ipc
+
+# Build rule for target.
+com_ipc: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 com_ipc
+.PHONY : com_ipc
+
+# fast build rule for target.
+com_ipc/fast:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/build
+.PHONY : com_ipc/fast
+
+#=============================================================================
+# Target rules for targets named com_ipc_py
+
+# Build rule for target.
+com_ipc_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 com_ipc_py
+.PHONY : com_ipc_py
+
+# fast build rule for target.
+com_ipc_py/fast:
+	$(MAKE) -f CMakeFiles/com_ipc_py.dir/build.make CMakeFiles/com_ipc_py.dir/build
+.PHONY : com_ipc_py/fast
+
+#=============================================================================
+# Target rules for targets named topic_sub_test
+
+# Build rule for target.
+topic_sub_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 topic_sub_test
+.PHONY : topic_sub_test
+
+# fast build rule for target.
+topic_sub_test/fast:
+	$(MAKE) -f CMakeFiles/topic_sub_test.dir/build.make CMakeFiles/topic_sub_test.dir/build
+.PHONY : topic_sub_test/fast
+
+#=============================================================================
+# Target rules for targets named service_server_test
+
+# Build rule for target.
+service_server_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 service_server_test
+.PHONY : service_server_test
+
+# fast build rule for target.
+service_server_test/fast:
+	$(MAKE) -f CMakeFiles/service_server_test.dir/build.make CMakeFiles/service_server_test.dir/build
+.PHONY : service_server_test/fast
+
+#=============================================================================
+# Target rules for targets named com_router
+
+# Build rule for target.
+com_router: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 com_router
+.PHONY : com_router
+
+# fast build rule for target.
+com_router/fast:
+	$(MAKE) -f CMakeFiles/com_router.dir/build.make CMakeFiles/com_router.dir/build
+.PHONY : com_router/fast
+
+#=============================================================================
+# Target rules for targets named com_multicast_sender
+
+# Build rule for target.
+com_multicast_sender: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 com_multicast_sender
+.PHONY : com_multicast_sender
+
+# fast build rule for target.
+com_multicast_sender/fast:
+	$(MAKE) -f CMakeFiles/com_multicast_sender.dir/build.make CMakeFiles/com_multicast_sender.dir/build
+.PHONY : com_multicast_sender/fast
+
+#=============================================================================
+# Target rules for targets named service_test
+
+# Build rule for target.
+service_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 service_test
+.PHONY : service_test
+
+# fast build rule for target.
+service_test/fast:
+	$(MAKE) -f CMakeFiles/service_test.dir/build.make CMakeFiles/service_test.dir/build
+.PHONY : service_test/fast
+
+#=============================================================================
+# Target rules for targets named action_test
+
+# Build rule for target.
+action_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 action_test
+.PHONY : action_test
+
+# fast build rule for target.
+action_test/fast:
+	$(MAKE) -f CMakeFiles/action_test.dir/build.make CMakeFiles/action_test.dir/build
+.PHONY : action_test/fast
+
+#=============================================================================
+# Target rules for targets named topic_pub_test
+
+# Build rule for target.
+topic_pub_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 topic_pub_test
+.PHONY : topic_pub_test
+
+# fast build rule for target.
+topic_pub_test/fast:
+	$(MAKE) -f CMakeFiles/topic_pub_test.dir/build.make CMakeFiles/topic_pub_test.dir/build
+.PHONY : topic_pub_test/fast
+
+#=============================================================================
+# Target rules for targets named com_bag
+
+# Build rule for target.
+com_bag: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 com_bag
+.PHONY : com_bag
+
+# fast build rule for target.
+com_bag/fast:
+	$(MAKE) -f CMakeFiles/com_bag.dir/build.make CMakeFiles/com_bag.dir/build
+.PHONY : com_bag/fast
+
+#=============================================================================
+# Target rules for targets named service_client_test
+
+# Build rule for target.
+service_client_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 service_client_test
+.PHONY : service_client_test
+
+# fast build rule for target.
+service_client_test/fast:
+	$(MAKE) -f CMakeFiles/service_client_test.dir/build.make CMakeFiles/service_client_test.dir/build
+.PHONY : service_client_test/fast
 
 src/api/action_client.o: src/api/action_client.cpp.o
 
@@ -698,6 +776,168 @@ test/sub_zerocopy.cpp.s:
 	$(MAKE) -f CMakeFiles/sub_zerocopy.dir/build.make CMakeFiles/sub_zerocopy.dir/test/sub_zerocopy.cpp.s
 .PHONY : test/sub_zerocopy.cpp.s
 
+test/test/action_client_test.o: test/test/action_client_test.cpp.o
+
+.PHONY : test/test/action_client_test.o
+
+# target to build an object file
+test/test/action_client_test.cpp.o:
+	$(MAKE) -f CMakeFiles/action_client_test.dir/build.make CMakeFiles/action_client_test.dir/test/test/action_client_test.cpp.o
+.PHONY : test/test/action_client_test.cpp.o
+
+test/test/action_client_test.i: test/test/action_client_test.cpp.i
+
+.PHONY : test/test/action_client_test.i
+
+# target to preprocess a source file
+test/test/action_client_test.cpp.i:
+	$(MAKE) -f CMakeFiles/action_client_test.dir/build.make CMakeFiles/action_client_test.dir/test/test/action_client_test.cpp.i
+.PHONY : test/test/action_client_test.cpp.i
+
+test/test/action_client_test.s: test/test/action_client_test.cpp.s
+
+.PHONY : test/test/action_client_test.s
+
+# target to generate assembly for a file
+test/test/action_client_test.cpp.s:
+	$(MAKE) -f CMakeFiles/action_client_test.dir/build.make CMakeFiles/action_client_test.dir/test/test/action_client_test.cpp.s
+.PHONY : test/test/action_client_test.cpp.s
+
+test/test/action_server_test.o: test/test/action_server_test.cpp.o
+
+.PHONY : test/test/action_server_test.o
+
+# target to build an object file
+test/test/action_server_test.cpp.o:
+	$(MAKE) -f CMakeFiles/action_server_test.dir/build.make CMakeFiles/action_server_test.dir/test/test/action_server_test.cpp.o
+.PHONY : test/test/action_server_test.cpp.o
+
+test/test/action_server_test.i: test/test/action_server_test.cpp.i
+
+.PHONY : test/test/action_server_test.i
+
+# target to preprocess a source file
+test/test/action_server_test.cpp.i:
+	$(MAKE) -f CMakeFiles/action_server_test.dir/build.make CMakeFiles/action_server_test.dir/test/test/action_server_test.cpp.i
+.PHONY : test/test/action_server_test.cpp.i
+
+test/test/action_server_test.s: test/test/action_server_test.cpp.s
+
+.PHONY : test/test/action_server_test.s
+
+# target to generate assembly for a file
+test/test/action_server_test.cpp.s:
+	$(MAKE) -f CMakeFiles/action_server_test.dir/build.make CMakeFiles/action_server_test.dir/test/test/action_server_test.cpp.s
+.PHONY : test/test/action_server_test.cpp.s
+
+test/test/service_client_test.o: test/test/service_client_test.cpp.o
+
+.PHONY : test/test/service_client_test.o
+
+# target to build an object file
+test/test/service_client_test.cpp.o:
+	$(MAKE) -f CMakeFiles/service_client_test.dir/build.make CMakeFiles/service_client_test.dir/test/test/service_client_test.cpp.o
+.PHONY : test/test/service_client_test.cpp.o
+
+test/test/service_client_test.i: test/test/service_client_test.cpp.i
+
+.PHONY : test/test/service_client_test.i
+
+# target to preprocess a source file
+test/test/service_client_test.cpp.i:
+	$(MAKE) -f CMakeFiles/service_client_test.dir/build.make CMakeFiles/service_client_test.dir/test/test/service_client_test.cpp.i
+.PHONY : test/test/service_client_test.cpp.i
+
+test/test/service_client_test.s: test/test/service_client_test.cpp.s
+
+.PHONY : test/test/service_client_test.s
+
+# target to generate assembly for a file
+test/test/service_client_test.cpp.s:
+	$(MAKE) -f CMakeFiles/service_client_test.dir/build.make CMakeFiles/service_client_test.dir/test/test/service_client_test.cpp.s
+.PHONY : test/test/service_client_test.cpp.s
+
+test/test/service_server_test.o: test/test/service_server_test.cpp.o
+
+.PHONY : test/test/service_server_test.o
+
+# target to build an object file
+test/test/service_server_test.cpp.o:
+	$(MAKE) -f CMakeFiles/service_server_test.dir/build.make CMakeFiles/service_server_test.dir/test/test/service_server_test.cpp.o
+.PHONY : test/test/service_server_test.cpp.o
+
+test/test/service_server_test.i: test/test/service_server_test.cpp.i
+
+.PHONY : test/test/service_server_test.i
+
+# target to preprocess a source file
+test/test/service_server_test.cpp.i:
+	$(MAKE) -f CMakeFiles/service_server_test.dir/build.make CMakeFiles/service_server_test.dir/test/test/service_server_test.cpp.i
+.PHONY : test/test/service_server_test.cpp.i
+
+test/test/service_server_test.s: test/test/service_server_test.cpp.s
+
+.PHONY : test/test/service_server_test.s
+
+# target to generate assembly for a file
+test/test/service_server_test.cpp.s:
+	$(MAKE) -f CMakeFiles/service_server_test.dir/build.make CMakeFiles/service_server_test.dir/test/test/service_server_test.cpp.s
+.PHONY : test/test/service_server_test.cpp.s
+
+test/test/topic_pub_test.o: test/test/topic_pub_test.cpp.o
+
+.PHONY : test/test/topic_pub_test.o
+
+# target to build an object file
+test/test/topic_pub_test.cpp.o:
+	$(MAKE) -f CMakeFiles/topic_pub_test.dir/build.make CMakeFiles/topic_pub_test.dir/test/test/topic_pub_test.cpp.o
+.PHONY : test/test/topic_pub_test.cpp.o
+
+test/test/topic_pub_test.i: test/test/topic_pub_test.cpp.i
+
+.PHONY : test/test/topic_pub_test.i
+
+# target to preprocess a source file
+test/test/topic_pub_test.cpp.i:
+	$(MAKE) -f CMakeFiles/topic_pub_test.dir/build.make CMakeFiles/topic_pub_test.dir/test/test/topic_pub_test.cpp.i
+.PHONY : test/test/topic_pub_test.cpp.i
+
+test/test/topic_pub_test.s: test/test/topic_pub_test.cpp.s
+
+.PHONY : test/test/topic_pub_test.s
+
+# target to generate assembly for a file
+test/test/topic_pub_test.cpp.s:
+	$(MAKE) -f CMakeFiles/topic_pub_test.dir/build.make CMakeFiles/topic_pub_test.dir/test/test/topic_pub_test.cpp.s
+.PHONY : test/test/topic_pub_test.cpp.s
+
+test/test/topic_sub_test.o: test/test/topic_sub_test.cpp.o
+
+.PHONY : test/test/topic_sub_test.o
+
+# target to build an object file
+test/test/topic_sub_test.cpp.o:
+	$(MAKE) -f CMakeFiles/topic_sub_test.dir/build.make CMakeFiles/topic_sub_test.dir/test/test/topic_sub_test.cpp.o
+.PHONY : test/test/topic_sub_test.cpp.o
+
+test/test/topic_sub_test.i: test/test/topic_sub_test.cpp.i
+
+.PHONY : test/test/topic_sub_test.i
+
+# target to preprocess a source file
+test/test/topic_sub_test.cpp.i:
+	$(MAKE) -f CMakeFiles/topic_sub_test.dir/build.make CMakeFiles/topic_sub_test.dir/test/test/topic_sub_test.cpp.i
+.PHONY : test/test/topic_sub_test.cpp.i
+
+test/test/topic_sub_test.s: test/test/topic_sub_test.cpp.s
+
+.PHONY : test/test/topic_sub_test.s
+
+# target to generate assembly for a file
+test/test/topic_sub_test.cpp.s:
+	$(MAKE) -f CMakeFiles/topic_sub_test.dir/build.make CMakeFiles/topic_sub_test.dir/test/test/topic_sub_test.cpp.s
+.PHONY : test/test/topic_sub_test.cpp.s
+
 tools/com_bag.o: tools/com_bag.cpp.o
 
 .PHONY : tools/com_bag.o
@@ -839,20 +1079,26 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... action_test"
-	@echo "... service_test"
-	@echo "... com_multicast_sender"
-	@echo "... com_router"
-	@echo "... com_bag"
-	@echo "... com_ipc_py"
-	@echo "... com_ipc"
-	@echo "... pub_zerocopy"
-	@echo "... sub_zerocopy"
-	@echo "... multi_node_test"
-	@echo "... com_node"
+	@echo "... action_client_test"
+	@echo "... action_server_test"
 	@echo "... com_topic"
+	@echo "... com_node"
+	@echo "... multi_node_test"
+	@echo "... sub_zerocopy"
+	@echo "... pub_zerocopy"
+	@echo "... rebuild_cache"
+	@echo "... com_ipc"
+	@echo "... com_ipc_py"
+	@echo "... topic_sub_test"
+	@echo "... service_server_test"
+	@echo "... com_router"
+	@echo "... com_multicast_sender"
+	@echo "... service_test"
+	@echo "... action_test"
+	@echo "... topic_pub_test"
+	@echo "... com_bag"
+	@echo "... service_client_test"
 	@echo "... src/api/action_client.o"
 	@echo "... src/api/action_client.i"
 	@echo "... src/api/action_client.s"
@@ -901,6 +1147,24 @@ help:
 	@echo "... test/sub_zerocopy.o"
 	@echo "... test/sub_zerocopy.i"
 	@echo "... test/sub_zerocopy.s"
+	@echo "... test/test/action_client_test.o"
+	@echo "... test/test/action_client_test.i"
+	@echo "... test/test/action_client_test.s"
+	@echo "... test/test/action_server_test.o"
+	@echo "... test/test/action_server_test.i"
+	@echo "... test/test/action_server_test.s"
+	@echo "... test/test/service_client_test.o"
+	@echo "... test/test/service_client_test.i"
+	@echo "... test/test/service_client_test.s"
+	@echo "... test/test/service_server_test.o"
+	@echo "... test/test/service_server_test.i"
+	@echo "... test/test/service_server_test.s"
+	@echo "... test/test/topic_pub_test.o"
+	@echo "... test/test/topic_pub_test.i"
+	@echo "... test/test/topic_pub_test.s"
+	@echo "... test/test/topic_sub_test.o"
+	@echo "... test/test/topic_sub_test.i"
+	@echo "... test/test/topic_sub_test.s"
 	@echo "... tools/com_bag.o"
 	@echo "... tools/com_bag.i"
 	@echo "... tools/com_bag.s"

@@ -25,6 +25,7 @@
 #include <vector>
 #include <utility>
 #include <atomic>
+#include <dirent.h>
 
 // 全局退出标志声明
 extern volatile sig_atomic_t g_shutdown_requested;
@@ -45,7 +46,9 @@ extern volatile sig_atomic_t g_shutdown_requested;
 
 //内存池配置
 #define SHM_POOL_NAME "/com_ipc_pool"
-#define POOL_SIZE (100 * 1024 * 1024) // 分配 100MB 的超大共享内存池
+#define POOL_BLOCK_SIZE (4 * 1024) // 4KB per block
+#define POOL_BLOCK_COUNT 25600     // 100MB 总容量 (25600 * 4KB = 100MB)
+#define POOL_SIZE (POOL_BLOCK_SIZE * POOL_BLOCK_COUNT) // 分配 100MB 的超大共享内存池
 
 // ==================== 核心数据结构与枚举 ====================
 
@@ -150,10 +153,16 @@ struct TopicShm {
     uint32_t seq;                 // 全局消息序号
     int active_subscribers;       // 活跃订阅者计数
 
+    // 【新增】：记录当前共享内存实际创建的队列深度
+    uint32_t capacity;
+
     struct Slot {
             MessageHeader header;
-            // 【删除了 char data[MAX_MSG_SIZE];】 现在的队列只存几十字节的 Header！极其轻量！
-        } buffer[BUFFER_SIZE];
+        } buffer[0];
+
+    // // 【核心黑科技】：柔性数组（必须放在结构体的最后面）
+    // // 它本身不占用结构体的 sizeof 空间，其实际大小由创建共享内存时的 ftruncate 决定
+    // Slot buffer[0];
 };
 
 // 话题元信息
@@ -194,8 +203,16 @@ struct SystemManagerShm {
 
 // 内存池的共享内存头结构
 struct MemoryPoolShm {
-    pthread_mutex_t mutex; // 内存分配专属锁
-    uint32_t head_offset;  // 内存池当前分配游标
+    pthread_mutex_t mutex; // 仅在 allocate 时使用的分配锁
+    
+    // 【新增】：核心引用计数阵列。0 表示空闲，>0 表示有多少个节点/队列正在使用它
+    // std::atomic 在 C++ 中通常被编译为标准的 lock xadd 指令，跨进程共享是安全的
+    std::atomic<int> ref_counts[POOL_BLOCK_COUNT]; 
+    
+    // 【新增】：记录单次分配占据了多少个 Block，方便释放时一并回收
+    uint32_t alloc_lengths[POOL_BLOCK_COUNT];      
+    
+    uint32_t search_cursor; // 查找空闲块的游标
 };
 
 

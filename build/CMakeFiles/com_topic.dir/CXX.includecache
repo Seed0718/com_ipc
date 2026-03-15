@@ -93,6 +93,8 @@ com_ipc/api/service_client.h
 ../inc/com_ipc/api/com_ipc/api/service_client.h
 com_ipc/api/service_server.h
 ../inc/com_ipc/api/com_ipc/api/service_server.h
+com_ipc/core/executor.h
+../inc/com_ipc/api/com_ipc/core/executor.h
 
 ../inc/com_ipc/api/publisher.h
 string
@@ -165,6 +167,8 @@ com_ipc/core/system_manager.h
 ../inc/com_ipc/api/com_ipc/core/system_manager.h
 com_ipc/core/memory_pool.h
 ../inc/com_ipc/api/com_ipc/core/memory_pool.h
+com_ipc/core/executor.h
+../inc/com_ipc/api/com_ipc/core/executor.h
 
 ../inc/com_ipc/core/com_ipc_types.h
 stdint.h
@@ -208,6 +212,24 @@ map
 vector
 -
 utility
+-
+atomic
+-
+dirent.h
+-
+
+../inc/com_ipc/core/executor.h
+vector
+-
+queue
+-
+thread
+-
+mutex
+-
+condition_variable
+-
+functional
 -
 atomic
 -

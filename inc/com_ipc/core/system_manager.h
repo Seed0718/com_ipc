@@ -12,7 +12,8 @@ public:
     static void destroy(); // 彻底清理 /dev/shm 下的文件
     static void spin(); // 【新增】：阻塞当前线程，直到收到退出信号
     
-    TopicShm* createOrGetTopic(const std::string& name, bool is_publisher);
+    // 将原有的声明修改为带有 history_depth 参数（默认给 10 防御）
+    TopicShm* createOrGetTopic(const std::string& name, bool is_publisher, uint32_t history_depth = 10);
     ServiceShm* createOrGetService(const std::string& name, bool is_server);
 
     void listTopics();

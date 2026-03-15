@@ -6,7 +6,7 @@ namespace com_ipc {
 PublisherBase::PublisherBase(const std::string& topic_name, const QoSProfile& qos) 
     : topic_name_(topic_name), qos_(qos), shm_ptr_(nullptr) 
 {
-    shm_ptr_ = SystemManager::instance()->createOrGetTopic(topic_name, true);
+    shm_ptr_ = SystemManager::instance()->createOrGetTopic(topic_name, true, qos_.depth);
     if (!shm_ptr_) {
         throw std::runtime_error("Publisher failed to create/get topic: " + topic_name);
     }
@@ -24,7 +24,13 @@ bool PublisherBase::publishRaw(const void* data, size_t size, MessageType type) 
     std::memcpy(target_ptr, data, size);
 
     SystemManager::instance()->lockRobust(&shm_ptr_->mutex);
-    int slot = shm_ptr_->write_index % BUFFER_SIZE;
+    // 换成动态 capacity
+    int slot = shm_ptr_->write_index % shm_ptr_->capacity;
+    // 【新增】：如果这个槽位有旧数据，队列即将覆盖它，因此剥夺队列的引用权
+    if (shm_ptr_->write_index >= BUFFER_SIZE) {
+        uint32_t old_offset = shm_ptr_->buffer[slot].header.pool_offset;
+        MemoryPool::instance()->releaseRef(old_offset);
+    }
     shm_ptr_->buffer[slot].header.seq = ++shm_ptr_->seq;
     shm_ptr_->buffer[slot].header.timestamp = time(nullptr);
     shm_ptr_->buffer[slot].header.data_size = size;
@@ -48,6 +54,11 @@ bool PublisherBase::publishLoaned(void* data_ptr, size_t size, MessageType type)
     uint32_t offset = MemoryPool::instance()->getOffset(data_ptr);
     SystemManager::instance()->lockRobust(&shm_ptr_->mutex);
     int slot = shm_ptr_->write_index % BUFFER_SIZE;
+    // 【新增】：如果这个槽位有旧数据，队列即将覆盖它，因此剥夺队列的引用权
+    if (shm_ptr_->write_index >= BUFFER_SIZE) {
+        uint32_t old_offset = shm_ptr_->buffer[slot].header.pool_offset;
+        MemoryPool::instance()->releaseRef(old_offset);
+    }
     shm_ptr_->buffer[slot].header.seq = ++shm_ptr_->seq;
     shm_ptr_->buffer[slot].header.timestamp = time(nullptr);
     shm_ptr_->buffer[slot].header.data_size = size;

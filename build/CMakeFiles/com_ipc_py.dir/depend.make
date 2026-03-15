@@ -11,6 +11,7 @@ CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.o: ../inc/com_ipc/api/service_s
 CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.o: ../inc/com_ipc/api/subscriber.h
 CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.o: ../inc/com_ipc/api/udp_node.h
 CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.o: ../inc/com_ipc/core/com_ipc_types.h
+CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.o: ../inc/com_ipc/core/executor.h
 CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.o: ../inc/com_ipc/core/memory_pool.h
 CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.o: ../inc/com_ipc/core/protocol.h
 CMakeFiles/com_ipc_py.dir/src/pybind_wrapper.cpp.o: ../inc/com_ipc/core/system_manager.h

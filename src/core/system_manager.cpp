@@ -56,32 +56,96 @@ SystemManager* SystemManager::instance() {
 
 SystemManager::SystemManager() {
     bool is_first_creator = false;
+    bool need_wipe = false;
     
-    // 1. 尝试使用 O_CREAT | O_EXCL 创建全新的全局共享内存文件
-    shm_fd_ = shm_open(SHM_MGR_NAME, O_CREAT | O_EXCL | O_RDWR, 0666);
+    // 1. 尝试以读写模式打开现有的全局管理器文件
+    shm_fd_ = shm_open(SHM_MGR_NAME, O_RDWR, 0666);
     if (shm_fd_ >= 0) {
-        is_first_creator = true;
-        // 刚创建的文件大小为0，必须 truncate 到我们结构体的大小
-        if (ftruncate(shm_fd_, sizeof(SystemManagerShm)) == -1) {
-            perror("ftruncate mgr");
+        // 文件存在！此时不能盲目信任，必须检查是否是上一次崩溃遗留的僵尸系统
+        SystemManagerShm* temp_ptr = (SystemManagerShm*)mmap(NULL, sizeof(SystemManagerShm), 
+                                                             PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd_, 0);
+        if (temp_ptr != MAP_FAILED) {
+            bool any_alive = false;
+            
+            // 遍历户口本，看看还有没有活着的进程
+            for (int i = 0; i < MAX_NODES; ++i) {
+                if (temp_ptr->nodes[i].active) {
+                    // kill(pid, 0) 返回 0 表示进程存在，返回 -1 且 errno == ESRCH 表示进程已死
+                    if (kill(temp_ptr->nodes[i].pid, 0) == 0) {
+                        any_alive = true; // 发现活口！系统还在正常运行中
+                        break;
+                    }
+                }
+            }
+            
+            // 如果名册上有人，但全死光了，说明这是前朝遗迹
+            if (!any_alive && temp_ptr->node_count > 0) {
+                std::cout << "[SYSTEM MANAGER] 💀 Detected completely dead system state! Initiating auto-wipe..." << std::endl;
+                need_wipe = true;
+            }
+            munmap(temp_ptr, sizeof(SystemManagerShm));
         }
-    } else if (errno == EEXIST) {
-        // 如果报文件已存在，说明其他进程已经创建好了，直接以读写模式打开
-        shm_fd_ = shm_open(SHM_MGR_NAME, O_RDWR, 0666);
-        if (shm_fd_ < 0) throw std::runtime_error("Failed to open existing SystemManager shm");
+        close(shm_fd_);
     } else {
-        throw std::runtime_error("shm_open mgr failed");
+        // 文件根本不存在，说明这是开天辟地的第一次启动
+        is_first_creator = true;
     }
 
-    // 2. 将文件映射到当前进程的虚拟地址空间
+    // ==========================================
+    // 🧹 2. 自动清道夫逻辑：模拟 rm -rf /dev/shm/*
+    // ==========================================
+    if (need_wipe) {
+        DIR *dir = opendir("/dev/shm");
+        if (dir) {
+            struct dirent *ent;
+            while ((ent = readdir(dir)) != NULL) {
+                // 精准狙击：只删本框架产生的文件，防止误伤系统其他应用的数据
+                if (strncmp(ent->d_name, "ros_ipc_", 8) == 0 || 
+                    strncmp(ent->d_name, "com_ipc_", 8) == 0) {
+                    std::string full_path = std::string("/dev/shm/") + ent->d_name;
+                    unlink(full_path.c_str());
+                    std::cout << "[WIPE] Deleted orphaned SHM: " << ent->d_name << std::endl;
+                }
+            }
+            closedir(dir);
+        }
+        // 清理完毕后，当前节点顺理成章成为新的造物主
+        is_first_creator = true;
+    }
+
+    // ==========================================
+    // 🚀 3. 正常的初始化流程
+    // ==========================================
+    if (is_first_creator) {
+        // 独占模式创建全新的文件
+        shm_fd_ = shm_open(SHM_MGR_NAME, O_CREAT | O_EXCL | O_RDWR, 0666);
+        if (shm_fd_ >= 0) {
+            if (ftruncate(shm_fd_, sizeof(SystemManagerShm)) == -1) {
+                perror("ftruncate mgr");
+            }
+        } else {
+            throw std::runtime_error("Failed to create SystemManager shm after wipe.");
+        }
+    } else {
+        // 加入现有的健康系统
+        shm_fd_ = shm_open(SHM_MGR_NAME, O_RDWR, 0666);
+        if (shm_fd_ < 0) throw std::runtime_error("Failed to open existing SystemManager shm");
+    }
+
+    // 4. 将文件映射到虚拟地址空间
     shm_ptr_ = (SystemManagerShm*)mmap(NULL, sizeof(SystemManagerShm), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd_, 0);
     if (shm_ptr_ == MAP_FAILED) throw std::runtime_error("mmap SystemManager failed");
 
-    // 3. 只有首个创建该内存的进程才负责初始化里面的互斥锁和计数值
+    // 5. 初始化锁和计数器
     if (is_first_creator) {
         initRobustMutex(&shm_ptr_->mutex);
         shm_ptr_->topic_count = 0;
         shm_ptr_->service_count = 0;
+        shm_ptr_->node_count = 0;
+        for(int i=0; i<MAX_NODES; ++i) {
+            shm_ptr_->nodes[i].active = false;
+        }
+        std::cout << "[SYSTEM MANAGER] System started fresh." << std::endl;
     }
 }
 
@@ -116,34 +180,35 @@ void SystemManager::listTopics() {
 
 
 // 获取或创建话题共享内存空间
-TopicShm* SystemManager::createOrGetTopic(const std::string& name, bool is_publisher) {
+TopicShm* SystemManager::createOrGetTopic(const std::string& name, bool is_publisher, uint32_t history_depth) {
     std::string shm_name = std::string(SHM_TOPIC_PREFIX) + name;
-
     for (size_t i = 1; i < shm_name.length(); ++i) {
         if (shm_name[i] == '/') shm_name[i] = '_';
     }
     
     lockRobust(&shm_ptr_->mutex);
 
-    // 1. 在全局注册表中查找该话题是否已存在
+    // 1. 查找现有话题
     for (int i = 0; i < shm_ptr_->topic_count; ++i) {
         if (shm_ptr_->topics[i].active && strncmp(shm_ptr_->topics[i].name, name.c_str(), 64) == 0) {
             pthread_mutex_unlock(&shm_ptr_->mutex);
             
-            // 如果已存在，打开对应的 POSIX 文件并映射
             int fd = shm_open(shm_name.c_str(), O_RDWR, 0666);
             if (fd < 0) return nullptr;
             
-            TopicShm* ptr = (TopicShm*)mmap(NULL, sizeof(TopicShm), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
-            close(fd);
-            
-            // 【核心修复 1】：严格检查 MAP_FAILED，如果映射失败直接返回 nullptr
-            if (ptr == MAP_FAILED) {
-                perror("mmap existing topic shm failed");
+            // 【核心重构】：利用 fstat 获取这个文件实际的物理大小，而不是瞎猜！
+            struct stat st;
+            if (fstat(fd, &st) == -1) {
+                close(fd);
                 return nullptr;
             }
             
-            // 订阅者接入时增加活跃计数
+            // 按照其实际大小进行动态 mmap 映射
+            TopicShm* ptr = (TopicShm*)mmap(NULL, st.st_size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+            close(fd);
+            
+            if (ptr == MAP_FAILED) return nullptr;
+            
             if (!is_publisher) {
                 lockRobust(&ptr->mutex);
                 ptr->active_subscribers++;
@@ -153,66 +218,53 @@ TopicShm* SystemManager::createOrGetTopic(const std::string& name, bool is_publi
         }
     }
 
-    // 2. 如果话题不存在，且当前调用者是订阅者，则不负责创建，返回 nullptr
     if (!is_publisher) {
         pthread_mutex_unlock(&shm_ptr_->mutex);
         return nullptr;
     }
 
-    // 3. 发布者负责创建全新的话题共享内存
     if (shm_ptr_->topic_count >= MAX_TOPICS) {
         pthread_mutex_unlock(&shm_ptr_->mutex);
-        std::cerr << "Max topics reached\n";
         return nullptr;
     }
 
-    // 尝试以独占模式创建共享内存文件
     int fd = shm_open(shm_name.c_str(), O_CREAT | O_EXCL | O_RDWR, 0666);
     if (fd < 0) {
-        // 【核心修复 2】：处理孤儿残留文件。全局管理器没有记录，但系统里有同名文件
         if (errno == EEXIST) {
-            std::cerr << "[WARNING] Orphaned topic shm found, reclaiming: " << shm_name << "\n";
-            // 强制删除系统里的残留文件
             shm_unlink(shm_name.c_str());
-            // 再次尝试独占创建
             fd = shm_open(shm_name.c_str(), O_CREAT | O_EXCL | O_RDWR, 0666);
         }
-        
-        // 如果依然失败（比如权限不够等其他原因），返回 nullptr
         if (fd < 0) {
-            perror("shm_open create topic failed");
             pthread_mutex_unlock(&shm_ptr_->mutex);
             return nullptr;
         }
     }
 
-    // 设置文件大小（已添加返回值安全校验）
-    if (ftruncate(fd, sizeof(TopicShm)) == -1) {
-        perror("ftruncate topic shm failed");
+    // 【核心重构】：精确计算创建时所需的总内存大小 = 头部结构体大小 + (深度 * 每个槽位的大小)
+    size_t total_shm_size = sizeof(TopicShm) + (history_depth * sizeof(TopicShm::Slot));
+
+    if (ftruncate(fd, total_shm_size) == -1) {
         close(fd);
         pthread_mutex_unlock(&shm_ptr_->mutex);
         return nullptr;
     }
 
-    // 映射到内存
-    TopicShm* ptr = (TopicShm*)mmap(NULL, sizeof(TopicShm), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+    TopicShm* ptr = (TopicShm*)mmap(NULL, total_shm_size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
     close(fd);
 
-    // 【核心修复 3】：严格检查 MAP_FAILED，并返回 nullptr
     if (ptr == MAP_FAILED) {
-        perror("mmap new topic shm failed");
         pthread_mutex_unlock(&shm_ptr_->mutex);
         return nullptr;
     }
 
-    // 初始化该话题专属的鲁棒互斥锁和条件变量
     initRobustMutex(&ptr->mutex);
     initSharedCond(&ptr->cond_new_msg);
     ptr->write_index = 0;
     ptr->seq = 0;
     ptr->active_subscribers = 0;
+    // 【记录真实深度】，下游订阅者就知道该怎么取余数了！
+    ptr->capacity = history_depth; 
 
-    // 在全局管理器中登记该话题
     int idx = shm_ptr_->topic_count++;
     strncpy(shm_ptr_->topics[idx].name, name.c_str(), 63);
     shm_ptr_->topics[idx].active = true;

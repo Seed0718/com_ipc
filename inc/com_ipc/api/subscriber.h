@@ -13,6 +13,7 @@
 #include "com_ipc/core/com_ipc_types.h"
 #include "com_ipc/core/system_manager.h"
 #include "com_ipc/core/memory_pool.h"
+#include "com_ipc/core/executor.h"
 
 extern volatile sig_atomic_t g_shutdown_requested;
 
@@ -26,6 +27,9 @@ struct LoanedMessage {
     size_t size;
     uint32_t seq;
 };
+
+// // 【新增】：任务投递器类型，彻底解耦执行器
+// using TaskSubmitter = std::function<void(std::function<void()>)>;
 
 // ==========================================
 // 2. 非模板基类：处理 OS 级别的条件变量同步与共享内存读写
@@ -42,7 +46,13 @@ public:
     bool receiveLoaned(LoanedMessage& msg, int timeout_ms = 1000);
 
     using RawMessageCallback = std::function<void(const LoanedMessage&)>;
-    void registerRawCallback(RawMessageCallback cb);
+    // void registerRawCallback(RawMessageCallback cb);
+    // 【修改】：注册回调时，接收 Executor 指针
+    void registerRawCallback(RawMessageCallback cb, MultiThreadedExecutor* executor = nullptr);
+
+    // 【新增】：看门狗回调类型与注册接口
+    using DeadlineCallback = std::function<void()>;
+    void registerDeadlineCallback(DeadlineCallback cb);
 
 protected:
     std::string topic_name_;
@@ -58,6 +68,18 @@ protected:
 
     
     void asyncLoop(); // 后台死循环收件人
+
+    // 【新增】：看门狗相关底层资源
+    DeadlineCallback deadline_callback_;
+    std::thread watchdog_thread_;
+    std::atomic<bool> watchdog_running_{false};
+    std::atomic<uint64_t> last_recv_time_ms_{0}; // 记录最后一次收到消息的绝对时间
+    std::atomic<bool> is_alive_{false};          // 边缘触发状态机标记
+
+    void watchdogLoop();           // 看门狗死循环
+    uint64_t getCurrentTimeMs() const; // 获取系统时间的辅助函数
+
+    MultiThreadedExecutor* executor_;
 
 };
 
@@ -96,13 +118,21 @@ public:
         return nullptr;
     }
 
-    // 注册强类型异步回调 (核心体验升级)
-    void registerCallback(TypedMessageCallback cb) {
+    // // 注册强类型异步回调 (核心体验升级)
+    // void registerCallback(TypedMessageCallback cb) {
+    //     auto raw_cb = [cb](const LoanedMessage& msg) {
+    //         // 收到底层 void* 数据后，强转为 T* 并直接丢给用户
+    //         cb(static_cast<const T*>(msg.data));
+    //     };
+    //     this->registerRawCallback(raw_cb);
+    // }
+
+    // 【修改】：向下传递 Executor 指针
+    void registerCallback(TypedMessageCallback cb, MultiThreadedExecutor* executor = nullptr) {
         auto raw_cb = [cb](const LoanedMessage& msg) {
-            // 收到底层 void* 数据后，强转为 T* 并直接丢给用户
             cb(static_cast<const T*>(msg.data));
         };
-        this->registerRawCallback(raw_cb);
+        this->registerRawCallback(raw_cb, executor);
     }
 };
 

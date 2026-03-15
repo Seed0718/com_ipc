@@ -14,6 +14,10 @@ public:
     // 根据偏移量获取真实指针
     void* getPointer(uint32_t offset);
 
+    // 【新增】引用计数控制
+    void addRef(uint32_t offset);
+    void releaseRef(uint32_t offset);
+
     // 根据真实指针，反向计算出偏移量 (取件码)
     uint32_t getOffset(void* ptr);
 

@@ -111,3 +111,30 @@ target_link_libraries(service_test PRIVATE com_ipc)
 # 编译 Action 测试程序
 add_executable(action_test test/action_test.cpp)
 target_link_libraries(action_test PRIVATE com_ipc)
+
+# ==========================================
+# 编译 Topic 通信例程
+# ==========================================
+add_executable(topic_pub_test test/test/topic_pub_test.cpp)
+target_link_libraries(topic_pub_test com_ipc pthread rt)
+
+add_executable(topic_sub_test test/test/topic_sub_test.cpp)
+target_link_libraries(topic_sub_test com_ipc pthread rt)
+
+# ==========================================
+# 编译 Service 通信例程
+# ==========================================
+add_executable(service_server_test test/test/service_server_test.cpp)
+target_link_libraries(service_server_test com_ipc pthread rt)
+
+add_executable(service_client_test test/test/service_client_test.cpp)
+target_link_libraries(service_client_test com_ipc pthread rt)
+
+# ==========================================
+# 编译 Action 通信例程
+# ==========================================
+add_executable(action_server_test test/test/action_server_test.cpp)
+target_link_libraries(action_server_test com_ipc pthread rt)
+
+add_executable(action_client_test test/test/action_client_test.cpp)
+target_link_libraries(action_client_test com_ipc pthread rt)

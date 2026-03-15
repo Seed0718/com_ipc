@@ -60,372 +60,113 @@ CMAKE_SOURCE_DIR = /home/seed/Demo/com_ipc
 CMAKE_BINARY_DIR = /home/seed/Demo/com_ipc/build
 
 #=============================================================================
-# Target rules for target CMakeFiles/action_test.dir
+# Target rules for target CMakeFiles/action_client_test.dir
 
 # All Build rule for target.
-CMakeFiles/action_test.dir/all: CMakeFiles/com_ipc.dir/all
-	$(MAKE) -f CMakeFiles/action_test.dir/build.make CMakeFiles/action_test.dir/depend
-	$(MAKE) -f CMakeFiles/action_test.dir/build.make CMakeFiles/action_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=1,2 "Built target action_test"
-.PHONY : CMakeFiles/action_test.dir/all
+CMakeFiles/action_client_test.dir/all: CMakeFiles/com_ipc.dir/all
+	$(MAKE) -f CMakeFiles/action_client_test.dir/build.make CMakeFiles/action_client_test.dir/depend
+	$(MAKE) -f CMakeFiles/action_client_test.dir/build.make CMakeFiles/action_client_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=1,2 "Built target action_client_test"
+.PHONY : CMakeFiles/action_client_test.dir/all
 
 # Include target in all.
-all: CMakeFiles/action_test.dir/all
+all: CMakeFiles/action_client_test.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/action_test.dir/rule: cmake_check_build_system
+CMakeFiles/action_client_test.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/action_test.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/action_client_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
-.PHONY : CMakeFiles/action_test.dir/rule
+.PHONY : CMakeFiles/action_client_test.dir/rule
 
 # Convenience name for target.
-action_test: CMakeFiles/action_test.dir/rule
+action_client_test: CMakeFiles/action_client_test.dir/rule
 
-.PHONY : action_test
-
-# clean rule for target.
-CMakeFiles/action_test.dir/clean:
-	$(MAKE) -f CMakeFiles/action_test.dir/build.make CMakeFiles/action_test.dir/clean
-.PHONY : CMakeFiles/action_test.dir/clean
+.PHONY : action_client_test
 
 # clean rule for target.
-clean: CMakeFiles/action_test.dir/clean
+CMakeFiles/action_client_test.dir/clean:
+	$(MAKE) -f CMakeFiles/action_client_test.dir/build.make CMakeFiles/action_client_test.dir/clean
+.PHONY : CMakeFiles/action_client_test.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/action_client_test.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/service_test.dir
+# Target rules for target CMakeFiles/action_server_test.dir
 
 # All Build rule for target.
-CMakeFiles/service_test.dir/all: CMakeFiles/com_ipc.dir/all
-	$(MAKE) -f CMakeFiles/service_test.dir/build.make CMakeFiles/service_test.dir/depend
-	$(MAKE) -f CMakeFiles/service_test.dir/build.make CMakeFiles/service_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=30,31 "Built target service_test"
-.PHONY : CMakeFiles/service_test.dir/all
+CMakeFiles/action_server_test.dir/all: CMakeFiles/com_ipc.dir/all
+	$(MAKE) -f CMakeFiles/action_server_test.dir/build.make CMakeFiles/action_server_test.dir/depend
+	$(MAKE) -f CMakeFiles/action_server_test.dir/build.make CMakeFiles/action_server_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=3,4 "Built target action_server_test"
+.PHONY : CMakeFiles/action_server_test.dir/all
 
 # Include target in all.
-all: CMakeFiles/service_test.dir/all
+all: CMakeFiles/action_server_test.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/service_test.dir/rule: cmake_check_build_system
+CMakeFiles/action_server_test.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/service_test.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/action_server_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
-.PHONY : CMakeFiles/service_test.dir/rule
+.PHONY : CMakeFiles/action_server_test.dir/rule
 
 # Convenience name for target.
-service_test: CMakeFiles/service_test.dir/rule
+action_server_test: CMakeFiles/action_server_test.dir/rule
 
-.PHONY : service_test
-
-# clean rule for target.
-CMakeFiles/service_test.dir/clean:
-	$(MAKE) -f CMakeFiles/service_test.dir/build.make CMakeFiles/service_test.dir/clean
-.PHONY : CMakeFiles/service_test.dir/clean
+.PHONY : action_server_test
 
 # clean rule for target.
-clean: CMakeFiles/service_test.dir/clean
+CMakeFiles/action_server_test.dir/clean:
+	$(MAKE) -f CMakeFiles/action_server_test.dir/build.make CMakeFiles/action_server_test.dir/clean
+.PHONY : CMakeFiles/action_server_test.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/action_server_test.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/com_multicast_sender.dir
+# Target rules for target CMakeFiles/com_topic.dir
 
 # All Build rule for target.
-CMakeFiles/com_multicast_sender.dir/all: CMakeFiles/com_ipc.dir/all
-	$(MAKE) -f CMakeFiles/com_multicast_sender.dir/build.make CMakeFiles/com_multicast_sender.dir/depend
-	$(MAKE) -f CMakeFiles/com_multicast_sender.dir/build.make CMakeFiles/com_multicast_sender.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=18,19 "Built target com_multicast_sender"
-.PHONY : CMakeFiles/com_multicast_sender.dir/all
+CMakeFiles/com_topic.dir/all: CMakeFiles/com_ipc.dir/all
+	$(MAKE) -f CMakeFiles/com_topic.dir/build.make CMakeFiles/com_topic.dir/depend
+	$(MAKE) -f CMakeFiles/com_topic.dir/build.make CMakeFiles/com_topic.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=28,29 "Built target com_topic"
+.PHONY : CMakeFiles/com_topic.dir/all
 
 # Include target in all.
-all: CMakeFiles/com_multicast_sender.dir/all
+all: CMakeFiles/com_topic.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/com_multicast_sender.dir/rule: cmake_check_build_system
+CMakeFiles/com_topic.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/com_multicast_sender.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/com_topic.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
-.PHONY : CMakeFiles/com_multicast_sender.dir/rule
+.PHONY : CMakeFiles/com_topic.dir/rule
 
 # Convenience name for target.
-com_multicast_sender: CMakeFiles/com_multicast_sender.dir/rule
+com_topic: CMakeFiles/com_topic.dir/rule
 
-.PHONY : com_multicast_sender
-
-# clean rule for target.
-CMakeFiles/com_multicast_sender.dir/clean:
-	$(MAKE) -f CMakeFiles/com_multicast_sender.dir/build.make CMakeFiles/com_multicast_sender.dir/clean
-.PHONY : CMakeFiles/com_multicast_sender.dir/clean
+.PHONY : com_topic
 
 # clean rule for target.
-clean: CMakeFiles/com_multicast_sender.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/com_router.dir
-
-# All Build rule for target.
-CMakeFiles/com_router.dir/all: CMakeFiles/com_ipc.dir/all
-	$(MAKE) -f CMakeFiles/com_router.dir/build.make CMakeFiles/com_router.dir/depend
-	$(MAKE) -f CMakeFiles/com_router.dir/build.make CMakeFiles/com_router.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=22,23 "Built target com_router"
-.PHONY : CMakeFiles/com_router.dir/all
-
-# Include target in all.
-all: CMakeFiles/com_router.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/com_router.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/com_router.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
-.PHONY : CMakeFiles/com_router.dir/rule
-
-# Convenience name for target.
-com_router: CMakeFiles/com_router.dir/rule
-
-.PHONY : com_router
+CMakeFiles/com_topic.dir/clean:
+	$(MAKE) -f CMakeFiles/com_topic.dir/build.make CMakeFiles/com_topic.dir/clean
+.PHONY : CMakeFiles/com_topic.dir/clean
 
 # clean rule for target.
-CMakeFiles/com_router.dir/clean:
-	$(MAKE) -f CMakeFiles/com_router.dir/build.make CMakeFiles/com_router.dir/clean
-.PHONY : CMakeFiles/com_router.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/com_router.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/com_bag.dir
-
-# All Build rule for target.
-CMakeFiles/com_bag.dir/all: CMakeFiles/com_ipc.dir/all
-	$(MAKE) -f CMakeFiles/com_bag.dir/build.make CMakeFiles/com_bag.dir/depend
-	$(MAKE) -f CMakeFiles/com_bag.dir/build.make CMakeFiles/com_bag.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=3,4 "Built target com_bag"
-.PHONY : CMakeFiles/com_bag.dir/all
-
-# Include target in all.
-all: CMakeFiles/com_bag.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/com_bag.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/com_bag.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
-.PHONY : CMakeFiles/com_bag.dir/rule
-
-# Convenience name for target.
-com_bag: CMakeFiles/com_bag.dir/rule
-
-.PHONY : com_bag
-
-# clean rule for target.
-CMakeFiles/com_bag.dir/clean:
-	$(MAKE) -f CMakeFiles/com_bag.dir/build.make CMakeFiles/com_bag.dir/clean
-.PHONY : CMakeFiles/com_bag.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/com_bag.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/com_ipc_py.dir
-
-# All Build rule for target.
-CMakeFiles/com_ipc_py.dir/all: CMakeFiles/com_ipc.dir/all
-	$(MAKE) -f CMakeFiles/com_ipc_py.dir/build.make CMakeFiles/com_ipc_py.dir/depend
-	$(MAKE) -f CMakeFiles/com_ipc_py.dir/build.make CMakeFiles/com_ipc_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=16,17 "Built target com_ipc_py"
-.PHONY : CMakeFiles/com_ipc_py.dir/all
-
-# Include target in all.
-all: CMakeFiles/com_ipc_py.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/com_ipc_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/com_ipc_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
-.PHONY : CMakeFiles/com_ipc_py.dir/rule
-
-# Convenience name for target.
-com_ipc_py: CMakeFiles/com_ipc_py.dir/rule
-
-.PHONY : com_ipc_py
-
-# clean rule for target.
-CMakeFiles/com_ipc_py.dir/clean:
-	$(MAKE) -f CMakeFiles/com_ipc_py.dir/build.make CMakeFiles/com_ipc_py.dir/clean
-.PHONY : CMakeFiles/com_ipc_py.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/com_ipc_py.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/com_ipc.dir
-
-# All Build rule for target.
-CMakeFiles/com_ipc.dir/all:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/depend
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14,15 "Built target com_ipc"
-.PHONY : CMakeFiles/com_ipc.dir/all
-
-# Include target in all.
-all: CMakeFiles/com_ipc.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/com_ipc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 11
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/com_ipc.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
-.PHONY : CMakeFiles/com_ipc.dir/rule
-
-# Convenience name for target.
-com_ipc: CMakeFiles/com_ipc.dir/rule
-
-.PHONY : com_ipc
-
-# clean rule for target.
-CMakeFiles/com_ipc.dir/clean:
-	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/clean
-.PHONY : CMakeFiles/com_ipc.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/com_ipc.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/pub_zerocopy.dir
-
-# All Build rule for target.
-CMakeFiles/pub_zerocopy.dir/all: CMakeFiles/com_ipc.dir/all
-	$(MAKE) -f CMakeFiles/pub_zerocopy.dir/build.make CMakeFiles/pub_zerocopy.dir/depend
-	$(MAKE) -f CMakeFiles/pub_zerocopy.dir/build.make CMakeFiles/pub_zerocopy.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=28,29 "Built target pub_zerocopy"
-.PHONY : CMakeFiles/pub_zerocopy.dir/all
-
-# Include target in all.
-all: CMakeFiles/pub_zerocopy.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/pub_zerocopy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/pub_zerocopy.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
-.PHONY : CMakeFiles/pub_zerocopy.dir/rule
-
-# Convenience name for target.
-pub_zerocopy: CMakeFiles/pub_zerocopy.dir/rule
-
-.PHONY : pub_zerocopy
-
-# clean rule for target.
-CMakeFiles/pub_zerocopy.dir/clean:
-	$(MAKE) -f CMakeFiles/pub_zerocopy.dir/build.make CMakeFiles/pub_zerocopy.dir/clean
-.PHONY : CMakeFiles/pub_zerocopy.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/pub_zerocopy.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/sub_zerocopy.dir
-
-# All Build rule for target.
-CMakeFiles/sub_zerocopy.dir/all: CMakeFiles/com_ipc.dir/all
-	$(MAKE) -f CMakeFiles/sub_zerocopy.dir/build.make CMakeFiles/sub_zerocopy.dir/depend
-	$(MAKE) -f CMakeFiles/sub_zerocopy.dir/build.make CMakeFiles/sub_zerocopy.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=32,33 "Built target sub_zerocopy"
-.PHONY : CMakeFiles/sub_zerocopy.dir/all
-
-# Include target in all.
-all: CMakeFiles/sub_zerocopy.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/sub_zerocopy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/sub_zerocopy.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
-.PHONY : CMakeFiles/sub_zerocopy.dir/rule
-
-# Convenience name for target.
-sub_zerocopy: CMakeFiles/sub_zerocopy.dir/rule
-
-.PHONY : sub_zerocopy
-
-# clean rule for target.
-CMakeFiles/sub_zerocopy.dir/clean:
-	$(MAKE) -f CMakeFiles/sub_zerocopy.dir/build.make CMakeFiles/sub_zerocopy.dir/clean
-.PHONY : CMakeFiles/sub_zerocopy.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/sub_zerocopy.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/multi_node_test.dir
-
-# All Build rule for target.
-CMakeFiles/multi_node_test.dir/all: CMakeFiles/com_ipc.dir/all
-	$(MAKE) -f CMakeFiles/multi_node_test.dir/build.make CMakeFiles/multi_node_test.dir/depend
-	$(MAKE) -f CMakeFiles/multi_node_test.dir/build.make CMakeFiles/multi_node_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=26,27 "Built target multi_node_test"
-.PHONY : CMakeFiles/multi_node_test.dir/all
-
-# Include target in all.
-all: CMakeFiles/multi_node_test.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/multi_node_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/multi_node_test.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
-.PHONY : CMakeFiles/multi_node_test.dir/rule
-
-# Convenience name for target.
-multi_node_test: CMakeFiles/multi_node_test.dir/rule
-
-.PHONY : multi_node_test
-
-# clean rule for target.
-CMakeFiles/multi_node_test.dir/clean:
-	$(MAKE) -f CMakeFiles/multi_node_test.dir/build.make CMakeFiles/multi_node_test.dir/clean
-.PHONY : CMakeFiles/multi_node_test.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/multi_node_test.dir/clean
+clean: CMakeFiles/com_topic.dir/clean
 
 .PHONY : clean
 
@@ -436,7 +177,7 @@ clean: CMakeFiles/multi_node_test.dir/clean
 CMakeFiles/com_node.dir/all: CMakeFiles/com_ipc.dir/all
 	$(MAKE) -f CMakeFiles/com_node.dir/build.make CMakeFiles/com_node.dir/depend
 	$(MAKE) -f CMakeFiles/com_node.dir/build.make CMakeFiles/com_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=20,21 "Built target com_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=24,25 "Built target com_node"
 .PHONY : CMakeFiles/com_node.dir/all
 
 # Include target in all.
@@ -467,39 +208,520 @@ clean: CMakeFiles/com_node.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/com_topic.dir
+# Target rules for target CMakeFiles/multi_node_test.dir
 
 # All Build rule for target.
-CMakeFiles/com_topic.dir/all: CMakeFiles/com_ipc.dir/all
-	$(MAKE) -f CMakeFiles/com_topic.dir/build.make CMakeFiles/com_topic.dir/depend
-	$(MAKE) -f CMakeFiles/com_topic.dir/build.make CMakeFiles/com_topic.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=24,25 "Built target com_topic"
-.PHONY : CMakeFiles/com_topic.dir/all
+CMakeFiles/multi_node_test.dir/all: CMakeFiles/com_ipc.dir/all
+	$(MAKE) -f CMakeFiles/multi_node_test.dir/build.make CMakeFiles/multi_node_test.dir/depend
+	$(MAKE) -f CMakeFiles/multi_node_test.dir/build.make CMakeFiles/multi_node_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=30,31 "Built target multi_node_test"
+.PHONY : CMakeFiles/multi_node_test.dir/all
 
 # Include target in all.
-all: CMakeFiles/com_topic.dir/all
+all: CMakeFiles/multi_node_test.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/com_topic.dir/rule: cmake_check_build_system
+CMakeFiles/multi_node_test.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/com_topic.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/multi_node_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
-.PHONY : CMakeFiles/com_topic.dir/rule
+.PHONY : CMakeFiles/multi_node_test.dir/rule
 
 # Convenience name for target.
-com_topic: CMakeFiles/com_topic.dir/rule
+multi_node_test: CMakeFiles/multi_node_test.dir/rule
 
-.PHONY : com_topic
-
-# clean rule for target.
-CMakeFiles/com_topic.dir/clean:
-	$(MAKE) -f CMakeFiles/com_topic.dir/build.make CMakeFiles/com_topic.dir/clean
-.PHONY : CMakeFiles/com_topic.dir/clean
+.PHONY : multi_node_test
 
 # clean rule for target.
-clean: CMakeFiles/com_topic.dir/clean
+CMakeFiles/multi_node_test.dir/clean:
+	$(MAKE) -f CMakeFiles/multi_node_test.dir/build.make CMakeFiles/multi_node_test.dir/clean
+.PHONY : CMakeFiles/multi_node_test.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/multi_node_test.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/sub_zerocopy.dir
+
+# All Build rule for target.
+CMakeFiles/sub_zerocopy.dir/all: CMakeFiles/com_ipc.dir/all
+	$(MAKE) -f CMakeFiles/sub_zerocopy.dir/build.make CMakeFiles/sub_zerocopy.dir/depend
+	$(MAKE) -f CMakeFiles/sub_zerocopy.dir/build.make CMakeFiles/sub_zerocopy.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=40,41 "Built target sub_zerocopy"
+.PHONY : CMakeFiles/sub_zerocopy.dir/all
+
+# Include target in all.
+all: CMakeFiles/sub_zerocopy.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/sub_zerocopy.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/sub_zerocopy.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
+.PHONY : CMakeFiles/sub_zerocopy.dir/rule
+
+# Convenience name for target.
+sub_zerocopy: CMakeFiles/sub_zerocopy.dir/rule
+
+.PHONY : sub_zerocopy
+
+# clean rule for target.
+CMakeFiles/sub_zerocopy.dir/clean:
+	$(MAKE) -f CMakeFiles/sub_zerocopy.dir/build.make CMakeFiles/sub_zerocopy.dir/clean
+.PHONY : CMakeFiles/sub_zerocopy.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/sub_zerocopy.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/pub_zerocopy.dir
+
+# All Build rule for target.
+CMakeFiles/pub_zerocopy.dir/all: CMakeFiles/com_ipc.dir/all
+	$(MAKE) -f CMakeFiles/pub_zerocopy.dir/build.make CMakeFiles/pub_zerocopy.dir/depend
+	$(MAKE) -f CMakeFiles/pub_zerocopy.dir/build.make CMakeFiles/pub_zerocopy.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=32,33 "Built target pub_zerocopy"
+.PHONY : CMakeFiles/pub_zerocopy.dir/all
+
+# Include target in all.
+all: CMakeFiles/pub_zerocopy.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/pub_zerocopy.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/pub_zerocopy.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
+.PHONY : CMakeFiles/pub_zerocopy.dir/rule
+
+# Convenience name for target.
+pub_zerocopy: CMakeFiles/pub_zerocopy.dir/rule
+
+.PHONY : pub_zerocopy
+
+# clean rule for target.
+CMakeFiles/pub_zerocopy.dir/clean:
+	$(MAKE) -f CMakeFiles/pub_zerocopy.dir/build.make CMakeFiles/pub_zerocopy.dir/clean
+.PHONY : CMakeFiles/pub_zerocopy.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/pub_zerocopy.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/com_ipc.dir
+
+# All Build rule for target.
+CMakeFiles/com_ipc.dir/all:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/depend
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=9,10,11,12,13,14,15,16,17,18,19 "Built target com_ipc"
+.PHONY : CMakeFiles/com_ipc.dir/all
+
+# Include target in all.
+all: CMakeFiles/com_ipc.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/com_ipc.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 11
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/com_ipc.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
+.PHONY : CMakeFiles/com_ipc.dir/rule
+
+# Convenience name for target.
+com_ipc: CMakeFiles/com_ipc.dir/rule
+
+.PHONY : com_ipc
+
+# clean rule for target.
+CMakeFiles/com_ipc.dir/clean:
+	$(MAKE) -f CMakeFiles/com_ipc.dir/build.make CMakeFiles/com_ipc.dir/clean
+.PHONY : CMakeFiles/com_ipc.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/com_ipc.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/com_ipc_py.dir
+
+# All Build rule for target.
+CMakeFiles/com_ipc_py.dir/all: CMakeFiles/com_ipc.dir/all
+	$(MAKE) -f CMakeFiles/com_ipc_py.dir/build.make CMakeFiles/com_ipc_py.dir/depend
+	$(MAKE) -f CMakeFiles/com_ipc_py.dir/build.make CMakeFiles/com_ipc_py.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=20,21 "Built target com_ipc_py"
+.PHONY : CMakeFiles/com_ipc_py.dir/all
+
+# Include target in all.
+all: CMakeFiles/com_ipc_py.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/com_ipc_py.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/com_ipc_py.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
+.PHONY : CMakeFiles/com_ipc_py.dir/rule
+
+# Convenience name for target.
+com_ipc_py: CMakeFiles/com_ipc_py.dir/rule
+
+.PHONY : com_ipc_py
+
+# clean rule for target.
+CMakeFiles/com_ipc_py.dir/clean:
+	$(MAKE) -f CMakeFiles/com_ipc_py.dir/build.make CMakeFiles/com_ipc_py.dir/clean
+.PHONY : CMakeFiles/com_ipc_py.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/com_ipc_py.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/topic_sub_test.dir
+
+# All Build rule for target.
+CMakeFiles/topic_sub_test.dir/all: CMakeFiles/com_ipc.dir/all
+	$(MAKE) -f CMakeFiles/topic_sub_test.dir/build.make CMakeFiles/topic_sub_test.dir/depend
+	$(MAKE) -f CMakeFiles/topic_sub_test.dir/build.make CMakeFiles/topic_sub_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=44,45 "Built target topic_sub_test"
+.PHONY : CMakeFiles/topic_sub_test.dir/all
+
+# Include target in all.
+all: CMakeFiles/topic_sub_test.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/topic_sub_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/topic_sub_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
+.PHONY : CMakeFiles/topic_sub_test.dir/rule
+
+# Convenience name for target.
+topic_sub_test: CMakeFiles/topic_sub_test.dir/rule
+
+.PHONY : topic_sub_test
+
+# clean rule for target.
+CMakeFiles/topic_sub_test.dir/clean:
+	$(MAKE) -f CMakeFiles/topic_sub_test.dir/build.make CMakeFiles/topic_sub_test.dir/clean
+.PHONY : CMakeFiles/topic_sub_test.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/topic_sub_test.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/service_server_test.dir
+
+# All Build rule for target.
+CMakeFiles/service_server_test.dir/all: CMakeFiles/com_ipc.dir/all
+	$(MAKE) -f CMakeFiles/service_server_test.dir/build.make CMakeFiles/service_server_test.dir/depend
+	$(MAKE) -f CMakeFiles/service_server_test.dir/build.make CMakeFiles/service_server_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=36,37 "Built target service_server_test"
+.PHONY : CMakeFiles/service_server_test.dir/all
+
+# Include target in all.
+all: CMakeFiles/service_server_test.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/service_server_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/service_server_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
+.PHONY : CMakeFiles/service_server_test.dir/rule
+
+# Convenience name for target.
+service_server_test: CMakeFiles/service_server_test.dir/rule
+
+.PHONY : service_server_test
+
+# clean rule for target.
+CMakeFiles/service_server_test.dir/clean:
+	$(MAKE) -f CMakeFiles/service_server_test.dir/build.make CMakeFiles/service_server_test.dir/clean
+.PHONY : CMakeFiles/service_server_test.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/service_server_test.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/com_router.dir
+
+# All Build rule for target.
+CMakeFiles/com_router.dir/all: CMakeFiles/com_ipc.dir/all
+	$(MAKE) -f CMakeFiles/com_router.dir/build.make CMakeFiles/com_router.dir/depend
+	$(MAKE) -f CMakeFiles/com_router.dir/build.make CMakeFiles/com_router.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=26,27 "Built target com_router"
+.PHONY : CMakeFiles/com_router.dir/all
+
+# Include target in all.
+all: CMakeFiles/com_router.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/com_router.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/com_router.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
+.PHONY : CMakeFiles/com_router.dir/rule
+
+# Convenience name for target.
+com_router: CMakeFiles/com_router.dir/rule
+
+.PHONY : com_router
+
+# clean rule for target.
+CMakeFiles/com_router.dir/clean:
+	$(MAKE) -f CMakeFiles/com_router.dir/build.make CMakeFiles/com_router.dir/clean
+.PHONY : CMakeFiles/com_router.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/com_router.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/com_multicast_sender.dir
+
+# All Build rule for target.
+CMakeFiles/com_multicast_sender.dir/all: CMakeFiles/com_ipc.dir/all
+	$(MAKE) -f CMakeFiles/com_multicast_sender.dir/build.make CMakeFiles/com_multicast_sender.dir/depend
+	$(MAKE) -f CMakeFiles/com_multicast_sender.dir/build.make CMakeFiles/com_multicast_sender.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=22,23 "Built target com_multicast_sender"
+.PHONY : CMakeFiles/com_multicast_sender.dir/all
+
+# Include target in all.
+all: CMakeFiles/com_multicast_sender.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/com_multicast_sender.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/com_multicast_sender.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
+.PHONY : CMakeFiles/com_multicast_sender.dir/rule
+
+# Convenience name for target.
+com_multicast_sender: CMakeFiles/com_multicast_sender.dir/rule
+
+.PHONY : com_multicast_sender
+
+# clean rule for target.
+CMakeFiles/com_multicast_sender.dir/clean:
+	$(MAKE) -f CMakeFiles/com_multicast_sender.dir/build.make CMakeFiles/com_multicast_sender.dir/clean
+.PHONY : CMakeFiles/com_multicast_sender.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/com_multicast_sender.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/service_test.dir
+
+# All Build rule for target.
+CMakeFiles/service_test.dir/all: CMakeFiles/com_ipc.dir/all
+	$(MAKE) -f CMakeFiles/service_test.dir/build.make CMakeFiles/service_test.dir/depend
+	$(MAKE) -f CMakeFiles/service_test.dir/build.make CMakeFiles/service_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=38,39 "Built target service_test"
+.PHONY : CMakeFiles/service_test.dir/all
+
+# Include target in all.
+all: CMakeFiles/service_test.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/service_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/service_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
+.PHONY : CMakeFiles/service_test.dir/rule
+
+# Convenience name for target.
+service_test: CMakeFiles/service_test.dir/rule
+
+.PHONY : service_test
+
+# clean rule for target.
+CMakeFiles/service_test.dir/clean:
+	$(MAKE) -f CMakeFiles/service_test.dir/build.make CMakeFiles/service_test.dir/clean
+.PHONY : CMakeFiles/service_test.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/service_test.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/action_test.dir
+
+# All Build rule for target.
+CMakeFiles/action_test.dir/all: CMakeFiles/com_ipc.dir/all
+	$(MAKE) -f CMakeFiles/action_test.dir/build.make CMakeFiles/action_test.dir/depend
+	$(MAKE) -f CMakeFiles/action_test.dir/build.make CMakeFiles/action_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=5,6 "Built target action_test"
+.PHONY : CMakeFiles/action_test.dir/all
+
+# Include target in all.
+all: CMakeFiles/action_test.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/action_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/action_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
+.PHONY : CMakeFiles/action_test.dir/rule
+
+# Convenience name for target.
+action_test: CMakeFiles/action_test.dir/rule
+
+.PHONY : action_test
+
+# clean rule for target.
+CMakeFiles/action_test.dir/clean:
+	$(MAKE) -f CMakeFiles/action_test.dir/build.make CMakeFiles/action_test.dir/clean
+.PHONY : CMakeFiles/action_test.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/action_test.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/topic_pub_test.dir
+
+# All Build rule for target.
+CMakeFiles/topic_pub_test.dir/all: CMakeFiles/com_ipc.dir/all
+	$(MAKE) -f CMakeFiles/topic_pub_test.dir/build.make CMakeFiles/topic_pub_test.dir/depend
+	$(MAKE) -f CMakeFiles/topic_pub_test.dir/build.make CMakeFiles/topic_pub_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=42,43 "Built target topic_pub_test"
+.PHONY : CMakeFiles/topic_pub_test.dir/all
+
+# Include target in all.
+all: CMakeFiles/topic_pub_test.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/topic_pub_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/topic_pub_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
+.PHONY : CMakeFiles/topic_pub_test.dir/rule
+
+# Convenience name for target.
+topic_pub_test: CMakeFiles/topic_pub_test.dir/rule
+
+.PHONY : topic_pub_test
+
+# clean rule for target.
+CMakeFiles/topic_pub_test.dir/clean:
+	$(MAKE) -f CMakeFiles/topic_pub_test.dir/build.make CMakeFiles/topic_pub_test.dir/clean
+.PHONY : CMakeFiles/topic_pub_test.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/topic_pub_test.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/com_bag.dir
+
+# All Build rule for target.
+CMakeFiles/com_bag.dir/all: CMakeFiles/com_ipc.dir/all
+	$(MAKE) -f CMakeFiles/com_bag.dir/build.make CMakeFiles/com_bag.dir/depend
+	$(MAKE) -f CMakeFiles/com_bag.dir/build.make CMakeFiles/com_bag.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=7,8 "Built target com_bag"
+.PHONY : CMakeFiles/com_bag.dir/all
+
+# Include target in all.
+all: CMakeFiles/com_bag.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/com_bag.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/com_bag.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
+.PHONY : CMakeFiles/com_bag.dir/rule
+
+# Convenience name for target.
+com_bag: CMakeFiles/com_bag.dir/rule
+
+.PHONY : com_bag
+
+# clean rule for target.
+CMakeFiles/com_bag.dir/clean:
+	$(MAKE) -f CMakeFiles/com_bag.dir/build.make CMakeFiles/com_bag.dir/clean
+.PHONY : CMakeFiles/com_bag.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/com_bag.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/service_client_test.dir
+
+# All Build rule for target.
+CMakeFiles/service_client_test.dir/all: CMakeFiles/com_ipc.dir/all
+	$(MAKE) -f CMakeFiles/service_client_test.dir/build.make CMakeFiles/service_client_test.dir/depend
+	$(MAKE) -f CMakeFiles/service_client_test.dir/build.make CMakeFiles/service_client_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/seed/Demo/com_ipc/build/CMakeFiles --progress-num=34,35 "Built target service_client_test"
+.PHONY : CMakeFiles/service_client_test.dir/all
+
+# Include target in all.
+all: CMakeFiles/service_client_test.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/service_client_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 13
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/service_client_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/seed/Demo/com_ipc/build/CMakeFiles 0
+.PHONY : CMakeFiles/service_client_test.dir/rule
+
+# Convenience name for target.
+service_client_test: CMakeFiles/service_client_test.dir/rule
+
+.PHONY : service_client_test
+
+# clean rule for target.
+CMakeFiles/service_client_test.dir/clean:
+	$(MAKE) -f CMakeFiles/service_client_test.dir/build.make CMakeFiles/service_client_test.dir/clean
+.PHONY : CMakeFiles/service_client_test.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/service_client_test.dir/clean
 
 .PHONY : clean
 

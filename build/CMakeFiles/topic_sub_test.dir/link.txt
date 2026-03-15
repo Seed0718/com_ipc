@@ -1,0 +1,1 @@
+/usr/bin/g++  -g   CMakeFiles/topic_sub_test.dir/test/test/topic_sub_test.cpp.o  -o bin/topic_sub_test -Wl,-rpath,/home/seed/Demo/com_ipc/build libcom_ipc.so -lpthread -lrt -lpthread 
