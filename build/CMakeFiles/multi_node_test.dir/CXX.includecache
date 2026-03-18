@@ -13,11 +13,17 @@ vector
 -
 functional
 -
+iostream
+-
+queue
+-
+mutex
+-
+condition_variable
+-
 thread
 -
-chrono
--
-iostream
+atomic
 -
 com_ipc/api/publisher.h
 ../inc/com_ipc/api/com_ipc/api/publisher.h
@@ -27,8 +33,6 @@ com_ipc/api/service_client.h
 ../inc/com_ipc/api/com_ipc/api/service_client.h
 com_ipc/api/service_server.h
 ../inc/com_ipc/api/com_ipc/api/service_server.h
-com_ipc/core/executor.h
-../inc/com_ipc/api/com_ipc/core/executor.h
 
 ../inc/com_ipc/api/publisher.h
 string

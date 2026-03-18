@@ -28,8 +28,8 @@ struct LoanedMessage {
     uint32_t seq;
 };
 
-// // 【新增】：任务投递器类型，彻底解耦执行器
-// using TaskSubmitter = std::function<void(std::function<void()>)>;
+// 【新增】：任务投递器类型，彻底解耦执行器
+using TaskSubmitter = std::function<void(std::function<void()>)>;
 
 // ==========================================
 // 2. 非模板基类：处理 OS 级别的条件变量同步与共享内存读写
@@ -48,7 +48,7 @@ public:
     using RawMessageCallback = std::function<void(const LoanedMessage&)>;
     // void registerRawCallback(RawMessageCallback cb);
     // 【修改】：注册回调时，接收 Executor 指针
-    void registerRawCallback(RawMessageCallback cb, MultiThreadedExecutor* executor = nullptr);
+    void registerRawCallback(RawMessageCallback cb, TaskSubmitter submitter = nullptr);
 
     // 【新增】：看门狗回调类型与注册接口
     using DeadlineCallback = std::function<void()>;
@@ -63,6 +63,7 @@ protected:
     // 异步循环相关的底层资源
     
     RawMessageCallback raw_callback_;
+    TaskSubmitter submitter_; // 【新增】：保存投递接口
     std::thread async_thread_;
     std::atomic<bool> async_running_{false};
 
@@ -127,12 +128,12 @@ public:
     //     this->registerRawCallback(raw_cb);
     // }
 
-    // 【修改】：向下传递 Executor 指针
-    void registerCallback(TypedMessageCallback cb, MultiThreadedExecutor* executor = nullptr) {
+    // 【修改】：接收并向下传递投递器
+    void registerCallback(TypedMessageCallback cb, TaskSubmitter submitter = nullptr) {
         auto raw_cb = [cb](const LoanedMessage& msg) {
             cb(static_cast<const T*>(msg.data));
         };
-        this->registerRawCallback(raw_cb, executor);
+        this->registerRawCallback(raw_cb, submitter);
     }
 };
 

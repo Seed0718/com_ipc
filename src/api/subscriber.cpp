@@ -65,12 +65,22 @@ SubscriberBase::~SubscriberBase() {
 //         async_thread_ = std::thread(&SubscriberBase::asyncLoop, this);
 //     }
 // }
-void SubscriberBase::registerRawCallback(RawMessageCallback cb, MultiThreadedExecutor* executor) {
+// void SubscriberBase::registerRawCallback(RawMessageCallback cb, MultiThreadedExecutor* executor) {
+//     raw_callback_ = cb;
+//     executor_ = executor; // 保存线程池引用
+//     if (!async_running_) {
+//         async_running_ = true;
+//         // 启动专门负责等待条件变量的 I/O 线程
+//         async_thread_ = std::thread(&SubscriberBase::asyncLoop, this);
+//     }
+// }
+// 【修改】：接收 submitter
+void SubscriberBase::registerRawCallback(RawMessageCallback cb, TaskSubmitter submitter) {
     raw_callback_ = cb;
-    executor_ = executor; // 保存线程池引用
+    submitter_ = std::move(submitter); // 保存投递通道
     if (!async_running_) {
         async_running_ = true;
-        // 启动专门负责等待条件变量的 I/O 线程
+        // 注：这里保留的底层线程 0% CPU，仅用于等待内核共享内存信号量
         async_thread_ = std::thread(&SubscriberBase::asyncLoop, this);
     }
 }
@@ -106,18 +116,35 @@ void SubscriberBase::registerRawCallback(RawMessageCallback cb, MultiThreadedExe
 //         }
 //     }
 // }
+// void SubscriberBase::asyncLoop() {
+//     while (async_running_ && !g_shutdown_requested) {
+//         LoanedMessage msg;
+//         if (receiveLoaned(msg, 500)) { 
+//             if (raw_callback_) {
+//                 if (executor_) {
+//                     // 【修复点】：兼容 C++11 的写法
+//                     // 先把回调拷贝出来，然后再通过值传递给 lambda
+//                     auto cb = raw_callback_;
+//                     executor_->enqueue([cb, msg]() {
+//                         cb(msg);
+//                     });
+//                 } else {
+//                     raw_callback_(msg);
+//                 }
+//             }
+//         }
+//     }
+// }
+// 【修改】：收到数据后，投递给主线程池，而不是自己算
 void SubscriberBase::asyncLoop() {
     while (async_running_ && !g_shutdown_requested) {
         LoanedMessage msg;
         if (receiveLoaned(msg, 500)) { 
             if (raw_callback_) {
-                if (executor_) {
-                    // 【修复点】：兼容 C++11 的写法
-                    // 先把回调拷贝出来，然后再通过值传递给 lambda
+                if (submitter_) {
                     auto cb = raw_callback_;
-                    executor_->enqueue([cb, msg]() {
-                        cb(msg);
-                    });
+                    // 核心跨线程投递：把回调计算打包成 Task 发送给 Node
+                    submitter_([cb, msg]() { cb(msg); });
                 } else {
                     raw_callback_(msg);
                 }
